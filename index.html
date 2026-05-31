@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرح محاضرة البصريات الحيوية - الليزر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <header class="glass-header">
+            <h1>محاضرة 8: تكنولوجيا الليزر والبصريات الحيوية</h1>
+            <h2>Lecture 8: Principles of Lasers & Current Laser Technology</h2>
+            <p>شرح تفصيلي للمحاضرة باللغتين العربية والإنجليزية / Detailed bilingual explanation</p>
+        </header>
+
+        <main>
+            <aside class="sidebar glass-panel">
+                <nav>
+                    <ul id="nav-list">
+                        <li class="active" data-target="intro">1. مقدمة / Introduction</li>
+                        <li data-target="principles">2. مبادئ الليزر / Principles of Lasers</li>
+                        <li data-target="classification">3. تصنيف الليزر / Classification</li>
+                        <li data-target="technologies">4. تكنولوجيا حديثة / Current Tech</li>
+                        <li data-target="radiometry">5. قياس الإشعاع / Radiometry</li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <section class="content-area glass-panel">
+                <!-- Section 1 -->
+                <div id="intro" class="content-section active-section">
+                    <h2>1. مقدمة في البصريات الحيوية / Introduction (Slides 1-6)</h2>
+                    <div class="card">
+                        <h3>أهمية الليزر / Importance of Lasers</h3>
+                        <div class="lang-block">
+                            <p class="ar">أصبحت أشعة الليزر أدوات لا غنى عنها في مجال البصريات الطبية الحيوية، حيث تتيح التفاعل الدقيق والأقل تدخلاً مع الأنسجة البيولوجية لأغراض التشخيص والعلاج على حد سواء.</p>
+                            <p class="en">Lasers have become indispensable tools in the field of biomedical optics, enabling precise, minimally invasive interaction with biological tissues for both diagnostic and therapeutic purposes.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>ما هو الليزر؟ / What is a Laser?</h3>
+                        <div class="lang-block">
+                            <p class="ar">الليزر هو جهاز ينتج حزم ضوئية تتميز بـ: اتجاهية عالية، أحادية اللون، وكثافة عالية.</p>
+                            <p class="en">Lasers are devices that produce highly directional, monochromatic, and intense beams of light.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar">تنقسم استخدامات الليزر إلى فئتين: الأولى تستخدم الليزر كمصدر مناسب ومركز للغاية للفوتونات. والثانية تستغل الطبيعة المترابطة (Coherent) لشعاع الضوء.</p>
+                            <p class="en">The usage of lasers falls into two categories. The first utilizes lasers as a highly concentrated source of photons. The second utilizes the highly coherent nature of the light beam.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>التطبيقات المتقدمة / Advanced Applications</h3>
+                        <div class="lang-block">
+                            <p class="ar">من المزايا الكبرى لليزر هي الدقة الزمنية التي توفرها ليزرات النبضات. هذه العمليات البصرية غير الخطية لها تطبيقات مهمة في التصوير الحيوي، والعلاج المنشط بالضوء، وهندسة الأنسجة.</p>
+                            <p class="en">An advantage of using lasers is the time resolution provided by pulse lasers. These nonlinear optical processes have found important applications in bioimaging, light-activated therapy, and tissue engineering.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <div id="principles" class="content-section">
+                    <h2>2. مبادئ عمل الليزر / Principles of Lasers (Slides 7-19)</h2>
+                    <div class="card">
+                        <h3>مفهوم الليزر / Laser Concept</h3>
+                        <div class="lang-block">
+                            <p class="ar">كلمة <strong>LASER</strong> هي اختصار لعبارة: تضخيم الضوء بواسطة الانبعاث المستحث للإشعاع.</p>
+                            <p class="en">The term <strong>"laser"</strong> is an acronym for Light Amplification by Stimulated Emission of Radiation.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>خصائص شعاع الليزر / Laser Beam Properties</h3>
+                        <div class="lang-block">
+                            <p class="ar">الليزر مصدر ضوء مكثف يتميز بـ:</p>
+                            <ul class="ar">
+                                <li><strong>أحادي اللون:</strong> طول موجي واحد.</li>
+                                <li><strong>شديد التوجيه:</strong> شعاع ذو تباعد منخفض جداً.</li>
+                                <li><strong>قابل للتركيز:</strong> يمكن تركيزه في بقعة مجهرية بدقة الخلية.</li>
+                                <li><strong>نبضات قصيرة:</strong> قادر على إنتاج نبضات ضوئية قصيرة جداً وعالية الكثافة لقطع الأنسجة دون إحداث تفحم.</li>
+                            </ul>
+                            <p class="en">A laser is an intense light source that is:</p>
+                            <ul class="en">
+                                <li><strong>Monochromatic:</strong> one color or wavelength.</li>
+                                <li><strong>Highly directional:</strong> beam with low divergence.</li>
+                                <li><strong>Focusable:</strong> capable of being focused into a very small spot.</li>
+                                <li><strong>Short bursts:</strong> capable of producing short bursts of light of very high intensity to cut tissue without thermal charring.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>الانبعاث المستحث والانعكاس السكاني / Stimulated Emission & Population Inversion</h3>
+                        <div class="lang-block">
+                            <p class="ar">يعتمد الليزر على الانبعاث المستحث. يتطلب ذلك حالة تسمى <strong>الانعكاس السكاني</strong> حيث يكون عدد الذرات في المستوى الأعلى أكبر من المستوى الأدنى.</p>
+                            <p class="en">The laser is based on stimulated emission. This requires a <strong>population inversion</strong> where the number of atoms in a higher-lying electronic level is higher than in a lower-lying level.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar">تُسمى عملية إحداث الانعكاس السكاني بـ <strong>الضخ (Pumping)</strong> وتتم بواسطة مصابيح أو تفريغ كهربائي.</p>
+                            <p class="en">The process of producing a population inversion is called <strong>Pumping</strong> (e.g., by lamps or electrical discharge).</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>مكونات الليزر الأساسية / Laser Components</h3>
+                        <div class="lang-block">
+                            <p class="ar">يتكون أي جهاز ليزر من:</p>
+                            <ol class="ar">
+                                <li><strong>الوسط الفعال (Active Medium):</strong> غاز، سائل، أو صلب تُثار إلكتروناته.</li>
+                                <li><strong>مصدر الضخ (Pumping Source):</strong> لتوليد الحالة المثارة.</li>
+                                <li><strong>التجويف الرنيني (Resonant Cavity):</strong> لتخزين الطاقة مؤقتاً وعمل انعكاسات متتالية.</li>
+                            </ol>
+                            <p class="en">The components of a laser are:</p>
+                            <ol class="en">
+                                <li><strong>Active medium:</strong> where electrons can be excited.</li>
+                                <li><strong>Pumping source:</strong> to create the excited state.</li>
+                                <li><strong>Resonant cavity:</strong> where the excited energy is temporarily stored.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3 -->
+                <div id="classification" class="content-section">
+                    <h2>3. تصنيف وأنواع الليزر / Classification (Slides 20-32)</h2>
+                    <div class="card">
+                        <h3>طرق تصنيف الليزر / Classification Methods</h3>
+                        <div class="lang-block">
+                            <p class="ar">يمكن تصنيف الليزر حسب عملية الضخ (كهربائي، ضوئي)، حسب الوسط الفعال (غازي، سائل، صلب)، أو حسب الخصائص الزمنية (مستمر CW، نبضي Pulsed).</p>
+                            <p class="en">Lasers can be classified based on the pumping process (electrically, optically), the laser medium (gas, liquid, solid-state), or the temporal feature (CW, pulsed).</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>أهم أنواع الليزر الطبية / Important Lasers for Biophotonics</h3>
+                        <div class="table-responsive">
+                            <table>
+                                <tr>
+                                    <th>نوع الليزر / Laser Type</th>
+                                    <th>الوسط / Medium & Wavelength</th>
+                                    <th>الاستخدام الطبي / Medical Application</th>
+                                </tr>
+                                <tr>
+                                    <td class="en">CO2</td>
+                                    <td><p class="ar">غازي (10,600nm)</p><p class="en">Gas</p></td>
+                                    <td><p class="ar">تبخير الأنسجة، تقشير الجلد</p><p class="en">Vaporization, Skin resurfacing</p></td>
+                                </tr>
+                                <tr>
+                                    <td class="en">Nd:YAG</td>
+                                    <td><p class="ar">صلب (1064nm)</p><p class="en">Solid (Crystal)</p></td>
+                                    <td><p class="ar">جراحة البروستاتا، تخثر الأورام</p><p class="en">Prostate surgery, Coagulation</p></td>
+                                </tr>
+                                <tr>
+                                    <td class="en">Diode</td>
+                                    <td><p class="ar">شبه موصل</p><p class="en">Solid (Semiconductor)</p></td>
+                                    <td><p class="ar">علاج الألم، طب العيون، الضخ البصري</p><p class="en">Pain relief, Ophthalmology, Optical pumping</p></td>
+                                </tr>
+                                <tr>
+                                    <td class="en">KTP</td>
+                                    <td><p class="ar">صلب غير خطي (532nm)</p><p class="en">Solid (Nonlinear)</p></td>
+                                    <td><p class="ar">إزالة الوشم والوحمات</p><p class="en">Tattoo & port wine stain removal</p></td>
+                                </tr>
+                                <tr>
+                                    <td class="en">Argon-Ion</td>
+                                    <td><p class="ar">غازي (488nm)</p><p class="en">Gas</p></td>
+                                    <td><p class="ar">انفصال الشبكية، التصوير الحيوي</p><p class="en">Retinal detachment, Bioimaging</p></td>
+                                </tr>
+                                <tr>
+                                    <td class="en">Ti:Sapphire</td>
+                                    <td><p class="ar">صلب (فيمتوثانية)</p><p class="en">Solid (Femtosecond)</p></td>
+                                    <td><p class="ar">التصوير المجهري متعدد الفوتونات</p><p class="en">Multiphoton microscopy</p></td>
+                                </tr>
+                                <tr>
+                                    <td class="en">Dye (صبغة)</td>
+                                    <td><p class="ar">سائل متغير</p><p class="en">Liquid (Tunable)</p></td>
+                                    <td><p class="ar">العلاج الضوئي، تدمير الخلايا الصبغية</p><p class="en">Photodynamic therapy, Vascular disorders</p></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4 -->
+                <div id="technologies" class="content-section">
+                    <h2>4. تكنولوجيا الليزر الحديثة / Current Tech (Slides 33-39)</h2>
+                    <div class="card">
+                        <h3>التحول إلى الليزر الصلب / Move to Solid-State Lasers</h3>
+                        <div class="lang-block">
+                            <p class="ar">تتجه التكنولوجيا حالياً نحو ليزر الحالة الصلبة لأنه: مدمج، موفر للطاقة، وموثوق بعمر تشغيلي طويل. أساس هذه التكنولوجيا هو ليزر الدايود.</p>
+                            <p class="en">Current laser technology moved to Solid state lasers due to being: Compact, Energy efficient, and Reliable. The basic foundation is provided by diode lasers.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>تطور ليزر الدايود / Diode Lasers Development</h3>
+                        <div class="lang-block">
+                            <p class="ar">يعتبر ليزر الدايود ذو كفاءة عالية جداً. أطوال 980nm و 1300nm لها قدرة كبيرة على الاختراق العميق للأنسجة.</p>
+                            <p class="en">Diode lasers are highly efficient. The 980- and 1300-nm diode lasers provide greater penetration in biological tissues.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar">يتم استخدام ليزر الدايود (800nm) كبديل للمصابيح لعمل "ضخ ضوئي" لليزر Nd:YAG لتوليد ضوء أخضر (532nm). ويحل 635nm محل ليزر الهيليوم-نيون في العلاج منخفض المستوى.</p>
+                            <p class="en">Diode lasers at 800-nm are useful for optical pumping of Nd:YAG to produce green radiation at 532nm. Diode lasers at 635nm are replacing helium-neon lasers for low-level light therapy.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>تقنيات واعدة ومستقبلية / Advanced Technologies</h3>
+                        <div class="lang-block">
+                            <p class="ar"><strong>المذبذبات البارامترية البصرية (OPO):</strong> تستخدم بلورات غير خطية لإنتاج أطوال موجية متغيرة على نطاق واسع جداً، وهي المرشح الأقوى لاستبدال ليزر الصبغات (Dye lasers).</p>
+                            <p class="en"><strong>Optical Parametric Oscillators (OPO):</strong> Use nonlinear crystals to generate a widely tunable wavelength range and are candidates to replace dye lasers.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><strong>ليزر الإلكترون الحر (FEL):</strong> يعتمد على تحويل الطاقة الحركية للإلكترونات إلى ضوء مباشرة، مما يوفر نطاقاً واسعاً جداً وبطاقة عالية قابلة للضبط.</p>
+                            <p class="en"><strong>Free Electron Lasers (FEL):</strong> The kinetics energy of electrons in an electron beam is directly converted into light. It provides very broad tunability and high power.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5 -->
+                <div id="radiometry" class="content-section">
+                    <h2>5. القياسات الإشعاعية / Radiometry (Slides 40-43)</h2>
+                    <div class="card">
+                        <h3>مفاهيم الوصف الكمي للضوء / Quantitative Description</h3>
+                        <div class="lang-block">
+                            <p class="ar">لوصف تفاعل الضوء مع الأنسجة الطبية، نستخدم عدة مصطلحات للقياس:</p>
+                            <ul class="ar">
+                                <li><strong>طاقة الضوء (Light Energy):</strong> تقاس بالجول (J).</li>
+                                <li><strong>خرج الطاقة/القدرة (Power output):</strong> تقاس بالواط (W) - جول في الثانية.</li>
+                                <li><strong>كثافة الطاقة (Irradiance/Power density):</strong> تقاس بـ واط/سم مربع (W/cm²).</li>
+                                <li><strong>الفيض أو التدفق (Fluence):</strong> كثافة طاقة الجول وتقاس بـ جول/سم مربع (J/cm²).</li>
+                            </ul>
+                            <p class="en">To specify the level and amount of light exposure, several descriptions are used:</p>
+                            <ul class="en">
+                                <li><strong>Light Energy:</strong> Measured in joules (J).</li>
+                                <li><strong>Power output:</strong> Measured in watts (W) (joules/sec).</li>
+                                <li><strong>Power density (Irradiance):</strong> Measured in W/cm².</li>
+                                <li><strong>Fluence (Flux):</strong> Energy density, measured in joules/cm².</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>حسابات ليزر النبضات / Pulse Laser Calculations</h3>
+                        <div class="lang-block">
+                            <p class="ar">في ليزر النبضات، ترتبط الطاقة بالزمن وفق المعادلات التالية:</p>
+                            <p class="math">P<sub>ave</sub> = energy per pulse × number of pulses per second</p>
+                            <p class="ar"><em>متوسط الطاقة = طاقة النبضة × عدد النبضات في الثانية</em></p>
+                            <br>
+                            <p class="math">P<sub>peak</sub> = energy per pulse / pulse width</p>
+                            <p class="ar"><em>ذروة الطاقة = طاقة النبضة ÷ مدة النبضة</em></p>
+                            <br>
+                            <p class="en">For example, the peak power of a laser pulse of 1-mJ energy and 10nsec pulse duration is 100,000 W (10<sup>5</sup> W).</p>
+                            <p class="ar">على سبيل المثال، ليزر بطاقة 1 مللي جول ومدة نبضة 10 نانوثانية، ستكون ذروة طاقته 100 ألف واط!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p class="ar">تم تصميم هذا الموقع بناءً على محتوى ملف "Lecture 8.pdf" لمقرر BEBO411: Biomedical Optics - إعداد د. محمد ثروت.</p>
+            <p class="en">This website was generated based on "Lecture 8.pdf" for BEBO411: Biomedical Optics - Dr. Mohamed Tharwat.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
