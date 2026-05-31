@@ -25,6 +25,7 @@
                         <li data-target="classification">3. تصنيف الليزر / Classification</li>
                         <li data-target="technologies">4. تكنولوجيا حديثة / Current Tech</li>
                         <li data-target="radiometry">5. قياس الإشعاع / Radiometry</li>
+                        <li data-target="quiz">6. اختبر نفسك / Quiz</li>
                     </ul>
                 </nav>
             </aside>
@@ -249,12 +250,143 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Section 6 -->
+                <div id="quiz" class="content-section">
+                    <h2>6. اختبر نفسك / Test Yourself</h2>
+                    <div id="score-board" style="display: none;" class="card text-center">
+                        <h3 style="color: var(--primary); text-align: center;">نتيجتك النهائية / Your Final Score</h3>
+                        <p id="score-text" style="font-size: 2.5rem; font-weight: bold; text-align: center; color: var(--accent); margin-top: 10px;"></p>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 1 / Question 1</h3>
+                        <p class="ar">أي نوع من الليزر يستخدم بشكل أساسي لعلاج انفصال الشبكية؟</p>
+                        <p class="en">Which laser is primarily used for retinal detachment?</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">Nd:YAG</button>
+                            <button class="option-btn" data-index="1">CO2 Laser</button>
+                            <button class="option-btn" data-index="2">Argon-Ion</button>
+                            <button class="option-btn" data-index="3">Ti:Sapphire</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+                    
+                    <div class="card quiz-card">
+                        <h3>سؤال 2 / Question 2</h3>
+                        <p class="ar">ما هي حالة الانعكاس السكاني (Population Inversion)؟</p>
+                        <p class="en">What is Population Inversion?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">تساوي عدد الذرات في المستويات العليا والدنيا / Equal atoms in high and low states</button>
+                            <button class="option-btn" data-index="1">عدد الذرات في مستوى الطاقة الأعلى أكبر من المستوى الأدنى / More atoms in the higher state than lower state</button>
+                            <button class="option-btn" data-index="2">انعدام الطاقة في الذرات / Zero energy in atoms</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 3 / Question 3 (مسألة حسابية / Calculation)</h3>
+                        <p class="ar">ليزر نبضي ينتج نبضات طاقة الواحدة منها 2 مللي جول (2mJ) وزمن النبضة 10 نانوثانية (10nsec). ما هي ذروة الطاقة (Peak Power)؟</p>
+                        <p class="en">A pulse laser produces 2mJ energy per pulse with a pulse duration of 10nsec. What is the peak power?</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">20 kW</button>
+                            <button class="option-btn" data-index="1">2 kW</button>
+                            <button class="option-btn" data-index="2">200 kW</button>
+                            <button class="option-btn" data-index="3">0.2 kW</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 4 / Question 4</h3>
+                        <p class="ar">إلى ماذا يشير حرف "S" في كلمة LASER؟</p>
+                        <p class="en">What does the 'S' in LASER stand for?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">Spontaneous (تلقائي)</button>
+                            <button class="option-btn" data-index="1">Stimulated (مستحث)</button>
+                            <button class="option-btn" data-index="2">Solid (صلب)</button>
+                            <button class="option-btn" data-index="3">Source (مصدر)</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 5 / Question 5</h3>
+                        <p class="ar">أي من الآتي يعتبر المكون المسؤول عن تضخيم الشعاع عبر الانعكاسات المتتالية داخل الليزر؟</p>
+                        <p class="en">Which component is responsible for amplifying the beam through back-and-forth reflections?</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">الوسط الفعال / Active Medium</button>
+                            <button class="option-btn" data-index="1">مصدر الضخ / Pumping Source</button>
+                            <button class="option-btn" data-index="2">التجويف الرنيني / Resonant Cavity</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 6 / Question 6</h3>
+                        <p class="ar">ما هي التقنية التي تعتمد على تحويل الطاقة الحركية للإلكترونات مباشرة إلى ضوء؟</p>
+                        <p class="en">Which technology converts the kinetics energy of electrons directly into light?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">FEL (Free Electron Lasers)</button>
+                            <button class="option-btn" data-index="1">OPO (Optical Parametric Oscillators)</button>
+                            <button class="option-btn" data-index="2">Diode Lasers</button>
+                            <button class="option-btn" data-index="3">Dye Lasers</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 7 / Question 7</h3>
+                        <p class="ar">أي نوع من الليزر يستخدم بشكل شائع لعمليات تبخير الأنسجة وتقشير الجلد (Skin resurfacing)؟</p>
+                        <p class="en">Which laser is commonly used for tissue vaporization and skin resurfacing?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">KTP Laser</button>
+                            <button class="option-btn" data-index="1">CO2 Laser</button>
+                            <button class="option-btn" data-index="2">Ti:Sapphire Laser</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 8 / Question 8</h3>
+                        <p class="ar">أي من هذه الخصائص **ليست** من خصائص شعاع الليزر؟</p>
+                        <p class="en">Which of the following is **NOT** a characteristic of a laser beam?</p>
+                        <div class="options" data-correct="3">
+                            <button class="option-btn" data-index="0">أحادي اللون / Monochromatic</button>
+                            <button class="option-btn" data-index="1">شديد التوجيه / Highly directional</button>
+                            <button class="option-btn" data-index="2">مترابط / Coherent</button>
+                            <button class="option-btn" data-index="3">مشتت بتباعد كبير / Highly divergent</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 9 / Question 9</h3>
+                        <p class="ar">أي نوع ليزر صلب يستخدم بكثرة في جراحة البروستاتا وعلاج أورام المثانة؟</p>
+                        <p class="en">Which solid-state laser is widely used in prostate surgery and bladder tumor coagulation?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">Nd:YAG</button>
+                            <button class="option-btn" data-index="1">Argon-Ion</button>
+                            <button class="option-btn" data-index="2">Dye Laser</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 10 / Question 10 (مسألة حسابية / Calculation)</h3>
+                        <p class="ar">إذا كان ليزر ينتج طاقة مقدارها 100 مللي جول (100mJ) في النبضة بمعدل تكرار 10 هرتز (10 Hz)، فما هو متوسط الطاقة (Average Power)؟</p>
+                        <p class="en">If a laser produces 100mJ per pulse at a repetition rate of 10 Hz, what is its average power?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">10 W</button>
+                            <button class="option-btn" data-index="1">1 W</button>
+                            <button class="option-btn" data-index="2">100 W</button>
+                            <button class="option-btn" data-index="3">0.1 W</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+                </div>
             </section>
         </main>
-        <footer>
-            <p class="ar">تم تصميم هذا الموقع بناءً على محتوى ملف "Lecture 8.pdf" لمقرر BEBO411: Biomedical Optics - إعداد د. محمد ثروت.</p>
-            <p class="en">This website was generated based on "Lecture 8.pdf" for BEBO411: Biomedical Optics - Dr. Mohamed Tharwat.</p>
-        </footer>
     </div>
     <script src="script.js"></script>
 </body>

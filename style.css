@@ -264,12 +264,50 @@ tr:hover {
     direction: ltr;
 }
 
-footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    border-top: 1px solid var(--glass-border);
+/* Quiz Styles */
+.quiz-card .options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+.option-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: right;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+.option-btn:hover:not(:disabled) {
+    background: rgba(79, 172, 254, 0.2);
+}
+.option-btn.correct {
+    background: rgba(16, 185, 129, 0.3);
+    border-color: #10b981;
+}
+.option-btn.wrong {
+    background: rgba(239, 68, 68, 0.3);
+    border-color: #ef4444;
+}
+.option-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+.feedback {
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.feedback.success {
+    color: #34d399;
+}
+.feedback.error {
+    color: #f87171;
 }
 
 @media (max-width: 768px) {
