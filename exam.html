@@ -1,0 +1,2471 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الامتحان الشامل — الفيزياء الطبية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Cairo', 'Outfit', sans-serif;
+  background: #0d1117;
+  color: #e2e8f0;
+  direction: rtl;
+  min-height: 100vh;
+}
+
+/* ══════════════════════════════════════════════
+   STICKY HEADER
+══════════════════════════════════════════════ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(13,17,23,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(99,102,241,0.18);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.back-link {
+  color: #818cf8;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: color .2s;
+}
+.back-link:hover { color: #a5b4fc; }
+.site-header h1 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  background: linear-gradient(135deg,#a78bfa,#60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.site-header span {
+  font-size: 0.78rem;
+  color: #475569;
+  margin-right: 8px;
+}
+
+/* ══════════════════════════════════════════════
+   HERO BANNER
+══════════════════════════════════════════════ */
+.hero {
+  background: linear-gradient(160deg, #0f0c29 0%, #1e1b4b 50%, #0f172a 100%);
+  padding: 2.5rem 1.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(99,102,241,0.12);
+}
+.hero h2 {
+  font-size: clamp(1.5rem,4vw,2.2rem);
+  font-weight: 900;
+  background: linear-gradient(135deg,#c084fc,#60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+}
+.hero p { color: #64748b; font-size: 0.9rem; margin-bottom: 1.2rem; }
+.pills { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.pill {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50px;
+  padding: 5px 16px;
+  font-size: 0.82rem;
+  color: #c7d2fe;
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════════
+   TAB BAR
+══════════════════════════════════════════════ */
+.tab-bar {
+  background: #111827;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 12px;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex: 0 0 auto;
+  padding: 14px 20px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: #475569;
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: #94a3b8; }
+.tab-btn.active { color: #818cf8; border-bottom-color: #6366f1; }
+
+/* ══════════════════════════════════════════════
+   MAIN WRAPPER
+══════════════════════════════════════════════ */
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.2rem 5rem;
+}
+
+/* ══════════════════════════════════════════════
+   SECTION VISIBILITY — the ONE source of truth
+══════════════════════════════════════════════ */
+.tab-section { display: none; }
+.tab-section.active { display: block; }
+
+/* ══════════════════════════════════════════════
+   SECTION HEADING
+══════════════════════════════════════════════ */
+.sec-head { margin-bottom: 1.5rem; }
+.sec-head h2 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+.sec-head p { color: #475569; font-size: 0.86rem; }
+
+/* ══════════════════════════════════════════════
+   MCQ — SCORE BOARD
+══════════════════════════════════════════════ */
+#score-board {
+  display: none;
+  background: linear-gradient(135deg,rgba(99,102,241,.14),rgba(139,92,246,.14));
+  border: 2px solid rgba(99,102,241,.35);
+  border-radius: 18px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+#score-board h3 { color: #a78bfa; font-size: 1.1rem; margin-bottom: 6px; }
+#score-val { display: block; font-size: 3.5rem; font-weight: 900; color: #f472b6; margin: 6px 0; }
+#score-msg { color: #64748b; font-size: 0.9rem; }
+
+/* ══════════════════════════════════════════════
+   MCQ CARD
+══════════════════════════════════════════════ */
+.qcard {
+  background: #161b27;
+  border: 1px solid #1e2d40;
+  border-radius: 14px;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1rem;
+  transition: border-color .25s;
+}
+.qcard:hover { border-color: rgba(99,102,241,.35); }
+.q-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.q-num {
+  background: linear-gradient(135deg,#4f46e5,#7c3aed);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.q-lec {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.qcard .q-ar { font-size: 1rem; color: #e2e8f0; margin-bottom: 3px; line-height: 1.6; }
+.qcard .q-en { font-size: 0.85rem; color: #475569; direction: ltr; text-align: left; margin-bottom: 12px; font-family: 'Outfit', sans-serif; }
+
+/* Options */
+.opts { display: flex; flex-direction: column; gap: 7px; }
+.opt {
+  background: #1e293b;
+  border: 1px solid #2d3748;
+  color: #cbd5e1;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.92rem;
+  text-align: right;
+  line-height: 1.5;
+  transition: background .2s, border-color .2s, color .2s;
+  width: 100%;
+}
+.opt:hover:not(:disabled) { background: rgba(79,70,229,.15); border-color: #4f46e5; color: #fff; }
+.opt.correct { background: rgba(16,185,129,.18) !important; border-color: #10b981 !important; color: #6ee7b7 !important; }
+.opt.wrong   { background: rgba(239,68,68,.18)  !important; border-color: #ef4444 !important; color: #fca5a5 !important; }
+.fb { min-height: 20px; margin-top: 8px; font-size: 0.86rem; font-weight: 700; }
+
+/* ══════════════════════════════════════════════
+   ESSAY SECTION
+══════════════════════════════════════════════ */
+.group-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #a78bfa;
+  padding: 8px 0 8px;
+  border-bottom: 1.5px solid rgba(167,139,250,.2);
+  margin: 2rem 0 1rem;
+}
+.group-title:first-of-type { margin-top: 0; }
+
+/* Definition / Essay card */
+.ecard {
+  background: #161b27;
+  border: 1px solid #1e2d40;
+  border-radius: 13px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 0.8rem;
+}
+.ecard-q {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.toggle-btn {
+  background: rgba(79,70,229,.1);
+  border: 1px solid rgba(79,70,229,.35);
+  color: #818cf8;
+  padding: 6px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition: background .2s, color .2s;
+}
+.toggle-btn:hover { background: rgba(79,70,229,.22); color: #a5b4fc; }
+.ecard-ans {
+  display: none;
+  margin-top: 12px;
+  background: rgba(16,185,129,.05);
+  border: 1px solid rgba(16,185,129,.15);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+}
+.ecard-ans p { margin: 4px 0; line-height: 1.75; }
+.a-ar { color: #e2e8f0; }
+.a-en { color: #64748b; font-family: 'Outfit', sans-serif; direction: ltr; text-align: left; font-size: 0.88rem; margin-top: 8px; }
+.ecard-ans ul { padding-right: 1.4rem; margin: 6px 0; }
+.ecard-ans li { margin: 4px 0; color: #cbd5e1; font-size: 0.92rem; }
+
+/* Comparison table */
+.ctable { width: 100%; border-collapse: collapse; font-size: 0.87rem; margin-top: 8px; }
+.ctable th {
+  background: rgba(79,70,229,.2);
+  color: #c7d2fe;
+  padding: 9px 10px;
+  text-align: center;
+  border: 1px solid rgba(79,70,229,.2);
+  font-weight: 700;
+}
+.ctable td {
+  padding: 9px 10px;
+  border: 1px solid rgba(255,255,255,.07);
+  color: #cbd5e1;
+  text-align: center;
+  vertical-align: middle;
+}
+.ctable tr:nth-child(even) td { background: rgba(255,255,255,.025); }
+
+/* ══════════════════════════════════════════════
+   FORMULAS SECTION
+══════════════════════════════════════════════ */
+.fgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px,1fr));
+  gap: 1rem;
+}
+.fcell {
+  background: #161b27;
+  border: 1px solid #1e2d40;
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem;
+  transition: transform .25s, border-color .25s;
+}
+.fcell:hover { transform: translateY(-4px); border-color: rgba(99,102,241,.4); }
+.f-lec {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #6366f1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+.f-title { color: #a78bfa; font-weight: 700; font-size: 0.92rem; margin-bottom: 8px; }
+.f-eq {
+  background: #0d1117;
+  color: #f1f5f9;
+  border: 1px solid rgba(99,102,241,.2);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-family: 'Outfit', monospace;
+  font-size: 0.92rem;
+  text-align: center;
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+.f-note { font-size: 0.78rem; color: #374151; line-height: 1.5; }
+
+/* ══════════════════════════════════════════════
+   PROBLEMS SECTION
+══════════════════════════════════════════════ */
+.pcard {
+  background: #161b27;
+  border: 1px solid #1e2d40;
+  border-left: 4px solid #f43f5e;
+  border-radius: 13px;
+  padding: 1.3rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.p-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.p-num {
+  background: rgba(244,63,94,.2);
+  color: #fb7185;
+  font-size: 0.73rem;
+  font-weight: 800;
+  padding: 3px 12px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.p-law { color: #94a3b8; font-size: 0.82rem; font-weight: 600; }
+.p-ar { color: #e2e8f0; margin-bottom: 4px; line-height: 1.6; }
+.p-en { color: #475569; font-family: 'Outfit', sans-serif; direction: ltr; text-align: left; font-size: 0.86rem; margin-bottom: 12px; }
+.p-sol p { margin: 5px 0; line-height: 1.7; }
+.p-sol p + p::before { content: "→ "; color: #6366f1; }
+
+/* ══════════════════════════════════════════════
+   ANIMATION
+══════════════════════════════════════════════ */
+.tab-section.active { animation: fadeUp .35s ease; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .site-header { padding: 12px 14px; }
+  .wrap { padding: 1.4rem .9rem 4rem; }
+  .fgrid { grid-template-columns: 1fr; }
+  .tab-btn { padding: 12px 14px; font-size: 0.83rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ STICKY HEADER ═══ -->
+<header class="site-header">
+  <a href="index.html" class="back-link">← الرئيسية</a>
+  <div>
+    <h1>📝 الامتحان الشامل / Comprehensive Exam</h1>
+    <span>المحاضرات 1–8 &nbsp;|&nbsp; Lectures 1–8</span>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <h2>اختبر نفسك في البصريات الحيوية</h2>
+  <p>Test Yourself — Biomedical Optics — All 8 Lectures</p>
+  <div class="pills">
+    <span class="pill">📋 80 سؤال اختياري</span>
+    <span class="pill">✍️ 57 تعريف + 7 مقارنة</span>
+    <span class="pill">📐 19 قانون</span>
+    <span class="pill">🧮 12 مسألة</span>
+  </div>
+</div>
+
+<!-- ═══ TAB BAR ═══ -->
+<div class="tab-bar">
+  <button class="tab-btn active" data-tab="sec-mcq">📋 اختياري MCQ</button>
+  <button class="tab-btn" data-tab="sec-essay">✍️ مقالي Essay</button>
+  <button class="tab-btn" data-tab="sec-formulas">📐 قوانين Formulas</button>
+  <button class="tab-btn" data-tab="sec-problems">🧮 مسائل Problems</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CONTENT WRAPPER
+════════════════════════════════════════════════════════════════ -->
+<div class="wrap">
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║               MCQ SECTION                               ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<section id="sec-mcq" class="tab-section active">
+  <div class="sec-head">
+    <h2 style="background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">📋 أسئلة اختيارية / MCQ</h2>
+    <p>80 سؤال — ترتيب عشوائي بكل فتح — 10 من كل محاضرة</p>
+  </div>
+
+  <div id="score-board">
+    <h3>🎉 انتهيت! نتيجتك / Your Score</h3>
+    <span id="score-val">—</span>
+    <p id="score-msg"></p>
+  </div>
+
+  <div id="mcq-box">
+
+    <!-- LECTURE 1 -->
+    <div class="qcard" data-lec="1">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 1</span></div>
+      <p class="q-ar">ما هما الفئتان الرئيسيتان لمجال البصريات الحيوية؟</p>
+      <p class="q-en">What are the two major categories of biomedical optics?</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">الجراحة والأدوية / Surgery and Medication</button>
+        <button class="opt" data-i="1">التصوير والتشخيص، والأنسجة والعلاج / Imaging &amp; Diagnosis, and Tissue &amp; Therapy</button>
+        <button class="opt" data-i="2">الميكانيكا والكهرباء / Mechanics and Electronics</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="1">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 1</span></div>
+      <p class="q-ar">أي فئة تركز على استخدام الضوء للتفاعل مع الأنسجة لعلاج الحالات الطبية (مثل الليزك)؟</p>
+      <p class="q-en">Which category focuses on using light to interact with biological tissue to treat medical conditions?</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">التشخيص / Diagnosis</button>
+        <button class="opt" data-i="1">التصوير الحيوي / Bioimaging</button>
+        <button class="opt" data-i="2">الأنسجة والعلاج / Tissue and Therapy</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="1">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 1</span></div>
+      <p class="q-ar">ما هي التقنية التي توفر صوراً مقطعية بدقة ميكرومترية وتُستخدم بكثرة في طب العيون؟</p>
+      <p class="q-en">Which technology provides cross-sectional images with micrometer resolution and is widely used in ophthalmology?</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">التصوير المقطعي التوافقي البصري (OCT)</button>
+        <button class="opt" data-i="1">الأشعة السينية (X-Ray)</button>
+        <button class="opt" data-i="2">الموجات فوق الصوتية (Ultrasound)</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="1">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 1</span></div>
+      <p class="q-ar">أي تقنية تستخدم أصباغ خاصة لزيادة التباين والسماح برؤية المكونات الخلوية الدقيقة؟</p>
+      <p class="q-en">Which imaging technique uses specific dyes to enhance contrast and allow detailed visualization of cellular components?</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">التنظير الداخلي / Endoscopy</button>
+        <button class="opt" data-i="1">التصوير بالفلورة / Fluorescence Imaging</button>
+        <button class="opt" data-i="2">الرنين المغناطيسي / MRI</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="1">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 1</span></div>
+      <p class="q-ar">تُستخدم تقنية NIRS بشكل أساسي لمراقبة:</p>
+      <p class="q-en">NIRS is primarily employed to monitor:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">نسبة أكسجين الأنسجة وتدفق الدم / Tissue oxygenation and blood flow</button>
+        <button class="opt" data-i="1">حجم العظام / Bone size</button>
+        <button class="opt" data-i="2">مستوى السكر فقط / Glucose level only</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="1">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 1</span></div>
+      <p class="q-ar">ما هو الهدف الأساسي من العلاج الديناميكي الضوئي (PDT)؟</p>
+      <p class="q-en">What is the primary goal of Photodynamic Therapy (PDT)?</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">تشخيص كسور العظام / Diagnose bone fractures</button>
+        <button class="opt" data-i="1">تحسين الرؤية الليلية / Improve night vision</button>
+        <button class="opt" data-i="2">الجمع بين الضوء وعوامل حساسة لاستهداف وتدمير الخلايا السرطانية / Combines light with photosensitizers to destroy cancer cells</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="1">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 1</span></div>
+      <p class="q-ar">ما هي الميزة الرئيسية للعديد من الأساليب البصرية فيما يتعلق براحة المريض؟</p>
+      <p class="q-en">What is a key advantage of many optical methods regarding patient safety?</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">أنها تتطلب تخديراً كلياً / Require general anesthesia</button>
+        <button class="opt" data-i="1">أنها غير غازية أو طفيفة التوغل / Non-invasive or minimally invasive</button>
+        <button class="opt" data-i="2">أنها تُصدر إشعاعات نووية / Emit nuclear radiation</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="1">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 1</span></div>
+      <p class="q-ar">ما التكنولوجيا التي أدى دمجها في البصريات الحيوية إلى تعزيز دقة التشخيص عبر تحليل البيانات المعقدة؟</p>
+      <p class="q-en">Which technology, when integrated with biomedical optics, enhances diagnostic precision by analyzing complex data sets?</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">الذكاء الاصطناعي / Artificial Intelligence (AI)</button>
+        <button class="opt" data-i="1">الطابعات ثلاثية الأبعاد / 3D Printers</button>
+        <button class="opt" data-i="2">أجهزة الميكروويف / Microwaves</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="1">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 1</span></div>
+      <p class="q-ar">يُعرف مجال البصريات الحيوية أيضاً باسم:</p>
+      <p class="q-en">The field of biomedical optics is also known as:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">الكيمياء الحيوية / Biochemistry</button>
+        <button class="opt" data-i="1">الفيزياء النووية / Nuclear Physics</button>
+        <button class="opt" data-i="2">البيوفوتونيكس أو البصريات الطبية / Biophotonics or Medical Optics</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="1">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 1</span></div>
+      <p class="q-ar">أي تطور سمح بمعالجة الأوساط البيولوجية على المستوى الخلوي والجزيئي باستخدام الضوء؟</p>
+      <p class="q-en">What development allowed manipulation of biological media at a cellular and molecular level using light?</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">جراحة النانو / Nano surgery</button>
+        <button class="opt" data-i="1">التنظير الداخلي / Endoscopy</button>
+        <button class="opt" data-i="2">الأشعة المقطعية / CT Scan</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <!-- LECTURE 2 -->
+    <div class="qcard" data-lec="2">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 2</span></div>
+      <p class="q-ar">ما هي الصيغة الصحيحة لحساب %Inaccuracy؟</p>
+      <p class="q-en">What is the correct formula for %Inaccuracy?</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">%Inaccuracy = (Max Error / Full Scale) × 100%</button>
+        <button class="opt" data-i="1">%Inaccuracy = (Full Scale / Max Error) × 100%</button>
+        <button class="opt" data-i="2">%Inaccuracy = Max Error × Full Scale</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="2">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 2</span></div>
+      <p class="q-ar">جهاز ضغط مداه 0–200 mmHg وأقصى خطأ = 2 mmHg. ما %Inaccuracy؟</p>
+      <p class="q-en">Pressure sensor range 0–200 mmHg, max error = 2 mmHg. Find %Inaccuracy.</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">2%</button>
+        <button class="opt" data-i="1">1%</button>
+        <button class="opt" data-i="2">0.5%</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="2">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 2</span></div>
+      <p class="q-ar">الحساسية S تساوي:</p>
+      <p class="q-en">Sensitivity S equals:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">ΔInput / ΔOutput</button>
+        <button class="opt" data-i="1">Output × Input</button>
+        <button class="opt" data-i="2">ΔOutput / ΔInput</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="2">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 2</span></div>
+      <p class="q-ar">عند t = τ في نظام الرتبة الأولى، تصل الاستجابة إلى:</p>
+      <p class="q-en">At t = τ in a first-order system, the response reaches:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">50% من القيمة النهائية / 50% of final value</button>
+        <button class="opt" data-i="1">63.2% من القيمة النهائية / 63.2% of final value</button>
+        <button class="opt" data-i="2">99% من القيمة النهائية / 99% of final value</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="2">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 2</span></div>
+      <p class="q-ar">ما هي ظاهرة Hysteresis؟</p>
+      <p class="q-en">What is the Hysteresis phenomenon?</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">اختلاف خرج الجهاز لنفس قيمة الدخل تبعاً لاتجاه التغيير / Output differs for same input based on direction of change</button>
+        <button class="opt" data-i="1">انجراف الحساسية مع الزمن / Drift of sensitivity over time</button>
+        <button class="opt" data-i="2">توقف الجهاز عن العمل عند قيم منخفضة / Device stops working at low values</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="2">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 2</span></div>
+      <p class="q-ar">جهاز الرتبة صفر يتميز بـ:</p>
+      <p class="q-en">A zero-order instrument is characterized by:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">استجابة بطيئة جداً / Very slow response</button>
+        <button class="opt" data-i="1">ثابت زمني طويل / Long time constant</button>
+        <button class="opt" data-i="2">استجابة فورية بدون تأخير / Instantaneous response with no delay</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="2">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 2</span></div>
+      <p class="q-ar">Precision تعني:</p>
+      <p class="q-en">Precision means:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">قرب القراءة من القيمة الحقيقية / Closeness to true value</button>
+        <button class="opt" data-i="1">تكرارية نفس القراءة في ظروف متطابقة / Repeatability under identical conditions</button>
+        <button class="opt" data-i="2">سرعة استجابة الجهاز / Speed of instrument response</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="2">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 2</span></div>
+      <p class="q-ar">أصغر قيمة يمكن للجهاز اكتشافها تُسمى:</p>
+      <p class="q-en">The smallest input value detectable by the instrument is called:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">العتبة / Threshold</button>
+        <button class="opt" data-i="1">المنطقة الميتة / Dead Zone</button>
+        <button class="opt" data-i="2">الثابت الزمني / Time Constant</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="2">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 2</span></div>
+      <p class="q-ar">DC Offset (إزاحة التيار المستمر) يُسبب:</p>
+      <p class="q-en">DC Offset causes:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">خطأ عشوائي / Random error</button>
+        <button class="opt" data-i="1">خطأ منهجي بإزاحة ثابتة لخط الأساس / Systematic error by shifting the baseline</button>
+        <button class="opt" data-i="2">تحسين الدقة / Improvement in accuracy</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="2">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 2</span></div>
+      <p class="q-ar">Resolution (الدقة التحليلية) هي:</p>
+      <p class="q-en">Resolution is defined as:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">أقصى قيمة يقيسها الجهاز / Maximum value the instrument measures</button>
+        <button class="opt" data-i="1">سرعة الاستجابة / Response speed</button>
+        <button class="opt" data-i="2">أصغر فرق يمكن للجهاز تمييزه بين قيمتين / Smallest difference the instrument can distinguish between two values</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <!-- LECTURE 3 -->
+    <div class="qcard" data-lec="3">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 3</span></div>
+      <p class="q-ar">طاقة الفوتون تحسب بالمعادلة:</p>
+      <p class="q-en">Photon energy is calculated by:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">E = hν = hc/λ</button>
+        <button class="opt" data-i="1">E = mc²</button>
+        <button class="opt" data-i="2">E = λ/hc</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="3">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 3</span></div>
+      <p class="q-ar">الانبعاث المستحث (Stimulated Emission) هو أساس عمل:</p>
+      <p class="q-en">Stimulated emission is the basis of:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">الأشعة السينية / X-ray</button>
+        <button class="opt" data-i="1">الليزر / Laser</button>
+        <button class="opt" data-i="2">الأشعة فوق البنفسجية / UV radiation</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="3">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 3</span></div>
+      <p class="q-ar">في تشتت رامان ستوكس (Stokes)، الفوتون الناتج يكون:</p>
+      <p class="q-en">In Stokes Raman scattering, the scattered photon has:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">نفس طاقة الفوتون الساقط / Same energy as incident</button>
+        <button class="opt" data-i="1">طاقة أعلى وطول موجة أقصر / Higher energy, shorter wavelength</button>
+        <button class="opt" data-i="2">طاقة أقل وطول موجة أطول / Lower energy, longer wavelength</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="3">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 3</span></div>
+      <p class="q-ar">الانبعاث التلقائي (Spontaneous Emission) يحدث:</p>
+      <p class="q-en">Spontaneous emission occurs:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">بدون إثارة خارجية وبشكل عشوائي / Without external stimulation, randomly</button>
+        <button class="opt" data-i="1">عند سقوط فوتون على الجزيء / When a photon hits the molecule</button>
+        <button class="opt" data-i="2">في الليزر فقط / Only in lasers</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="3">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 3</span></div>
+      <p class="q-ar">ما هو الثابت بلانك h؟</p>
+      <p class="q-en">What is Planck's constant h?</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">6.626 × 10⁻²⁴ J·s</button>
+        <button class="opt" data-i="1">6.626 × 10⁻³⁴ J·s</button>
+        <button class="opt" data-i="2">6.626 × 10⁻¹⁴ J·s</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="3">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 3</span></div>
+      <p class="q-ar">تشتت رامان يُستخدم أساساً في:</p>
+      <p class="q-en">Raman scattering is primarily used for:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">قياس درجة الحرارة / Temperature measurement</button>
+        <button class="opt" data-i="1">التصوير بالأشعة / X-ray imaging</button>
+        <button class="opt" data-i="2">التحليل الكيميائي للجزيئات / Chemical analysis of molecules</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="3">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 3</span></div>
+      <p class="q-ar">في الانبعاث المستحث، الفوتون الناتج يكون:</p>
+      <p class="q-en">In stimulated emission, the emitted photon is:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">متطابق تماماً مع الفوتون المحفز (نفس الطور والتردد والاتجاه) / Identical to stimulating photon (same phase, frequency, direction)</button>
+        <button class="opt" data-i="1">عشوائي الاتجاه / Random direction</button>
+        <button class="opt" data-i="2">أقل طاقة من الفوتون المحفز / Less energy than stimulating photon</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="3">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 3</span></div>
+      <p class="q-ar">الجزيء ينتقل من الحالة الأساسية S₀ إلى S₁ عند:</p>
+      <p class="q-en">A molecule transitions from ground state S₀ to S₁ upon:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">فقدان الطاقة / Losing energy</button>
+        <button class="opt" data-i="1">امتصاص فوتون / Absorbing a photon</button>
+        <button class="opt" data-i="2">الاصطدام مع جزيء آخر / Collision with another molecule</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="3">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 3</span></div>
+      <p class="q-ar">تشتت رامان Anti-Stokes يحدث عندما:</p>
+      <p class="q-en">Anti-Stokes Raman scattering occurs when:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">الجزيء في الحالة الأساسية ويكتسب طاقة / Molecule in ground state gaining energy</button>
+        <button class="opt" data-i="1">الضوء ينعكس انعكاساً مرناً / Light reflects elastically</button>
+        <button class="opt" data-i="2">الجزيء في حالة مثارة ويفقد طاقة فيعطي فوتوناً أعلى طاقة / Excited molecule loses energy giving higher-energy photon</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="3">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 3</span></div>
+      <p class="q-ar">ليزر طول موجته 500 nm. أي ليزر طاقة فوتونه أعلى؟</p>
+      <p class="q-en">A laser has wavelength 500 nm. Which laser has higher photon energy?</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">ليزر طول موجته 400 nm / 400 nm laser</button>
+        <button class="opt" data-i="1">ليزر طول موجته 600 nm / 600 nm laser</button>
+        <button class="opt" data-i="2">ليزر طول موجته 700 nm / 700 nm laser</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <!-- LECTURE 4 -->
+    <div class="qcard" data-lec="4">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 4</span></div>
+      <p class="q-ar">قانون سنيل ينص على:</p>
+      <p class="q-en">Snell's Law states:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">n₁/n₂ = sin(θ₂)/sin(θ₁)</button>
+        <button class="opt" data-i="1">n₁ + n₂ = θ₁ + θ₂</button>
+        <button class="opt" data-i="2">n₁ sin(θ₁) = n₂ sin(θ₂)</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="4">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 4</span></div>
+      <p class="q-ar">الزاوية الحرجة θc تحسب بـ:</p>
+      <p class="q-en">The critical angle θc is calculated by:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">θc = cos⁻¹(n₂/n₁)</button>
+        <button class="opt" data-i="1">θc = sin⁻¹(n₂/n₁)</button>
+        <button class="opt" data-i="2">θc = tan⁻¹(n₁/n₂)</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="4">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 4</span></div>
+      <p class="q-ar">TIR (الانعكاس الداخلي الكلي) يحدث عندما:</p>
+      <p class="q-en">TIR (Total Internal Reflection) occurs when:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">زاوية السقوط ≥ الزاوية الحرجة وn₁ > n₂ / Incidence angle ≥ critical angle and n₁ > n₂</button>
+        <button class="opt" data-i="1">زاوية السقوط = 0 / Incidence angle = 0</button>
+        <button class="opt" data-i="2">n₁ < n₂ / n₁ is less than n₂</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="4">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 4</span></div>
+      <p class="q-ar">الانعكاسية R عند السقوط العمودي تحسب بـ:</p>
+      <p class="q-en">Reflectance R at normal incidence is calculated by:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">R = (n₂ + n₁)²/(n₂ - n₁)²</button>
+        <button class="opt" data-i="1">R = n₁/n₂</button>
+        <button class="opt" data-i="2">R = [(n₂ - n₁)/(n₂ + n₁)]²</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="4">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 4</span></div>
+      <p class="q-ar">الألياف البصرية تعمل على مبدأ:</p>
+      <p class="q-en">Optical fibers work on the principle of:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">الانكسار الكلي / Total refraction</button>
+        <button class="opt" data-i="1">الانعكاس الداخلي الكلي TIR / Total Internal Reflection</button>
+        <button class="opt" data-i="2">الامتصاص الكلي / Total absorption</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="4">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 4</span></div>
+      <p class="q-ar">معامل الانكسار n يساوي:</p>
+      <p class="q-en">Refractive index n equals:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">c/v (سرعة الضوء في الفراغ / سرعته في الوسط)</button>
+        <button class="opt" data-i="1">v/c</button>
+        <button class="opt" data-i="2">λ × f</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="4">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 4</span></div>
+      <p class="q-ar">ليف بصري: n₁=1.5 (نواة)، n₂=1.4 (غلاف). هل يحدث TIR عند زاوية سقوط 70°؟</p>
+      <p class="q-en">Optical fiber: core n₁=1.5, cladding n₂=1.4. Does TIR occur at 70° incidence?</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">نعم، لأن 70° أصغر من الزاوية الحرجة / Yes, because 70° is less than critical angle</button>
+        <button class="opt" data-i="1">لا، لأن n₁ أكبر من n₂ / No, because n₁ > n₂</button>
+        <button class="opt" data-i="2">نعم، لأن θc = sin⁻¹(1.4/1.5) ≈ 69°، وزاوية السقوط أكبر منها / Yes, θc≈69°, incidence angle exceeds it</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="4">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 4</span></div>
+      <p class="q-ar">معامل الانكسار المُركّب ñ = n + ik. الجزء التخيلي k يمثل:</p>
+      <p class="q-en">Complex refractive index ñ = n + ik. The imaginary part k represents:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">الانكسار / Refraction</button>
+        <button class="opt" data-i="1">الامتصاص (معامل الإخماد) / Absorption (extinction coefficient)</button>
+        <button class="opt" data-i="2">التشتت / Scattering</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="4">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 4</span></div>
+      <p class="q-ar">عندما ينتقل الضوء من وسط كثيف إلى وسط أقل كثافة بصرياً:</p>
+      <p class="q-en">When light travels from a denser to a less dense optical medium:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">ينحني بعيداً عن العمود ويمكن أن يحدث TIR / Bends away from normal; TIR can occur</button>
+        <button class="opt" data-i="1">ينحني نحو العمود / Bends toward normal</button>
+        <button class="opt" data-i="2">لا ينحني / Does not bend</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="4">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 4</span></div>
+      <p class="q-ar">شعاع ضوئي يسقط عمودياً على سطح (θ₁=0). زاوية الانكسار θ₂ تساوي:</p>
+      <p class="q-en">Light hits a surface perpendicularly (θ₁=0). The refraction angle θ₂ equals:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">90°</button>
+        <button class="opt" data-i="1">يعتمد على n₁ و n₂ / Depends on n₁ and n₂</button>
+        <button class="opt" data-i="2">0° (لا انحراف / No bending)</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <!-- LECTURE 5 -->
+    <div class="qcard" data-lec="5">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 5</span></div>
+      <p class="q-ar">قانون بير-لامبرت يصف:</p>
+      <p class="q-en">Beer-Lambert Law describes:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">انعكاس الضوء على الأسطح / Reflection of light on surfaces</button>
+        <button class="opt" data-i="1">تناقص شدة الضوء عند مروره خلال وسط ماص / Decay of light intensity through an absorbing medium</button>
+        <button class="opt" data-i="2">انكسار الضوء عند الحدود / Refraction at interfaces</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="5">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 5</span></div>
+      <p class="q-ar">الفلورة تنتج من الانتقال:</p>
+      <p class="q-en">Fluorescence results from the transition:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">S₁ → S₀ (Singlet to Singlet)</button>
+        <button class="opt" data-i="1">T₁ → S₀ (Triplet to Singlet)</button>
+        <button class="opt" data-i="2">S₀ → S₁ (Ground to Excited)</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="5">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 5</span></div>
+      <p class="q-ar">الفسفرة تستمر بعد إيقاف مصدر الإثارة لأنها تنتج من انتقال:</p>
+      <p class="q-en">Phosphorescence persists after removing the source because it involves a:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">انتقال مسموح S→S / Allowed S→S transition</button>
+        <button class="opt" data-i="1">انتقال S₁→S₀ سريع / Fast S₁→S₀ transition</button>
+        <button class="opt" data-i="2">انتقال محظور T₁→S₀ مع spin-flip / Forbidden T₁→S₀ transition with spin-flip</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="5">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 5</span></div>
+      <p class="q-ar">الحالة الثلاثية Triplet State تتميز بـ:</p>
+      <p class="q-en">Triplet state is characterized by:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">لفات إلكترونية متعاكسة وكثافة 1 / Antiparallel spins, multiplicity 1</button>
+        <button class="opt" data-i="1">لفات إلكترونية متوازية وكثافة 3 / Parallel spins, multiplicity 3</button>
+        <button class="opt" data-i="2">عدم وجود إلكترونات / No electrons</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="5">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 5</span></div>
+      <p class="q-ar">في قانون بير-لامبرت I = I₀·e^(-αx)، α يمثل:</p>
+      <p class="q-en">In Beer-Lambert law I = I₀·e^(-αx), α represents:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">معامل الامتصاص / Absorption coefficient</button>
+        <button class="opt" data-i="1">معامل الانكسار / Refractive index</button>
+        <button class="opt" data-i="2">الانعكاسية / Reflectance</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="5">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 5</span></div>
+      <p class="q-ar">مخطط جابلونسكي (Jablonski Diagram) يوضح:</p>
+      <p class="q-en">The Jablonski Diagram illustrates:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">مسارات الضوء داخل الألياف البصرية / Light paths in optical fibers</button>
+        <button class="opt" data-i="1">توزيع طيف الضوء / Light spectrum distribution</button>
+        <button class="opt" data-i="2">مستويات الطاقة الإلكترونية للجزيء والانتقالات بينها / Molecular electronic energy levels and transitions</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="5">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 5</span></div>
+      <p class="q-ar">ISC (Inter-System Crossing) هو انتقال من:</p>
+      <p class="q-en">ISC (Inter-System Crossing) is a transition from:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">S₁ إلى T₁ مع انعكاس اللف المغزلي / S₁ to T₁ with spin flip</button>
+        <button class="opt" data-i="1">S₀ إلى S₁ / S₀ to S₁</button>
+        <button class="opt" data-i="2">T₁ إلى S₀ / T₁ to S₀</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="5">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 5</span></div>
+      <p class="q-ar">Internal Conversion (IC) هو:</p>
+      <p class="q-en">Internal Conversion (IC) is:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">انتقال إشعاعي بين مستويات مختلفة / Radiative transition between different levels</button>
+        <button class="opt" data-i="1">انتقال غير إشعاعي بين مستويات من نفس النوع مع إطلاق حرارة / Non-radiative transition between same-type levels releasing heat</button>
+        <button class="opt" data-i="2">تحويل الضوء إلى كيمياء / Conversion of light to chemistry</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="5">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 5</span></div>
+      <p class="q-ar">Stokes Shift في الفلورة يعني:</p>
+      <p class="q-en">Stokes Shift in fluorescence means:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">طول موجة الانبعاث أقصر من الامتصاص / Emission wavelength is shorter than absorption</button>
+        <button class="opt" data-i="1">الطاقتان متساويتان / Both energies are equal</button>
+        <button class="opt" data-i="2">طول موجة الانبعاث أطول من الامتصاص (طاقة الانبعاث أقل) / Emission wavelength longer than absorption (lower energy)</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="5">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 5</span></div>
+      <p class="q-ar">A (Absorbance) في قانون بير-لامبرت تحسب بـ:</p>
+      <p class="q-en">Absorbance A in Beer-Lambert Law is calculated by:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">A = −log₁₀(I/I₀) = εcL</button>
+        <button class="opt" data-i="1">A = log₁₀(I/I₀)</button>
+        <button class="opt" data-i="2">A = I₀/I</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <!-- LECTURE 6 -->
+    <div class="qcard" data-lec="6">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 6</span></div>
+      <p class="q-ar">Irradiance (كثافة الإشعاع) تساوي:</p>
+      <p class="q-en">Irradiance equals:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">Power × Area</button>
+        <button class="opt" data-i="1">Power / Area (W/cm²)</button>
+        <button class="opt" data-i="2">Energy / Time</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="6">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 6</span></div>
+      <p class="q-ar">Fluence (التدفق الضوئي/الجرعة) وحدتها:</p>
+      <p class="q-en">Fluence (Energy Density) unit is:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">W/cm²</button>
+        <button class="opt" data-i="1">W/m</button>
+        <button class="opt" data-i="2">J/cm²</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="6">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 6</span></div>
+      <p class="q-ar">ليزر نبضي 50 mJ بمعدل تكرار 20 Hz. متوسط القدرة هو:</p>
+      <p class="q-en">Pulsed laser: 50 mJ pulse energy, 20 Hz repetition rate. Average power is:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">1 W</button>
+        <button class="opt" data-i="1">0.5 W</button>
+        <button class="opt" data-i="2">2 W</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="6">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 6</span></div>
+      <p class="q-ar">الليزر المستمر CW يتميز عن النبضي بأنه:</p>
+      <p class="q-en">CW laser differs from pulsed laser in that it:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">له قدرة ذروة عالية جداً / Has very high peak power</button>
+        <button class="opt" data-i="1">مناسب للإزالة الدقيقة / Suitable for precise ablation</button>
+        <button class="opt" data-i="2">يُصدر شعاعاً مستمراً بقدرة ثابتة / Emits continuous beam with constant power</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="6">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 6</span></div>
+      <p class="q-ar">ليزر 10W قطر بقعته 4mm. Irradiance = ?</p>
+      <p class="q-en">Laser 10W, spot diameter 4mm. Irradiance = ?</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">≈ 318 W/cm²</button>
+        <button class="opt" data-i="1">≈ 796 W/cm²</button>
+        <button class="opt" data-i="2">≈ 1592 W/cm²</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="6">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 6</span></div>
+      <p class="q-ar">طول الموجة يؤثر على:</p>
+      <p class="q-en">Wavelength affects:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">عمق الاختراق في الأنسجة ولون الضوء / Penetration depth in tissue and light color</button>
+        <button class="opt" data-i="1">قدرة الجهاز الكهربائية فقط / Only the electrical power</button>
+        <button class="opt" data-i="2">درجة حرارة الليزر / Laser temperature</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="6">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 6</span></div>
+      <p class="q-ar">ليزر 200 W/cm² يُطبّق لمدة 0.5 ثانية. Fluence = ?</p>
+      <p class="q-en">Laser at 200 W/cm² applied for 0.5s. Fluence = ?</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">400 J/cm²</button>
+        <button class="opt" data-i="1">0.5 J/cm²</button>
+        <button class="opt" data-i="2">100 J/cm²</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="6">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 6</span></div>
+      <p class="q-ar">التماسك (Coherence) في الليزر يعني:</p>
+      <p class="q-en">Coherence in a laser means:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">جميع الفوتونات متزامنة في الطور والتردد / All photons synchronized in phase and frequency</button>
+        <button class="opt" data-i="1">الشعاع واسع الانتشار / Wide beam spread</button>
+        <button class="opt" data-i="2">الطاقة منخفضة / Low energy</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="6">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 6</span></div>
+      <p class="q-ar">الانعكاس السكاني (Population Inversion) ضروري لعمل الليزر لأنه:</p>
+      <p class="q-en">Population Inversion is necessary for laser operation because:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">يبرّد الوسط الفعال / It cools the active medium</button>
+        <button class="opt" data-i="1">يضمن أن الانبعاث المستحث يسود على الامتصاص / Ensures stimulated emission dominates over absorption</button>
+        <button class="opt" data-i="2">يعكس الضوء في المرنان / It reflects light in the resonator</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="6">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 6</span></div>
+      <p class="q-ar">أنظمة التوصيل والتوجيه (Delivery Systems) تشمل:</p>
+      <p class="q-en">Laser delivery and aiming systems include:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">مكثفات الطاقة فقط / Only capacitors</button>
+        <button class="opt" data-i="1">مصادر الطاقة الكهربائية / Electrical power sources</button>
+        <button class="opt" data-i="2">الألياف البصرية والمرايا والعدسات / Optical fibers, mirrors, and lenses</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <!-- LECTURE 7 -->
+    <div class="qcard" data-lec="7">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 7</span></div>
+      <p class="q-ar">عمق الاختراق البصري δ يحسب بـ:</p>
+      <p class="q-en">Optical penetration depth δ is calculated by:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">δ = 1/μ_eff</button>
+        <button class="opt" data-i="1">δ = μ_eff</button>
+        <button class="opt" data-i="2">δ = μₐ × μₛ</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="7">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 7</span></div>
+      <p class="q-ar">معامل التوهين الفعال μ_eff يجمع:</p>
+      <p class="q-en">Effective attenuation coefficient μ_eff combines:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">الامتصاص والانعكاس / Absorption and reflection</button>
+        <button class="opt" data-i="1">الامتصاص والتشتت / Absorption and scattering</button>
+        <button class="opt" data-i="2">الانكسار والتشتت / Refraction and scattering</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="7">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 7</span></div>
+      <p class="q-ar">معامل التشتت المخفض μ'ₛ يحسب بـ:</p>
+      <p class="q-en">Reduced scattering coefficient μ'ₛ is calculated by:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">μ'ₛ = μₛ + g</button>
+        <button class="opt" data-i="1">μ'ₛ = μₛ / (1-g)</button>
+        <button class="opt" data-i="2">μ'ₛ = μₛ(1 - g)</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="7">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 7</span></div>
+      <p class="q-ar">الكروموفور (Chromophore) هو:</p>
+      <p class="q-en">A Chromophore is:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">جزيء في الأنسجة يمتص الضوء انتقائياً عند أطوال موجية معينة / Molecule that selectively absorbs light at specific wavelengths</button>
+        <button class="opt" data-i="1">جهاز لقياس التشتت / Device for measuring scattering</button>
+        <button class="opt" data-i="2">نوع من الليزر / A type of laser</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="7">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 7</span></div>
+      <p class="q-ar">تشتت مي (Mie Scattering) يحدث عندما يكون حجم الجسيم:</p>
+      <p class="q-en">Mie Scattering occurs when particle size is:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">أصغر بكثير من طول الموجة / Much smaller than wavelength</button>
+        <button class="opt" data-i="1">مماثلاً لطول الموجة / Comparable to wavelength</button>
+        <button class="opt" data-i="2">أكبر بكثير من طول الموجة / Much larger than wavelength</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="7">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 7</span></div>
+      <p class="q-ar">نسيج: μₐ=0.1، μ'ₛ=10 cm⁻¹. μ_eff = ?</p>
+      <p class="q-en">Tissue: μₐ=0.1, μ'ₛ=10 cm⁻¹. Find μ_eff.</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">≈ 1.74 cm⁻¹</button>
+        <button class="opt" data-i="1">≈ 3.0 cm⁻¹</button>
+        <button class="opt" data-i="2">≈ 0.5 cm⁻¹</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="7">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 7</span></div>
+      <p class="q-ar">تمسّخ البروتين (Denaturation) يحدث بشكل لا رجعة فيه عند:</p>
+      <p class="q-en">Irreversible protein denaturation occurs above approximately:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">37°C</button>
+        <button class="opt" data-i="1">45°C</button>
+        <button class="opt" data-i="2">60°C</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="7">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 7</span></div>
+      <p class="q-ar">عند العمق δ، شدة الضوء تنخفض إلى:</p>
+      <p class="q-en">At depth δ, light intensity drops to:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">50% من I₀</button>
+        <button class="opt" data-i="1">1/e ≈ 37% من I₀</button>
+        <button class="opt" data-i="2">10% من I₀</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="7">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 7</span></div>
+      <p class="q-ar">تشتت رايلي (Rayleigh) يتناسب مع:</p>
+      <p class="q-en">Rayleigh scattering is proportional to:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">1/λ⁴ (يزيد مع قِصَر الموجة / Increases with shorter wavelength)</button>
+        <button class="opt" data-i="1">λ⁴</button>
+        <button class="opt" data-i="2">λ² </button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="7">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 7</span></div>
+      <p class="q-ar">من أهم الكروموفورات في الأنسجة البيولوجية:</p>
+      <p class="q-en">Important chromophores in biological tissue include:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">الكالسيوم والحديد والزنك / Calcium, iron, zinc</button>
+        <button class="opt" data-i="1">الكربون والنيتروجين فقط / Carbon and nitrogen only</button>
+        <button class="opt" data-i="2">الهيموجلوبين والميلانين والماء / Hemoglobin, melanin, and water</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <!-- LECTURE 8 -->
+    <div class="qcard" data-lec="8">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 8</span></div>
+      <p class="q-ar">المكونات الأساسية الثلاثة لأي ليزر هي:</p>
+      <p class="q-en">The three essential components of any laser are:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">وسط الإكساب + مضخة طاقة + مرنان بصري / Active medium + Pump source + Optical resonator</button>
+        <button class="opt" data-i="1">مرآة + عدسة + مكثف / Mirror + Lens + Capacitor</button>
+        <button class="opt" data-i="2">مصدر ضوء + مرشح + كاشف / Light source + Filter + Detector</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="8">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 8</span></div>
+      <p class="q-ar">ليزر Nd:YAG يعمل عند طول موجة:</p>
+      <p class="q-en">Nd:YAG laser operates at wavelength:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">488 nm</button>
+        <button class="opt" data-i="1">1064 nm</button>
+        <button class="opt" data-i="2">10600 nm</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="8">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 8</span></div>
+      <p class="q-ar">ليزر CO₂ يُمتص بشدة بـ:</p>
+      <p class="q-en">CO₂ laser is strongly absorbed by:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">الهيموجلوبين / Hemoglobin</button>
+        <button class="opt" data-i="1">الميلانين / Melanin</button>
+        <button class="opt" data-i="2">الماء / Water</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="8">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 8</span></div>
+      <p class="q-ar">Q-Switching تُستخدم لإنتاج:</p>
+      <p class="q-en">Q-Switching is used to produce:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">نبضات قصيرة جداً بقدرة ذروة عالية / Very short pulses with high peak power</button>
+        <button class="opt" data-i="1">شعاع ليزر مستمر / Continuous laser beam</button>
+        <button class="opt" data-i="2">ضوء متعدد الأطوال الموجية / Multi-wavelength light</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="8">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 8</span></div>
+      <p class="q-ar">مضاعفة التردد (SHG) في ليزر Nd:YAG تحوّل 1064 nm إلى:</p>
+      <p class="q-en">Frequency doubling (SHG) in Nd:YAG converts 1064 nm to:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">266 nm</button>
+        <button class="opt" data-i="1">532 nm (أخضر / Green)</button>
+        <button class="opt" data-i="2">800 nm</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="8">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 8</span></div>
+      <p class="q-ar">Mode-Locking يُنتج نبضات:</p>
+      <p class="q-en">Mode-Locking produces pulses of duration:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">ميلي ثانية / Milliseconds</button>
+        <button class="opt" data-i="1">ميكرو ثانية / Microseconds</button>
+        <button class="opt" data-i="2">فيمتو ثانية / Femtoseconds</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="8">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 8</span></div>
+      <p class="q-ar">متوسط قدرة الليزر النبضي يحسب بـ:</p>
+      <p class="q-en">Average power of a pulsed laser is calculated by:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">P_avg = E_pulse × f</button>
+        <button class="opt" data-i="1">P_avg = E_pulse / f</button>
+        <button class="opt" data-i="2">P_avg = E_pulse + f</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="8">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 8</span></div>
+      <p class="q-ar">وسط الإكساب (Active Medium) يمكن أن يكون:</p>
+      <p class="q-en">The active medium can be:</p>
+      <div class="opts" data-correct="2">
+        <button class="opt" data-i="0">صلباً فقط / Solid only</button>
+        <button class="opt" data-i="1">غازاً فقط / Gas only</button>
+        <button class="opt" data-i="2">صلباً أو سائلاً أو غازاً أو شبه موصل / Solid, liquid, gas, or semiconductor</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="8">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 8</span></div>
+      <p class="q-ar">الانعكاس السكاني (Population Inversion) يعني:</p>
+      <p class="q-en">Population Inversion means:</p>
+      <div class="opts" data-correct="1">
+        <button class="opt" data-i="0">جميع الإلكترونات في الحالة الأساسية / All electrons in ground state</button>
+        <button class="opt" data-i="1">عدد الإلكترونات في الحالة المثارة أكبر من الحالة الأساسية / More electrons in excited state than ground state</button>
+        <button class="opt" data-i="2">الإلكترونات تتوزع بالتساوي / Electrons distributed equally</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="qcard" data-lec="8">
+      <div class="q-top"><span class="q-num">Q?</span><span class="q-lec">Lecture 8</span></div>
+      <p class="q-ar">LASER اختصار لـ:</p>
+      <p class="q-en">LASER stands for:</p>
+      <div class="opts" data-correct="0">
+        <button class="opt" data-i="0">Light Amplification by Stimulated Emission of Radiation</button>
+        <button class="opt" data-i="1">Light Absorption by Stimulated Energy Release</button>
+        <button class="opt" data-i="2">Linear Amplification by Spontaneous Emission of Radiation</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+  </div><!-- end #mcq-box -->
+</section><!-- end #sec-mcq -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║               ESSAY SECTION                             ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<section id="sec-essay" class="tab-section">
+  <div class="sec-head">
+    <h2 style="background:linear-gradient(135deg,#a78bfa,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">✍️ أسئلة مقالية / Essay Questions</h2>
+    <p>تعريفات + مقارنات + تحليل + تطبيق + شرح آليات — كل إجابة باللغتين | All answer types in Arabic &amp; English</p>
+  </div>
+
+  <div class="group-title">📚 تعريفات / Definitions</div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Biomedical Optics / البصريات الحيوية</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">مجال متعدد التخصصات يدرس تفاعل الضوء مع الأنسجة البيولوجية لأغراض التشخيص والعلاج الطبي. يُعرف أيضاً بـ Biophotonics أو Medical Optics.</p>
+      <p class="a-en">A multidisciplinary field studying the interaction of light with biological tissues for medical diagnosis and therapy. Also called Biophotonics or Medical Optics.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 OCT (Optical Coherence Tomography)</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">تقنية تصوير تُنتج صوراً مقطعية بدقة ميكرومترية باستخدام الضوء. تُستخدم بكثرة في طب العيون لتشخيص أمراض الشبكية.</p>
+      <p class="a-en">Imaging technique producing cross-sectional images with micrometer resolution using light. Widely used in ophthalmology for retinal diagnosis.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 PDT (Photodynamic Therapy) / العلاج الديناميكي الضوئي</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">علاج يجمع بين الضوء وعوامل حساسة للضوء (Photosensitizers) لتوليد جذور أكسجينية تقتل الخلايا السرطانية مع أقل ضرر للأنسجة السليمة.</p>
+      <p class="a-en">Therapy combining light and photosensitizing agents to generate reactive oxygen species that destroy cancer cells with minimal damage to healthy tissue.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 NIRS (Near-Infrared Spectroscopy)</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">تقنية تستخدم الأشعة تحت الحمراء القريبة لمراقبة نسبة أكسجين الأنسجة وتدفق الدم بطريقة غير غازية.</p>
+      <p class="a-en">Technique using near-infrared light to non-invasively monitor tissue oxygenation and blood flow.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Accuracy / الدقة</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">مدى قرب قراءة الجهاز من القيمة الحقيقية. تُقاس بـ: %Inaccuracy = (Max Error / Full Scale) × 100%</p>
+      <p class="a-en">How close the instrument output is to the true value. Measured by: %Inaccuracy = (Max Error / Full Scale) × 100%</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Precision / الضبط (التكرارية)</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">قدرة الجهاز على إعطاء نفس النتيجة عند تكرار القياس في ظروف متطابقة. لا تعني القرب من القيمة الحقيقية.</p>
+      <p class="a-en">Ability to give the same reading repeatedly under identical conditions. Does NOT imply closeness to true value.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Sensitivity / الحساسية</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">نسبة تغيير الخرج إلى تغيير الدخل: S = ΔOutput / ΔInput. تعبّر عن مدى استجابة الجهاز للتغييرات.</p>
+      <p class="a-en">Ratio of output change to input change: S = ΔOutput / ΔInput. Expresses responsiveness to changes.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Hysteresis / التباطؤ</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">اختلاف خرج الجهاز لنفس قيمة الدخل تبعاً لاتجاه التغيير (زيادة أم نقصان). تسبب خطأ في القياس.</p>
+      <p class="a-en">Output differs for same input depending on whether input is increasing or decreasing. Causes measurement error.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Threshold / العتبة</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">أصغر قيمة للدخل يمكن للجهاز اكتشافها وإظهار استجابة لها.</p>
+      <p class="a-en">The smallest input value detectable by the instrument (below this: no response).</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Resolution / الدقة التحليلية</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">أصغر فرق يمكن للجهاز تمييزه بين قيمتين متقاربتين للدخل.</p>
+      <p class="a-en">The smallest difference between two input values that the instrument can distinguish.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Dead Zone / المنطقة الميتة</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">نطاق قيم الدخل الذي لا يُنتج فيه الجهاز أي استجابة. يحدث بسبب الاحتكاك الميكانيكي.</p>
+      <p class="a-en">Range of input values over which the instrument produces no output. Caused by friction or mechanical backlash.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 DC Offset / إزاحة التيار المستمر</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">قيمة ثابتة تُضاف إلى إشارة الدخل تُزيح خط الأساس وتسبب خطأً منهجياً.</p>
+      <p class="a-en">A constant value added to the input signal shifting the baseline, causing a systematic error.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Time Constant τ / الثابت الزمني</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">الوقت الذي يحتاجه جهاز الرتبة الأولى للوصول إلى 63.2% من قيمته النهائية عند تطبيق دخل مفاجئ.</p>
+      <p class="a-en">Time for a first-order instrument to reach 63.2% of its final value after a step input. Measures response speed.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Zero-Order Instrument / جهاز الرتبة صفر</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">جهاز يستجيب فورياً بدون أي تأخير زمني. خرجه يتناسب مباشرة مع دخله في كل لحظة.</p>
+      <p class="a-en">Instrument responding instantaneously with no time delay. Output directly proportional to input at all times.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 First-Order Instrument / جهاز الرتبة الأولى</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">جهاز يستجيب بشكل تدريجي وفق معادلة أسية، يُوصف بثابت زمني τ. مثال: مستشعر الحرارة.</p>
+      <p class="a-en">Instrument responding gradually following an exponential equation described by τ. Example: temperature sensor.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Photon / الفوتون</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">الوحدة الكمية الأساسية للضوء. طاقته: E = hν = hc/λ. له طبيعة موجية وجسيمية في آنٍ واحد.</p>
+      <p class="a-en">The fundamental quantum of light. Energy: E = hν = hc/λ. Exhibits both wave and particle nature.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Absorption (Molecular) / الامتصاص الجزيئي</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">عملية امتصاص الجزيء لفوتون ينقله من الحالة الأساسية S₀ إلى حالة مثارة S₁ أو S₂.</p>
+      <p class="a-en">Molecule absorbs a photon, transitioning from ground state S₀ to excited state S₁ or S₂.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Spontaneous Emission / الانبعاث التلقائي</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">عودة الإلكترون من الحالة المثارة إلى الأساسية مع إصدار فوتون بشكل عشوائي وبدون إثارة خارجية.</p>
+      <p class="a-en">Spontaneous return from excited to ground state, emitting a photon randomly without external stimulation.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Stimulated Emission / الانبعاث المستحث</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">فوتون وارد يُحفّز إلكتروناً مثاراً على إصدار فوتون ثانٍ متطابق تماماً في الطور والتردد والاتجاه. أساس عمل الليزر.</p>
+      <p class="a-en">An incoming photon stimulates an excited electron to emit an identical photon (same phase, frequency, direction). Basis of laser.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Raman Scattering / تشتت رامان</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">تشتت غير مرن للضوء مع تغيير طول الموجة بسبب تبادل طاقة الاهتزاز مع الجزيء. يُستخدم في التحليل الكيميائي.</p>
+      <p class="a-en">Inelastic light scattering with wavelength change due to vibrational energy exchange with the molecule. Used in chemical analysis.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Refractive Index n / معامل الانكسار</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">نسبة سرعة الضوء في الفراغ إلى سرعته في الوسط: n = c/v. يحكم انحناء الضوء عند مرروه بين الأوساط.</p>
+      <p class="a-en">Ratio of speed of light in vacuum to speed in medium: n = c/v. Governs how much light bends at an interface.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Snell's Law / قانون سنيل</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">n₁ sin(θ₁) = n₂ sin(θ₂). يصف انحناء الضوء عند مروره من وسط لآخر مختلف في الكثافة البصرية.</p>
+      <p class="a-en">n₁ sin(θ₁) = n₂ sin(θ₂). Describes how light bends when crossing between optical media.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Critical Angle θc / الزاوية الحرجة</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">الزاوية التي يحدث عندها TIR: θc = sin⁻¹(n₂/n₁). شرط حدوثه: n₁ > n₂.</p>
+      <p class="a-en">Angle at which TIR occurs: θc = sin⁻¹(n₂/n₁). Requires n₁ > n₂.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 TIR (Total Internal Reflection) / الانعكاس الداخلي الكلي</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">انعكاس الضوء كلياً داخل الوسط الأكثف عند تجاوز زاوية السقوط الزاوية الحرجة. أساس عمل الألياف البصرية.</p>
+      <p class="a-en">Complete reflection within denser medium when incidence angle exceeds critical angle. Basis of optical fibers.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Reflectance R / الانعكاسية</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">نسبة شدة الضوء المنعكس إلى الساقط. عند السقوط العمودي: R = [(n₂-n₁)/(n₂+n₁)]²</p>
+      <p class="a-en">Ratio of reflected to incident intensity. Normal incidence: R = [(n₂-n₁)/(n₂+n₁)]²</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Jablonski Diagram / مخطط جابلونسكي</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">مخطط يوضح مستويات الطاقة الإلكترونية للجزيء والانتقالات الممكنة (امتصاص، IC، فلورة، ISC، فسفرة).</p>
+      <p class="a-en">Diagram showing molecular electronic energy levels and transitions (absorption, IC, fluorescence, ISC, phosphorescence).</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Fluorescence / الفلورة</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">انبعاث ضوء سريع (نانوثواني) من S₁→S₀ بطول موجة أطول من الممتص (Stokes Shift). تتوقف فور إيقاف المصدر.</p>
+      <p class="a-en">Fast (~ns) emission from S₁→S₀ at longer wavelength than absorbed (Stokes Shift). Stops when source removed.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Phosphorescence / الفسفرة</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">انبعاث ضوء بطيء (ms إلى ثوانٍ) من T₁→S₀ عبر انتقال محظور. تستمر بعد إيقاف مصدر الإثارة.</p>
+      <p class="a-en">Slow (ms to s) emission from T₁→S₀ via forbidden transition. Persists after excitation source is removed.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Internal Conversion IC / التحويل الداخلي</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">انتقال غير إشعاعي بين مستويات من نفس النوع (S→S أو T→T) مع إطلاق طاقة حرارية.</p>
+      <p class="a-en">Non-radiative transition between same-type levels (S→S or T→T) releasing heat.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 ISC (Inter-System Crossing) / العبور بين الأنظمة</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">انتقال غير إشعاعي من S₁ إلى T₁ مع انعكاس اللف المغزلي. يُمكّن حدوث الفسفرة.</p>
+      <p class="a-en">Non-radiative S₁→T₁ transition with spin flip. Enables phosphorescence.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Beer-Lambert Law / قانون بير-لامبرت</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">يصف تناقص شدة الضوء في الوسط الماص: I = I₀·e^(-αx) وA = εcL. الامتصاص يتناسب مع التركيز والسُمك.</p>
+      <p class="a-en">Describes light decay in absorbing medium: I = I₀·e^(-αx) and A = εcL. Absorbance proportional to concentration and path length.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Laser / الليزر</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">جهاز يُصدر ضوءاً متماسكاً (Coherent)، أحادي الطول الموجي (Monochromatic)، ضيق الحزمة (Collimated) عبر الانبعاث المستحث. LASER = Light Amplification by Stimulated Emission of Radiation.</p>
+      <p class="a-en">Device emitting coherent, monochromatic, collimated light via stimulated emission. LASER = Light Amplification by Stimulated Emission of Radiation.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Population Inversion / الانعكاس السكاني</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">حالة يكون فيها عدد الإلكترونات في الحالة المثارة أكبر من الحالة الأساسية. شرط ضروري لعمل الليزر.</p>
+      <p class="a-en">State where more electrons are in excited than ground state. Necessary condition for laser operation.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Coherence / التماسك</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">خاصية الليزر أن جميع فوتوناته متزامنة في الطور والتردد. يُميّز الليزر عن المصادر الضوئية العادية.</p>
+      <p class="a-en">All laser photons synchronized in phase and frequency. Distinguishes laser from ordinary light sources.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Irradiance / كثافة الإشعاع</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">القدرة الضوئية لكل وحدة مساحة: E = P/A (W/cm²). تُحدد شدة التفاعل مع الأنسجة.</p>
+      <p class="a-en">Optical power per unit area: E = P/A (W/cm²). Determines intensity of tissue interaction.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Fluence / التدفق الضوئي (الجرعة)</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">الطاقة الضوئية الكلية لكل وحدة مساحة: H = E × t (J/cm²). تحدد الجرعة الكلية المستلمة.</p>
+      <p class="a-en">Total optical energy per unit area: H = E × t (J/cm²). Determines total dose received by tissue.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Chromophore / الكروموفور</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">جزيء أو مجموعة كيميائية في الأنسجة تمتص الضوء بشكل انتقائي عند أطوال موجية معينة. أمثلة: الهيموجلوبين، الميلانين، الماء.</p>
+      <p class="a-en">Molecule or group in tissue that selectively absorbs light at specific wavelengths. Examples: Hemoglobin, Melanin, Water.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Absorption Coefficient μₐ / معامل الامتصاص</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">مقياس قدرة الأنسجة على امتصاص الضوء (cm⁻¹). كلما زاد، قلّ عمق الاختراق.</p>
+      <p class="a-en">Measure of tissue absorption ability (cm⁻¹). Higher μₐ = lower penetration depth.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Scattering Coefficient μₛ / معامل التشتت</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">مقياس كثافة التشتت في الأنسجة (cm⁻¹). يُعبّر عن احتمالية تغيير اتجاه الضوء لكل وحدة مسافة.</p>
+      <p class="a-en">Measure of scattering density (cm⁻¹). Probability of direction change per unit distance.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Reduced Scattering Coefficient μ'ₛ / معامل التشتت المخفض</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">معامل تشتت فعال يأخذ عدم تناسق التشتت بعين الاعتبار: μ'ₛ = μₛ(1-g). يُستخدم في حسابات الاختراق.</p>
+      <p class="a-en">Effective scattering coefficient accounting for anisotropy: μ'ₛ = μₛ(1-g). Used in penetration calculations.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Optical Penetration Depth δ / عمق الاختراق البصري</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">العمق الذي تنخفض عنده شدة الضوء إلى 1/e ≈ 37% من قيمتها الأصلية. δ = 1/μ_eff</p>
+      <p class="a-en">Depth where intensity drops to 1/e ≈ 37% of original value. δ = 1/μ_eff</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Effective Attenuation Coefficient μ_eff</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">يجمع تأثيري الامتصاص والتشتت: μ_eff = √[3μₐ(μₐ + μ'ₛ)]</p>
+      <p class="a-en">Combines absorption and scattering: μ_eff = √[3μₐ(μₐ + μ'ₛ)]</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Mie Scattering / تشتت مي</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">يحدث عند حجم جسيم مماثل لـ λ. التشتت في الاتجاه الأمامي بشكل رئيسي. شائع في الأنسجة (خلايا الدم).</p>
+      <p class="a-en">Occurs when particle size ≈ λ. Primarily forward-directed scattering. Common in tissue (blood cells).</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Rayleigh Scattering / تشتت رايلي</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">يحدث عند حجم جسيم أصغر بكثير من λ. ∝ 1/λ⁴. في كل الاتجاهات. يُفسّر لون السماء الزرقاء.</p>
+      <p class="a-en">Occurs when particle size ≪ λ. ∝ 1/λ⁴. Isotropic (all directions). Explains blue sky.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Protein Denaturation / تمسّخ البروتين</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">فقدان البروتين لبنيته الثلاثية بسبب الحرارة فوق ~60°C أو تأثير الليزر. تغيير لا رجعة فيه.</p>
+      <p class="a-en">Loss of protein 3D structure due to heat (>~60°C) or laser effect. Irreversible change.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Laser Components / مكونات الليزر</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">ثلاثة عناصر أساسية:</p>
+      <ul>
+        <li><strong>وسط الإكساب (Active Medium):</strong> المادة التي تُولّد الضوء</li>
+        <li><strong>مضخة الطاقة (Pump Source):</strong> تُضخّ الطاقة لتحقيق الانعكاس السكاني</li>
+        <li><strong>المرنان البصري (Optical Resonator):</strong> مرآتان تُضخّمان الضوء</li>
+      </ul>
+      <p class="a-en">Three essential components: (1) Active/Gain Medium — generates light, (2) Pump Source — achieves population inversion, (3) Optical Resonator — two mirrors amplifying light.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Nd:YAG Laser</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">ليزر صلب يعمل عند 1064 nm. يُستخدم في الجراحة وطب العيون. يمكن مضاعفة تردده للحصول على 532 nm (أخضر).</p>
+      <p class="a-en">Solid-state laser at 1064 nm. Used in surgery and ophthalmology. Can be frequency-doubled to 532 nm (green).</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 CO₂ Laser</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">ليزر غازي عند 10,600 nm. يُمتص بشدة بالماء. مثالي للجراحة الدقيقة في الأنسجة الرطبة.</p>
+      <p class="a-en">Gas laser at 10,600 nm. Strongly absorbed by water. Ideal for precise surgery on wet tissues.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Q-Switching / تبديل النوعية</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">تقنية لإنتاج نبضات قصيرة جداً بقدرة ذروة عالية من الليزر عبر التحكم المفاجئ في خسارة المرنان البصري.</p>
+      <p class="a-en">Technique producing very short, high-energy pulses by suddenly switching the optical cavity quality factor.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Mode-Locking / تقفيل الأطوار</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">تقنية متقدمة لإنتاج نبضات فيمتو ثانية عبر تزامن أطوار عدة أوضاع في المرنان البصري.</p>
+      <p class="a-en">Advanced technique producing femtosecond pulses by phase-locking multiple longitudinal cavity modes.</p>
+    </div>
+  </div>
+
+  <!-- ─── COMPARISONS ─── -->
+  <div class="group-title">⚖️ مقارنات / Comparisons</div>
+
+  <div class="ecard">
+    <div class="ecard-q">⚖️ Accuracy vs Precision / الدقة مقابل الضبط</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار المقارنة ▼</button>
+    <div class="ecard-ans">
+      <table class="ctable">
+        <tr><th>الخاصية</th><th>Accuracy / الدقة</th><th>Precision / الضبط</th></tr>
+        <tr><td>التعريف</td><td>قرب القراءة من القيمة الحقيقية</td><td>تكرار نفس القراءة</td></tr>
+        <tr><td>نوع الخطأ</td><td>Systematic Error</td><td>Random Error</td></tr>
+        <tr><td>هل تعني الصواب؟</td><td>نعم / Yes</td><td>ليس بالضرورة / Not necessarily</td></tr>
+        <tr><td>مثال</td><td>صواب=100، قراءة=101</td><td>دائماً 105 رغم أن الصواب=100</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">⚖️ Fluorescence vs Phosphorescence / الفلورة مقابل الفسفرة</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار المقارنة ▼</button>
+    <div class="ecard-ans">
+      <table class="ctable">
+        <tr><th>الخاصية</th><th>Fluorescence / الفلورة</th><th>Phosphorescence / الفسفرة</th></tr>
+        <tr><td>الانتقال</td><td>S₁ → S₀</td><td>T₁ → S₀</td></tr>
+        <tr><td>الزمن</td><td>نانوثواني / Nanoseconds</td><td>ms إلى ثوانٍ / ms to seconds</td></tr>
+        <tr><td>نوع الانتقال</td><td>مسموح / Allowed</td><td>محظور + spin-flip / Forbidden</td></tr>
+        <tr><td>بعد إيقاف المصدر</td><td>تتوقف فوراً / Stops</td><td>تستمر / Persists</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">⚖️ CW Laser vs Pulsed Laser / المستمر مقابل النبضي</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار المقارنة ▼</button>
+    <div class="ecard-ans">
+      <table class="ctable">
+        <tr><th>الخاصية</th><th>CW / المستمر</th><th>Pulsed / النبضي</th></tr>
+        <tr><td>الإصدار</td><td>مستمر / Continuous</td><td>نبضات / Short pulses</td></tr>
+        <tr><td>القدرة</td><td>ثابتة / Constant</td><td>ذروة عالية / High peak</td></tr>
+        <tr><td>الحرارة</td><td>تراكم أعلى / More buildup</td><td>أقل / Less</td></tr>
+        <tr><td>التطبيق</td><td>كي / Coagulation</td><td>إزالة دقيقة / Ablation, PDT</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">⚖️ Absorption vs Scattering في الأنسجة</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار المقارنة ▼</button>
+    <div class="ecard-ans">
+      <table class="ctable">
+        <tr><th>الخاصية</th><th>Absorption / الامتصاص</th><th>Scattering / التشتت</th></tr>
+        <tr><td>ما يحدث</td><td>ضوء → حرارة / Light → heat</td><td>تغيير اتجاه / Direction change</td></tr>
+        <tr><td>المعامل</td><td>μₐ (cm⁻¹)</td><td>μₛ (cm⁻¹)</td></tr>
+        <tr><td>السبب</td><td>الكروموفورات / Chromophores</td><td>هياكل الخلايا / Cell structures</td></tr>
+        <tr><td>الاختراق</td><td>يقلله / Reduces it</td><td>يزيد المسار / Increases path</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">⚖️ Mie Scattering vs Rayleigh Scattering</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار المقارنة ▼</button>
+    <div class="ecard-ans">
+      <table class="ctable">
+        <tr><th>الخاصية</th><th>Mie / تشتت مي</th><th>Rayleigh / تشتت رايلي</th></tr>
+        <tr><td>حجم الجسيم</td><td>مماثل لـ λ</td><td>أصغر بكثير من λ</td></tr>
+        <tr><td>الاتجاه</td><td>أمامي / Forward</td><td>كل الاتجاهات / Isotropic</td></tr>
+        <tr><td>التبعية لـ λ</td><td>ضعيفة / Weak</td><td>∝ 1/λ⁴ (قوية / Strong)</td></tr>
+        <tr><td>مثال</td><td>خلايا الدم / Blood cells</td><td>جزيئات الهواء / Air molecules</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">⚖️ Singlet State vs Triplet State</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار المقارنة ▼</button>
+    <div class="ecard-ans">
+      <table class="ctable">
+        <tr><th>الخاصية</th><th>Singlet / المفردة</th><th>Triplet / الثلاثية</th></tr>
+        <tr><td>اللف المغزلي</td><td>↑↓ متعاكس / Antiparallel</td><td>↑↑ متوازي / Parallel</td></tr>
+        <tr><td>الكثافة</td><td>2S+1 = 1</td><td>2S+1 = 3</td></tr>
+        <tr><td>الانبعاث</td><td>فلورة / Fluorescence</td><td>فسفرة / Phosphorescence</td></tr>
+        <tr><td>العمر الزمني</td><td>قصير / Short (ns)</td><td>طويل / Long (ms-s)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">⚖️ Zero-Order vs First-Order Instrument</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار المقارنة ▼</button>
+    <div class="ecard-ans">
+      <table class="ctable">
+        <tr><th>الخاصية</th><th>Zero-Order / رتبة صفر</th><th>First-Order / رتبة أولى</th></tr>
+        <tr><td>الاستجابة</td><td>فورية / Instantaneous</td><td>تدريجية / Gradual</td></tr>
+        <tr><td>الثابت الزمني τ</td><td>صفر / Zero</td><td>موجود / Finite</td></tr>
+        <tr><td>المعادلة</td><td>y = Kx</td><td>T(t) = T(∞)+[T(0)-T(∞)]e^(-t/τ)</td></tr>
+        <tr><td>مثال</td><td>مقيام متغير / Potentiometer</td><td>مستشعر حرارة / Temp. sensor</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ─── MISSING COMPARISON: Stimulated vs Spontaneous ─── -->
+  <div class="ecard">
+    <div class="ecard-q">⚖️ Stimulated Emission vs Spontaneous Emission / الانبعاث المستحث مقابل التلقائي</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار المقارنة ▼</button>
+    <div class="ecard-ans">
+      <table class="ctable">
+        <tr><th>الخاصية</th><th>Stimulated / المستحث</th><th>Spontaneous / التلقائي</th></tr>
+        <tr><td>المحفّز</td><td>فوتون وارد / Incoming photon</td><td>بدون محفز / No external trigger</td></tr>
+        <tr><td>الفوتون الناتج</td><td>متطابق تماماً (طور + تردد + اتجاه) / Identical (phase, freq, dir)</td><td>عشوائي الاتجاه والطور / Random direction &amp; phase</td></tr>
+        <tr><td>الاتساق (Coherence)</td><td>ضوء متماسك / Coherent light</td><td>ضوء غير متماسك / Incoherent light</td></tr>
+        <tr><td>التطبيق</td><td>أساس الليزر / Basis of LASER</td><td>المصابيح العادية / Ordinary lamps (LEDs, etc.)</td></tr>
+        <tr><td>الشرط</td><td>انعكاس سكاني / Population inversion needed</td><td>لا يحتاج شرط خاص / No special condition</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ─── DIVERSE ESSAY QUESTION TYPES ─── -->
+  <div class="group-title">📝 تعريفات إضافية مهمة / Key Additional Definitions</div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Anisotropy Factor g / عامل عدم التناسق</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">يُقيّم اتجاه التشتت في الأنسجة. يتراوح بين −1 و+1. g=0 تشتت في كل الاتجاهات، g=1 تشتت أمامي كلي. الأنسجة البيولوجية عادةً g ≈ 0.9.</p>
+      <p class="a-en">Quantifies directionality of scattering. Range: −1 to +1. g=0 = isotropic, g=1 = fully forward. Biological tissues typically g ≈ 0.9.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Optical Window / النافذة البصرية (700–1300 nm)</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">النطاق الطيفي بين 700–1300 nm حيث يكون امتصاص الهيموجلوبين والميلانين والماء في أدنى مستوياته، مما يُتيح أعمق اختراق في الأنسجة. يُستخدم في NIRS وتطبيقات الليزر العلاجية.</p>
+      <p class="a-en">Spectral range 700–1300 nm where hemoglobin, melanin, and water absorption are minimal, allowing maximum tissue penetration depth. Used in NIRS and therapeutic laser applications.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔹 Optical Resonator / المرنان البصري (Laser Cavity)</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">المكوّن الثالث للليزر. يتكوّن من مرآتين: مرآة كاملة الانعكاس (HR) ومرآة شبه انعكاسية (OC). تُحصر الفوتونات بين المرأتين لتضخيم الضوء، والجزء المُرسَل من OC هو شعاع الليزر الخارج.</p>
+      <p class="a-en">Third laser component. Consists of two mirrors: High Reflectance (HR) mirror and Output Coupler (OC) mirror. Photons bounce between mirrors for amplification; the OC transmits the output laser beam.</p>
+    </div>
+  </div>
+
+  <div class="group-title">🔍 أسئلة الشرح والتحليل / Explain &amp; Analyze</div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔍 اشرح آلية عمل الليزر من مبدأ الانعكاس السكاني حتى خروج الشعاع</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar"><strong>خطوات عمل الليزر:</strong></p>
+      <ul>
+        <li><strong>الإثارة (Pumping):</strong> مضخة طاقة (كهربائية أو ضوئية) ترفع إلكترونات وسط الإكساب من S₀ إلى مستوى مثار عالٍ</li>
+        <li><strong>الانعكاس السكاني:</strong> الإلكترونات تتراكم في المستوى المثار، عددها يتجاوز المستوى الأساسي</li>
+        <li><strong>الانبعاث المستحث:</strong> فوتون يُحفّز إلكتروناً مثاراً فيُصدر فوتوناً مطابقاً → تضخيم</li>
+        <li><strong>المرنان البصري:</strong> الفوتونات تتردد بين المرآتين → تضخيم متراكم</li>
+        <li><strong>الخرج:</strong> جزء من الضوء يمر عبر المرآة شبه الانعكاسية كشعاع ليزر</li>
+      </ul>
+      <p class="a-en"><strong>Laser operation steps:</strong> (1) Pumping raises electrons to excited state → (2) Population inversion achieved → (3) Stimulated emission creates identical photons → (4) Optical resonator amplifies light by repeated reflection → (5) Output beam exits through Output Coupler mirror.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔍 اشرح كيف يؤثر طول الموجة على عمق اختراق الليزر في الأنسجة</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">
+        <strong>الأطوال الموجية القصيرة (UV، أزرق):</strong> امتصاص عالٍ (خاصةً بالميلانين والهيموجلوبين) → اختراق ضحل جداً (أقل من 1mm).<br>
+        <strong>الأطوال الموجية المتوسطة (النافذة البصرية 700–1300nm):</strong> امتصاص منخفض + تشتت معتدل → أعمق اختراق (حتى عدة cm).<br>
+        <strong>الأشعة تحت الحمراء البعيدة (CO₂ 10600nm):</strong> امتصاص شديد جداً بالماء → اختراق ضحل جداً (&lt;0.1mm) → مثالية للجراحة الدقيقة.
+      </p>
+      <p class="a-en"><strong>Short λ (UV, Blue):</strong> High absorption → very shallow penetration. <strong>NIR Window (700–1300nm):</strong> Low absorption → deepest penetration (cm). <strong>Far IR (CO₂ 10600nm):</strong> Extreme water absorption → very shallow, ideal for precision cutting.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">🔍 ما هي العوامل التي تُحدد عمق الاختراق البصري في الأنسجة؟ اذكرها واشرح كيف تؤثر كل منها</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <ul>
+        <li><strong>معامل الامتصاص μₐ:</strong> كلما زاد → تناقص الاختراق مباشرةً</li>
+        <li><strong>معامل التشتت المخفض μ'ₛ:</strong> كلما زاد → يزيد التوهين الفعال → يقلل الاختراق</li>
+        <li><strong>طول الموجة λ:</strong> يحدد قيم μₐ و μₛ — النافذة البصرية 700–1300nm تُعطي أعمق اختراق</li>
+        <li><strong>محتوى الماء والهيموجلوبين:</strong> كروموفورات رئيسية تزيد μₐ في نطاقات معينة</li>
+      </ul>
+      <p class="a-en"><strong>Factors:</strong> (1) μₐ — higher absorption = less penetration. (2) μ'ₛ — higher scattering = higher μ_eff = less penetration. (3) Wavelength λ — determines chromophore absorption. (4) Water &amp; hemoglobin content — major absorbers at specific wavelengths.</p>
+    </div>
+  </div>
+
+  <div class="group-title">📋 أسئلة التعداد / List &amp; Enumerate</div>
+
+  <div class="ecard">
+    <div class="ecard-q">📋 اذكر الخصائص الأربع المميزة لضوء الليزر مقارنةً بالضوء العادي</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <ul>
+        <li><strong>Coherence / التماسك:</strong> جميع الفوتونات متزامنة في الطور والتردد</li>
+        <li><strong>Monochromaticity / أحادية الطول الموجي:</strong> طول موجة واحد محدد بدقة</li>
+        <li><strong>Collimation / تضيّق الحزمة:</strong> شعاع ضيق جداً لا يتشتت بسهولة</li>
+        <li><strong>High Intensity / شدة عالية:</strong> طاقة مركّزة في مساحة صغيرة جداً</li>
+      </ul>
+      <p class="a-en"><strong>4 Properties of laser light:</strong> (1) Coherence — synchronized phase &amp; frequency. (2) Monochromaticity — single precise wavelength. (3) Collimation — narrow non-diverging beam. (4) High Intensity — concentrated energy in small area.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">📋 اذكر أهم الكروموفورات في الأنسجة البيولوجية مع توضيح نطاق امتصاص كل منها</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <ul>
+        <li><strong>Hemoglobin (HbO₂ + Hb):</strong> يمتص بقوة في المرئي (400–600nm) — أساس NIRS وقياس الأكسجين</li>
+        <li><strong>Melanin / الميلانين:</strong> يمتص على نطاق واسع من UV حتى NIR — يحمي الجلد</li>
+        <li><strong>Water / الماء:</strong> امتصاص قوي في IR البعيد (>1300nm خاصة 10600nm للـ CO₂)</li>
+        <li><strong>Lipids / الدهون:</strong> امتصاص في 900–1800nm — يُستخدم في OCT وتصوير الأوعية</li>
+        <li><strong>Cytochromes / السيتوكرومات:</strong> امتصاص في 700–1000nm — مهم لـ NIRS الدماغي</li>
+      </ul>
+      <p class="a-en"><strong>Key chromophores:</strong> (1) Hemoglobin — 400–600nm. (2) Melanin — UV to NIR. (3) Water — >1300nm (strong at 10600nm). (4) Lipids — 900–1800nm. (5) Cytochromes — 700–1000nm.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">📋 اذكر المراحل الممكنة التي يمر بها الجزيء بعد امتصاص فوتون (مخطط جابلونسكي)</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <ul>
+        <li><strong>IC — Internal Conversion:</strong> S₂→S₁ انتقال غير إشعاعي مع إطلاق حرارة (سريع جداً)</li>
+        <li><strong>Fluorescence:</strong> S₁→S₀ إصدار فوتون (نانوثواني)</li>
+        <li><strong>ISC — Inter-System Crossing:</strong> S₁→T₁ مع spin-flip (انتقال غير إشعاعي)</li>
+        <li><strong>Phosphorescence:</strong> T₁→S₀ إصدار فوتون (بطيء، ms إلى ثوانٍ)</li>
+        <li><strong>Non-radiative relaxation:</strong> T₁→S₀ بإطلاق حرارة بدون إصدار ضوء</li>
+      </ul>
+      <p class="a-en"><strong>Pathways after absorption:</strong> (1) IC: S₂→S₁ (fast, heat). (2) Fluorescence: S₁→S₀ (ns, photon). (3) ISC: S₁→T₁ (spin-flip). (4) Phosphorescence: T₁→S₀ (ms-s, photon). (5) Non-radiative: T₁→S₀ (heat, no light).</p>
+    </div>
+  </div>
+
+  <div class="group-title">⚙️ أسئلة التطبيق / Application Questions</div>
+
+  <div class="ecard">
+    <div class="ecard-q">⚙️ طبيب يريد إزالة ورم سطحي في الجلد بدقة عالية — أي ليزر تقترح وَلماذا؟</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">
+        <strong>الاختيار: ليزر CO₂ (10600 nm)</strong><br>
+        <strong>السبب:</strong>
+      </p>
+      <ul>
+        <li>يُمتص بشدة شديدة جداً من الماء في الأنسجة → اختراق ضحل جداً (&lt;0.1mm)</li>
+        <li>يقطع ويزيل الأنسجة بدقة عالية مع تأثير حراري محدود على الأنسجة المحيطة</li>
+        <li>يُسبب Protein Denaturation وتخثر الأوعية الصغيرة</li>
+        <li>مثالي للجراحة الدقيقة السطحية</li>
+      </ul>
+      <p class="a-en"><strong>Choice: CO₂ laser (10600nm)</strong> — strongly absorbed by water → very shallow penetration → precise surface ablation with minimal collateral damage. Causes protein denaturation and small vessel coagulation. Ideal for precise superficial surgery.</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">⚙️ لماذا يُستخدم النطاق 700–1300nm في تطبيقات العلاج الضوئي العميق (Deep Tissue Therapy)؟</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">في هذا النطاق (النافذة البصرية / Optical Window):</p>
+      <ul>
+        <li>الهيموجلوبين بنوعيه يمتص بأقل معدلاته</li>
+        <li>الميلانين في الجلد له امتصاص منخفض</li>
+        <li>الماء له امتصاص منخفض جداً في هذا النطاق</li>
+        <li>النتيجة: μₐ و μ_eff منخفضان → δ (عمق الاختراق) يصل لعدة سنتيمترات</li>
+        <li>يُتيح وصول الضوء لأعماق الأنسجة للعلاج دون الحاجة للجراحة</li>
+      </ul>
+      <p class="a-en">In the Optical Window (700–1300nm): Hemoglobin, melanin, and water have their minimum absorption → lowest μₐ → lowest μ_eff → maximum penetration depth (several cm). Enables non-invasive deep tissue therapy and diagnosis (PDT, NIRS, laser therapy).</p>
+    </div>
+  </div>
+
+  <div class="ecard">
+    <div class="ecard-q">⚙️ جهاز قياس: مداه 0–500 mmHg، خطأ ثابت +10 mmHg في كل القراءات. ما نوع الخطأ؟ وما %Inaccuracy؟</div>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الإجابة ▼</button>
+    <div class="ecard-ans">
+      <p class="a-ar">
+        <strong>نوع الخطأ:</strong> DC Offset (إزاحة ثابتة) → خطأ منهجي Systematic Error<br>
+        <strong>السبب:</strong> القراءة دائماً أعلى بـ 10 mmHg من القيمة الحقيقية<br>
+        <strong>%Inaccuracy:</strong> Max Error = 10 mmHg، Full Scale = 500<br>
+        %Inaccuracy = (10/500) × 100% = <strong>2%</strong>
+      </p>
+      <p class="a-en"><strong>Error type:</strong> DC Offset → Systematic Error (constant shift in all readings). <strong>%Inaccuracy</strong> = (Max Error / Full Scale) × 100% = (10 / 500) × 100% = <strong>2%</strong>.</p>
+    </div>
+  </div>
+
+</section><!-- end #sec-essay -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║               FORMULAS SECTION                          ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<section id="sec-formulas" class="tab-section">
+  <div class="sec-head">
+    <h2 style="background:linear-gradient(135deg,#34d399,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">📐 القوانين المجمعة / Formula Sheet</h2>
+    <p>جميع قوانين المنهج — المحاضرات 2 إلى 8 &nbsp;|&nbsp; All curriculum formulas — L2 to L8</p>
+  </div>
+
+  <div class="fgrid">
+    <div class="fcell"><span class="f-lec">L2</span><div class="f-title">%Inaccuracy</div><div class="f-eq">%Inaccuracy = (Max Error / Full Scale) × 100%</div><div class="f-note">Full Scale = Max Input − Min Input</div></div>
+    <div class="fcell"><span class="f-lec">L2</span><div class="f-title">Sensitivity / الحساسية</div><div class="f-eq">S = ΔOutput / ΔInput</div><div class="f-note">Unit: (output unit) / (input unit)</div></div>
+    <div class="fcell"><span class="f-lec">L2</span><div class="f-title">Time Constant — 1st Order / الثابت الزمني</div><div class="f-eq">T(t) = T(∞) + [T(0)−T(∞)]·e<sup>−t/τ</sup></div><div class="f-note">At t=τ → response reaches 63.2% of final</div></div>
+    <div class="fcell"><span class="f-lec">L2</span><div class="f-title">Settling Time / وقت الاستقرار</div><div class="f-eq">t<sub>95%</sub> ≈ 3τ &nbsp;|&nbsp; t<sub>99%</sub> ≈ 5τ</div><div class="f-note">Time to reach 95% and 99% of final value</div></div>
+    <div class="fcell"><span class="f-lec">L3</span><div class="f-title">Photon Energy / طاقة الفوتون</div><div class="f-eq">E = hν = hc / λ</div><div class="f-note">h = 6.626×10⁻³⁴ J·s &nbsp; c = 3×10⁸ m/s</div></div>
+    <div class="fcell"><span class="f-lec">L4</span><div class="f-title">Snell's Law / قانون سنيل</div><div class="f-eq">n₁ sin(θ₁) = n₂ sin(θ₂)</div><div class="f-note">θ measured from the normal to the surface</div></div>
+    <div class="fcell"><span class="f-lec">L4</span><div class="f-title">Critical Angle / الزاوية الحرجة</div><div class="f-eq">θ<sub>c</sub> = sin⁻¹(n₂ / n₁)</div><div class="f-note">Condition: n₁ > n₂ &nbsp;|&nbsp; TIR when θ ≥ θ<sub>c</sub></div></div>
+    <div class="fcell"><span class="f-lec">L4</span><div class="f-title">Reflectance / الانعكاسية</div><div class="f-eq">R = [(n₂ − n₁) / (n₂ + n₁)]²</div><div class="f-note">Normal incidence &nbsp;|&nbsp; T = 1 − R (no absorption)</div></div>
+    <div class="fcell"><span class="f-lec">L5</span><div class="f-title">Beer-Lambert (exponential)</div><div class="f-eq">I = I<sub>0</sub> · e<sup>−αx</sup></div><div class="f-note">α = absorption coeff. (cm⁻¹), x = path length (cm)</div></div>
+    <div class="fcell"><span class="f-lec">L5</span><div class="f-title">Beer-Lambert (absorbance)</div><div class="f-eq">A = −log₁₀(I/I<sub>0</sub>) = ε · c · L</div><div class="f-note">ε = molar absorptivity, c = concentration, L = path</div></div>
+    <div class="fcell"><span class="f-lec">L6</span><div class="f-title">Irradiance / كثافة الإشعاع</div><div class="f-eq">E = P / A &nbsp; [W/cm²]</div><div class="f-note">A = πr² where r = spot radius (cm)</div></div>
+    <div class="fcell"><span class="f-lec">L6</span><div class="f-title">Fluence / التدفق الضوئي</div><div class="f-eq">H = E × t = P·t/A &nbsp; [J/cm²]</div><div class="f-note">t = exposure time (seconds)</div></div>
+    <div class="fcell"><span class="f-lec">L6</span><div class="f-title">Average Power — Pulsed Laser</div><div class="f-eq">P<sub>avg</sub> = E<sub>pulse</sub> × f</div><div class="f-note">f = repetition rate (Hz)</div></div>
+    <div class="fcell"><span class="f-lec">L7</span><div class="f-title">Reduced Scattering / التشتت المخفض</div><div class="f-eq">μ'<sub>s</sub> = μ<sub>s</sub> (1 − g)</div><div class="f-note">g = anisotropy factor (0=isotropic, 1=forward)</div></div>
+    <div class="fcell"><span class="f-lec">L7</span><div class="f-title">Effective Attenuation / التوهين الفعال</div><div class="f-eq">μ<sub>eff</sub> = √[3μ<sub>a</sub>(μ<sub>a</sub> + μ'<sub>s</sub>)]</div><div class="f-note">Combines absorption and scattering effects</div></div>
+    <div class="fcell"><span class="f-lec">L7</span><div class="f-title">Optical Penetration Depth / عمق الاختراق</div><div class="f-eq">δ = 1 / μ<sub>eff</sub> &nbsp; [cm]</div><div class="f-note">Intensity drops to 1/e ≈ 37% at depth δ</div></div>
+    <div class="fcell"><span class="f-lec">L7</span><div class="f-title">Intensity at Depth z / الشدة عند العمق</div><div class="f-eq">I(z) = I<sub>0</sub> · e<sup>−μ<sub>eff</sub>·z</sup></div><div class="f-note">z = depth in tissue (cm)</div></div>
+    <div class="fcell"><span class="f-lec">L8</span><div class="f-title">Pulse Energy / طاقة النبضة</div><div class="f-eq">E<sub>pulse</sub> = P<sub>peak</sub> × t<sub>pulse</sub></div><div class="f-note">t_pulse = pulse duration</div></div>
+    <div class="fcell"><span class="f-lec">L8</span><div class="f-title">Frequency Doubling SHG</div><div class="f-eq">λ<sub>out</sub> = λ<sub>in</sub> / 2</div><div class="f-note">Nd:YAG: 1064 nm → 532 nm (green)</div></div>
+  </div>
+
+</section><!-- end #sec-formulas -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║               PROBLEMS SECTION                          ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<section id="sec-problems" class="tab-section">
+  <div class="sec-head">
+    <h2 style="background:linear-gradient(135deg,#f87171,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">🧮 مسائل حسابية / Calculation Problems</h2>
+    <p>12 مسألة تغطي جميع قوانين المنهج — مع الحل التفصيلي خطوة بخطوة</p>
+  </div>
+
+  <div class="pcard">
+    <div class="p-top"><span class="p-num">#1</span><span class="p-law">Inaccuracy — L2</span></div>
+    <p class="p-ar">مستشعر ضغط مداه 0–300 mmHg، أقصى خطأ = 4.5 mmHg. احسب %Inaccuracy.</p>
+    <p class="p-en">Pressure sensor range 0–300 mmHg, max error = 4.5 mmHg. Find %Inaccuracy.</p>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الحل ▼</button>
+    <div class="ecard-ans p-sol">
+      <p>Full Scale = 300 − 0 = 300 mmHg</p>
+      <p>%Inaccuracy = (4.5 / 300) × 100% = <strong>1.5%</strong></p>
+    </div>
+  </div>
+
+  <div class="pcard">
+    <div class="p-top"><span class="p-num">#2</span><span class="p-law">Sensitivity — L2</span></div>
+    <p class="p-ar">مستشعر: عند 20°C خرجه 40 mV، عند 25°C خرجه 60 mV. احسب الحساسية.</p>
+    <p class="p-en">Sensor: at 20°C output = 40 mV, at 25°C output = 60 mV. Find Sensitivity.</p>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الحل ▼</button>
+    <div class="ecard-ans p-sol">
+      <p>S = ΔOutput / ΔInput = (60 − 40) / (25 − 20)</p>
+      <p>= 20 mV / 5°C = <strong>4 mV/°C</strong></p>
+    </div>
+  </div>
+
+  <div class="pcard">
+    <div class="p-top"><span class="p-num">#3</span><span class="p-law">Time Constant — L2</span></div>
+    <p class="p-ar">مستشعر عند 20°C وُضع في بيئة 80°C. بعد 2 ثانية قرأ 56°C. احسب τ.</p>
+    <p class="p-en">Sensor at 20°C placed in 80°C. After 2s reads 56°C. Find τ.</p>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الحل ▼</button>
+    <div class="ecard-ans p-sol">
+      <p>T(t) = T(∞) + [T(0) − T(∞)] · e<sup>−t/τ</sup></p>
+      <p>56 = 80 + (20 − 80) · e<sup>−2/τ</sup></p>
+      <p>−24 = −60 · e<sup>−2/τ</sup> → e<sup>−2/τ</sup> = 0.4</p>
+      <p>−2/τ = ln(0.4) = −0.916 → τ = 2 / 0.916 = <strong>2.18 s</strong></p>
+    </div>
+  </div>
+
+  <div class="pcard">
+    <div class="p-top"><span class="p-num">#4</span><span class="p-law">Photon Energy — L3</span></div>
+    <p class="p-ar">احسب طاقة فوتون واحد من ليزر Nd:YAG عند λ = 1064 nm.</p>
+    <p class="p-en">Find energy of one photon from Nd:YAG laser at λ = 1064 nm.</p>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الحل ▼</button>
+    <div class="ecard-ans p-sol">
+      <p>E = hc/λ = (6.626×10⁻³⁴ × 3×10⁸) / (1064×10⁻⁹)</p>
+      <p>= 19.878×10⁻²⁶ / 1.064×10⁻⁶ = <strong>1.87 × 10⁻¹⁹ J</strong></p>
+    </div>
+  </div>
+
+  <div class="pcard">
+    <div class="p-top"><span class="p-num">#5</span><span class="p-law">Snell's Law — L4</span></div>
+    <p class="p-ar">شعاع ضوئي من الماء (n=1.33) إلى الزجاج (n=1.5) بزاوية سقوط 30°. احسب زاوية الانكسار.</p>
+    <p class="p-en">Light from water (n=1.33) to glass (n=1.5) at 30° incidence. Find refraction angle.</p>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الحل ▼</button>
+    <div class="ecard-ans p-sol">
+      <p>n₁ sin(θ₁) = n₂ sin(θ₂)</p>
+      <p>1.33 × sin(30°) = 1.5 × sin(θ₂)</p>
+      <p>sin(θ₂) = 1.33 × 0.5 / 1.5 = 0.4433</p>
+      <p>θ₂ = sin⁻¹(0.4433) = <strong>26.3°</strong></p>
+    </div>
+  </div>
+
+  <div class="pcard">
+    <div class="p-top"><span class="p-num">#6</span><span class="p-law">Critical Angle + TIR — L4</span></div>
+    <p class="p-ar">ليف بصري: نواة n₁=1.52، غلاف n₂=1.45. احسب θc. هل يحدث TIR عند زاوية سقوط 75°؟</p>
+    <p class="p-en">Optical fiber: core n₁=1.52, cladding n₂=1.45. Find θc. Does TIR occur at 75°?</p>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الحل ▼</button>
+    <div class="ecard-ans p-sol">
+      <p>θc = sin⁻¹(n₂/n₁) = sin⁻¹(1.45/1.52) = sin⁻¹(0.9539) = <strong>72.5°</strong></p>
+      <p>75° > 72.5° → <strong>نعم، يحدث TIR ✓ / Yes, TIR occurs ✓</strong></p>
+    </div>
+  </div>
+
+  <div class="pcard">
+    <div class="p-top"><span class="p-num">#7</span><span class="p-law">Reflectance — L4</span></div>
+    <p class="p-ar">ليزر في الهواء (n=1.0) يسقط عمودياً على قرنية العين (n=1.376). احسب نسبة الضوء المنعكس.</p>
+    <p class="p-en">Laser in air (n=1.0) hits cornea (n=1.376) perpendicularly. Find % reflected.</p>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الحل ▼</button>
+    <div class="ecard-ans p-sol">
+      <p>R = [(n₂ − n₁)/(n₂ + n₁)]² = [(1.376 − 1.0)/(1.376 + 1.0)]²</p>
+      <p>= [0.376 / 2.376]² = [0.1583]² = <strong>0.0251 = 2.51%</strong></p>
+    </div>
+  </div>
+
+  <div class="pcard">
+    <div class="p-top"><span class="p-num">#8</span><span class="p-law">Beer-Lambert Law — L5</span></div>
+    <p class="p-ar">محلول: α=0.8 cm⁻¹، I₀=200 mW/cm². احسب الشدة بعد 3 cm ثم احسب Absorbance.</p>
+    <p class="p-en">Solution: α=0.8 cm⁻¹, I₀=200 mW/cm². Find intensity after 3 cm, then find Absorbance A.</p>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الحل ▼</button>
+    <div class="ecard-ans p-sol">
+      <p>I = I₀ · e<sup>−αx</sup> = 200 × e<sup>−(0.8×3)</sup> = 200 × e<sup>−2.4</sup> = 200 × 0.0907 = <strong>18.1 mW/cm²</strong></p>
+      <p>A = −log₁₀(18.1 / 200) = −log₁₀(0.0907) = <strong>1.04</strong></p>
+    </div>
+  </div>
+
+  <div class="pcard">
+    <div class="p-top"><span class="p-num">#9</span><span class="p-law">Irradiance &amp; Fluence — L6</span></div>
+    <p class="p-ar">ليزر CO₂: قدرة=15W، قطر البقعة=3mm، زمن التعرض=0.2 ثانية. احسب Irradiance ثم Fluence.</p>
+    <p class="p-en">CO₂ laser: P=15W, spot diameter=3mm, t=0.2s. Find Irradiance and Fluence.</p>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الحل ▼</button>
+    <div class="ecard-ans p-sol">
+      <p>r = 1.5 mm = 0.15 cm → A = π × (0.15)² = 0.0707 cm²</p>
+      <p>Irradiance = 15 / 0.0707 = <strong>212 W/cm²</strong></p>
+      <p>Fluence = 212 × 0.2 = <strong>42.4 J/cm²</strong></p>
+    </div>
+  </div>
+
+  <div class="pcard">
+    <div class="p-top"><span class="p-num">#10</span><span class="p-law">Average Power — L6 &amp; L8</span></div>
+    <p class="p-ar">ليزر نبضي: طاقة النبضة=50 mJ، معدل التكرار=10 Hz. احسب متوسط القدرة.</p>
+    <p class="p-en">Pulsed laser: pulse energy=50 mJ, rep. rate=10 Hz. Find average power.</p>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الحل ▼</button>
+    <div class="ecard-ans p-sol">
+      <p>P_avg = E_pulse × f = 0.050 J × 10 Hz = <strong>0.5 W = 500 mW</strong></p>
+    </div>
+  </div>
+
+  <div class="pcard">
+    <div class="p-top"><span class="p-num">#11</span><span class="p-law">μ_eff &amp; Penetration Depth — L7</span></div>
+    <p class="p-ar">نسيج: μₐ=0.5 cm⁻¹، μ'ₛ=20 cm⁻¹. احسب μ_eff وعمق الاختراق δ.</p>
+    <p class="p-en">Tissue: μₐ=0.5 cm⁻¹, μ'ₛ=20 cm⁻¹. Find μ_eff and optical penetration depth δ.</p>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الحل ▼</button>
+    <div class="ecard-ans p-sol">
+      <p>μ_eff = √[3 × 0.5 × (0.5 + 20)] = √[1.5 × 20.5] = √30.75 = <strong>5.54 cm⁻¹</strong></p>
+      <p>δ = 1 / 5.54 = <strong>0.18 cm = 1.8 mm</strong></p>
+    </div>
+  </div>
+
+  <div class="pcard">
+    <div class="p-top"><span class="p-num">#12</span><span class="p-law">Intensity at Depth — L7</span></div>
+    <p class="p-ar">I₀=100 mW/cm²، μ_eff=4 cm⁻¹. احسب الشدة عند عمق z=5 mm.</p>
+    <p class="p-en">I₀=100 mW/cm², μ_eff=4 cm⁻¹. Find intensity at depth z=5 mm.</p>
+    <button class="toggle-btn" onclick="tog(this)">إظهار الحل ▼</button>
+    <div class="ecard-ans p-sol">
+      <p>z = 5 mm = 0.5 cm</p>
+      <p>I(z) = 100 × e<sup>−(4×0.5)</sup> = 100 × e<sup>−2</sup> = 100 × 0.135 = <strong>13.5 mW/cm²</strong></p>
+    </div>
+  </div>
+
+</section><!-- end #sec-problems -->
+
+</div><!-- end .wrap -->
+
+<script>
+// ═══════════════════════════════════════════════
+//  TAB SWITCHING — clean & simple
+// ═══════════════════════════════════════════════
+(function () {
+  var tabs = document.querySelectorAll('.tab-btn');
+  var secs = document.querySelectorAll('.tab-section');
+
+  function show(id) {
+    secs.forEach(function (s) { s.classList.remove('active'); });
+    tabs.forEach(function (t) { t.classList.remove('active'); });
+    var el = document.getElementById(id);
+    if (el) el.classList.add('active');
+    tabs.forEach(function (t) {
+      if (t.getAttribute('data-tab') === id) t.classList.add('active');
+    });
+  }
+
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { show(this.getAttribute('data-tab')); });
+  });
+
+  // ═══════════════════════════════════════════════
+  //  MCQ — SHUFFLE & NUMBER
+  // ═══════════════════════════════════════════════
+  var box = document.getElementById('mcq-box');
+  if (box) {
+    var cards = Array.from(box.querySelectorAll('.qcard'));
+
+    // Fisher-Yates shuffle
+    for (var i = cards.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = cards[i]; cards[i] = cards[j]; cards[j] = tmp;
+    }
+
+    // Re-insert with numbers
+    box.innerHTML = '';
+    cards.forEach(function (card, idx) {
+      // Set question number
+      var numEl = card.querySelector('.q-num');
+      if (numEl) numEl.textContent = 'Q' + (idx + 1);
+
+      // Shuffle answer options
+      var wrap = card.querySelector('.opts');
+      if (wrap) {
+        var correctIdx = parseInt(wrap.getAttribute('data-correct'), 10);
+        var btns = Array.from(wrap.querySelectorAll('.opt'));
+        var correctBtn = btns[correctIdx];
+
+        for (var ii = btns.length - 1; ii > 0; ii--) {
+          var jj = Math.floor(Math.random() * (ii + 1));
+          var tt = btns[ii]; btns[ii] = btns[jj]; btns[jj] = tt;
+        }
+
+        wrap.innerHTML = '';
+        btns.forEach(function (btn, ni) {
+          btn.setAttribute('data-i', ni);
+          if (btn === correctBtn) wrap.setAttribute('data-correct', ni);
+          wrap.appendChild(btn);
+        });
+      }
+      box.appendChild(card);
+    });
+  }
+
+  // ═══════════════════════════════════════════════
+  //  MCQ — CLICK & SCORE
+  // ═══════════════════════════════════════════════
+  var score = 0, answered = 0;
+  var total = document.querySelectorAll('.qcard').length;
+
+  document.querySelectorAll('.opt').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var wrap = this.parentElement;
+      var correct = wrap.getAttribute('data-correct');
+      var clicked = this.getAttribute('data-i');
+      var fb = wrap.nextElementSibling; // .fb div
+
+      wrap.querySelectorAll('.opt').forEach(function (b) { b.disabled = true; });
+
+      if (clicked === correct) {
+        this.classList.add('correct');
+        score++;
+        if (fb) { fb.textContent = '✅ صحيح! / Correct!'; fb.style.color = '#10b981'; }
+      } else {
+        this.classList.add('wrong');
+        if (fb) { fb.textContent = '❌ خطأ! / Wrong!'; fb.style.color = '#ef4444'; }
+        wrap.querySelectorAll('.opt').forEach(function (b) {
+          if (b.getAttribute('data-i') === correct) b.classList.add('correct');
+        });
+      }
+
+      answered++;
+      if (answered === total) {
+        var sb = document.getElementById('score-board');
+        var sv = document.getElementById('score-val');
+        var sm = document.getElementById('score-msg');
+        sv.textContent = score + ' / ' + total;
+        var pct = Math.round(score / total * 100);
+        sm.textContent = pct >= 90 ? '🌟 ممتاز! Excellent!' :
+                         pct >= 75 ? '👍 جيد جداً! Very Good!' :
+                         pct >= 60 ? '📚 جيد! Good!' : '💡 راجع المنهج / Review Needed';
+        sb.style.display = 'block';
+        setTimeout(function () { sb.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 400);
+      }
+    });
+  });
+
+  // Start on MCQ tab
+  show('sec-mcq');
+})();
+
+// ═══════════════════════════════════════════════
+//  TOGGLE ANSWER / SOLUTION
+// ═══════════════════════════════════════════════
+function tog(btn) {
+  var ans = btn.nextElementSibling;
+  if (!ans) return;
+  var open = ans.style.display === 'block';
+  ans.style.display = open ? 'none' : 'block';
+  btn.textContent = open
+    ? btn.textContent.replace('إخفاء', 'إظهار').replace('▲', '▼')
+    : btn.textContent.replace('إظهار', 'إخفاء').replace('▼', '▲');
+}
+</script>
+</body>
+</html>

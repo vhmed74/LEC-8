@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>القوانين المجمعة — الفيزياء الطبية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Cairo', 'Outfit', sans-serif;
+  background: #0d1117;
+  color: #e2e8f0;
+  direction: rtl;
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13,17,23,0.96);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(52,211,153,0.15);
+  padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.back-link {
+  color: #34d399; text-decoration: none;
+  font-weight: 700; font-size: 0.9rem;
+  transition: color .2s; white-space: nowrap;
+}
+.back-link:hover { color: #6ee7b7; }
+.site-header h1 {
+  font-size: 1.15rem; font-weight: 900;
+  background: linear-gradient(135deg,#34d399,#60a5fa);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ── Hero ── */
+.hero {
+  background: linear-gradient(160deg,#0a1f12,#0f2a1a,#0f172a);
+  padding: 2.5rem 1.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(52,211,153,0.1);
+}
+.hero h2 {
+  font-size: clamp(1.5rem,4vw,2.2rem); font-weight: 900;
+  background: linear-gradient(135deg,#34d399,#60a5fa);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 6px;
+}
+.hero p { color: #475569; font-size: 0.9rem; margin-bottom: 1.2rem; }
+.pills { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.pill {
+  background: rgba(52,211,153,0.08);
+  border: 1px solid rgba(52,211,153,0.2);
+  border-radius: 50px; padding: 5px 16px;
+  font-size: 0.82rem; color: #6ee7b7; font-weight: 600;
+}
+
+/* ── Lecture filter tabs ── */
+.filter-bar {
+  background: #111827;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; overflow-x: auto; scrollbar-width: none;
+  padding: 0 12px;
+}
+.filter-bar::-webkit-scrollbar { display: none; }
+.f-btn {
+  flex: 0 0 auto; padding: 12px 18px;
+  background: none; border: none;
+  border-bottom: 3px solid transparent;
+  color: #475569; font-family: 'Cairo', sans-serif;
+  font-size: 0.86rem; font-weight: 700;
+  cursor: pointer; transition: all .2s; white-space: nowrap;
+}
+.f-btn:hover { color: #94a3b8; }
+.f-btn.active { color: #34d399; border-bottom-color: #34d399; }
+
+/* ── Main ── */
+.wrap { max-width: 1000px; margin: 0 auto; padding: 2rem 1.2rem 5rem; }
+
+/* ── Section title ── */
+.lec-heading {
+  display: flex; align-items: center; gap: 10px;
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid rgba(52,211,153,0.15);
+}
+.lec-heading:first-of-type { margin-top: 0; }
+.lec-badge {
+  background: linear-gradient(135deg,#059669,#0284c7);
+  color: #fff; font-size: 0.72rem; font-weight: 800;
+  padding: 4px 12px; border-radius: 20px;
+  letter-spacing: 1px; text-transform: uppercase;
+  white-space: nowrap;
+}
+.lec-heading h3 { font-size: 1.05rem; font-weight: 700; color: #94a3b8; }
+
+/* ── Formula grid ── */
+.fgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1rem;
+}
+
+/* ── Formula card ── */
+.fc {
+  background: #161b27;
+  border: 1px solid #1e2d40;
+  border-radius: 16px;
+  padding: 1.2rem 1.3rem;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+  position: relative; overflow: hidden;
+}
+.fc::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg,#34d399,#0284c7);
+  border-radius: 0 16px 16px 0;
+}
+.fc:hover {
+  transform: translateY(-5px);
+  border-color: rgba(52,211,153,0.35);
+  box-shadow: 0 8px 24px rgba(52,211,153,0.08);
+}
+.fc-name {
+  font-size: 0.88rem; font-weight: 700; color: #34d399;
+  margin-bottom: 10px; line-height: 1.4;
+}
+.fc-eq {
+  background: #0d1117;
+  border: 1px solid rgba(52,211,153,0.18);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-family: 'Outfit', monospace;
+  font-size: 0.95rem;
+  color: #f1f5f9;
+  text-align: center;
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.fc-note {
+  font-size: 0.78rem; color: #374151; line-height: 1.55;
+}
+.fc-note strong { color: #6ee7b7; }
+
+/* ── Lecture group ── */
+.lec-group { }
+.lec-group.hidden { display: none; }
+
+/* ── Animation ── */
+.fc { animation: pop .3s ease; }
+@keyframes pop {
+  from { opacity: 0; transform: scale(.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .site-header { padding: 12px 14px; }
+  .wrap { padding: 1.4rem .9rem 4rem; }
+  .fgrid { grid-template-columns: 1fr; }
+  .f-btn { padding: 10px 12px; font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="back-link">← الرئيسية</a>
+  <h1>📐 القوانين المجمعة / Formula Sheet</h1>
+</header>
+
+<div class="hero">
+  <h2>ورقة القوانين الشاملة</h2>
+  <p>All Formulas — Biomedical Optics — Lectures 2 to 8</p>
+  <div class="pills">
+    <span class="pill">📏 19 قانون</span>
+    <span class="pill">📚 المحاضرات 2–8</span>
+    <span class="pill">⚡ بالوحدات والملاحظات</span>
+  </div>
+</div>
+
+<!-- Filter bar -->
+<div class="filter-bar">
+  <button class="f-btn active" data-lec="all">🔢 الكل</button>
+  <button class="f-btn" data-lec="l2">L2 — الأجهزة</button>
+  <button class="f-btn" data-lec="l3">L3 — الفوتون</button>
+  <button class="f-btn" data-lec="l4">L4 — البصريات</button>
+  <button class="f-btn" data-lec="l5">L5 — الامتصاص</button>
+  <button class="f-btn" data-lec="l6">L6 — الليزر</button>
+  <button class="f-btn" data-lec="l7">L7 — الأنسجة</button>
+  <button class="f-btn" data-lec="l8">L8 — النبضات</button>
+</div>
+
+<div class="wrap">
+
+  <!-- L2 -->
+  <div class="lec-group" data-group="l2">
+    <div class="lec-heading">
+      <span class="lec-badge">L2</span>
+      <h3>خصائص الأجهزة / Instrument Characteristics</h3>
+    </div>
+    <div class="fgrid">
+      <div class="fc">
+        <div class="fc-name">%Inaccuracy — الدقة</div>
+        <div class="fc-eq">%Inaccuracy = <br>(Max Error / Full Scale) × 100%</div>
+        <div class="fc-note"><strong>Full Scale</strong> = Max Input − Min Input</div>
+      </div>
+      <div class="fc">
+        <div class="fc-name">Sensitivity — الحساسية</div>
+        <div class="fc-eq">S = ΔOutput / ΔInput</div>
+        <div class="fc-note">الوحدة = وحدة الخرج ÷ وحدة الدخل<br>Unit: (output unit) / (input unit)</div>
+      </div>
+      <div class="fc">
+        <div class="fc-name">First-Order Response — الثابت الزمني</div>
+        <div class="fc-eq">T(t) = T(∞) + [T(0)−T(∞)] · e<sup>−t/τ</sup></div>
+        <div class="fc-note">عند t = τ → تصل إلى <strong>63.2%</strong> من القيمة النهائية</div>
+      </div>
+      <div class="fc">
+        <div class="fc-name">Settling Time — وقت الاستقرار</div>
+        <div class="fc-eq">t<sub>95%</sub> ≈ 3τ &nbsp;&nbsp; t<sub>99%</sub> ≈ 5τ</div>
+        <div class="fc-note">95% من القيمة النهائية عند 3τ<br>99% عند 5τ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L3 -->
+  <div class="lec-group" data-group="l3">
+    <div class="lec-heading">
+      <span class="lec-badge">L3</span>
+      <h3>الفوتون وتفاعله / Photon Interactions</h3>
+    </div>
+    <div class="fgrid">
+      <div class="fc">
+        <div class="fc-name">Photon Energy — طاقة الفوتون</div>
+        <div class="fc-eq">E = hν = hc / λ</div>
+        <div class="fc-note">
+          <strong>h</strong> = 6.626×10⁻³⁴ J·s &nbsp;|&nbsp; <strong>c</strong> = 3×10⁸ m/s<br>
+          λ بالمتر — E بالجول
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L4 -->
+  <div class="lec-group" data-group="l4">
+    <div class="lec-heading">
+      <span class="lec-badge">L4</span>
+      <h3>البصريات والانكسار / Optics &amp; Refraction</h3>
+    </div>
+    <div class="fgrid">
+      <div class="fc">
+        <div class="fc-name">Snell's Law — قانون سنيل</div>
+        <div class="fc-eq">n₁ sin(θ₁) = n₂ sin(θ₂)</div>
+        <div class="fc-note">θ تُقاس من العمود على السطح<br>θ measured from the normal</div>
+      </div>
+      <div class="fc">
+        <div class="fc-name">Critical Angle — الزاوية الحرجة</div>
+        <div class="fc-eq">θ<sub>c</sub> = sin⁻¹(n₂ / n₁)</div>
+        <div class="fc-note">يشترط <strong>n₁ > n₂</strong><br>TIR يحدث عند θ ≥ θ<sub>c</sub></div>
+      </div>
+      <div class="fc">
+        <div class="fc-name">Reflectance — الانعكاسية (عمودي)</div>
+        <div class="fc-eq">R = [(n₂ − n₁) / (n₂ + n₁)]²</div>
+        <div class="fc-note">الإرسالية: <strong>T = 1 − R</strong> (بدون امتصاص)<br>Transmittance T = 1 − R</div>
+      </div>
+      <div class="fc">
+        <div class="fc-name">Refractive Index — معامل الانكسار</div>
+        <div class="fc-eq">n = c / v</div>
+        <div class="fc-note">c = سرعة الضوء في الفراغ<br>v = سرعته في الوسط</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L5 -->
+  <div class="lec-group" data-group="l5">
+    <div class="lec-heading">
+      <span class="lec-badge">L5</span>
+      <h3>الامتصاص والمطيافية / Absorption &amp; Spectroscopy</h3>
+    </div>
+    <div class="fgrid">
+      <div class="fc">
+        <div class="fc-name">Beer-Lambert (Exponential)</div>
+        <div class="fc-eq">I = I<sub>0</sub> · e<sup>−αx</sup></div>
+        <div class="fc-note">
+          <strong>α</strong> = معامل الامتصاص (cm⁻¹)<br>
+          <strong>x</strong> = طول المسار (cm)
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-name">Beer-Lambert (Absorbance)</div>
+        <div class="fc-eq">A = −log₁₀(I / I<sub>0</sub>) = ε · c · L</div>
+        <div class="fc-note">
+          <strong>ε</strong> = Molar absorptivity &nbsp;|&nbsp; <strong>c</strong> = Concentration<br>
+          <strong>L</strong> = Path length (cm)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L6 -->
+  <div class="lec-group" data-group="l6">
+    <div class="lec-heading">
+      <span class="lec-badge">L6</span>
+      <h3>متغيرات الليزر / Laser Variables</h3>
+    </div>
+    <div class="fgrid">
+      <div class="fc">
+        <div class="fc-name">Irradiance — كثافة الإشعاع</div>
+        <div class="fc-eq">E = P / A &nbsp; [W/cm²]</div>
+        <div class="fc-note">A = مساحة البقعة<br>A = πr² حيث r = نصف القطر (cm)</div>
+      </div>
+      <div class="fc">
+        <div class="fc-name">Fluence — التدفق الضوئي (الجرعة)</div>
+        <div class="fc-eq">H = E × t = P·t / A &nbsp; [J/cm²]</div>
+        <div class="fc-note">t = زمن التعرض (ثانية)<br>t = exposure time (seconds)</div>
+      </div>
+      <div class="fc">
+        <div class="fc-name">Average Power — متوسط القدرة (نبضي)</div>
+        <div class="fc-eq">P<sub>avg</sub> = E<sub>pulse</sub> × f</div>
+        <div class="fc-note">f = معدل التكرار (Hz)<br>E<sub>pulse</sub> = طاقة النبضة (J)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L7 -->
+  <div class="lec-group" data-group="l7">
+    <div class="lec-heading">
+      <span class="lec-badge">L7</span>
+      <h3>تفاعل الضوء مع الأنسجة / Light–Tissue Interaction</h3>
+    </div>
+    <div class="fgrid">
+      <div class="fc">
+        <div class="fc-name">Reduced Scattering Coeff. — التشتت المخفض</div>
+        <div class="fc-eq">μ'<sub>s</sub> = μ<sub>s</sub> (1 − g)</div>
+        <div class="fc-note">
+          <strong>g</strong> = عامل عدم التناسق (0 = كل الاتجاهات، 1 = أمامي)<br>
+          g = anisotropy factor
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-name">Effective Attenuation — التوهين الفعال</div>
+        <div class="fc-eq">μ<sub>eff</sub> = √[3μ<sub>a</sub>(μ<sub>a</sub> + μ'<sub>s</sub>)]</div>
+        <div class="fc-note">يجمع تأثيري الامتصاص والتشتت<br>Combines absorption + scattering</div>
+      </div>
+      <div class="fc">
+        <div class="fc-name">Optical Penetration Depth — عمق الاختراق</div>
+        <div class="fc-eq">δ = 1 / μ<sub>eff</sub> &nbsp; [cm]</div>
+        <div class="fc-note">عند العمق δ تنخفض الشدة إلى <strong>1/e ≈ 37%</strong><br>Intensity drops to 37% at depth δ</div>
+      </div>
+      <div class="fc">
+        <div class="fc-name">Intensity at Depth z — الشدة عند العمق</div>
+        <div class="fc-eq">I(z) = I<sub>0</sub> · e<sup>−μ<sub>eff</sub>·z</sup></div>
+        <div class="fc-note">z = العمق داخل الأنسجة (cm)<br>z = depth in tissue (cm)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L8 -->
+  <div class="lec-group" data-group="l8">
+    <div class="lec-heading">
+      <span class="lec-badge">L8</span>
+      <h3>مبادئ الليزر / Laser Principles</h3>
+    </div>
+    <div class="fgrid">
+      <div class="fc">
+        <div class="fc-name">Pulse Energy — طاقة النبضة</div>
+        <div class="fc-eq">E<sub>pulse</sub> = P<sub>peak</sub> × t<sub>pulse</sub></div>
+        <div class="fc-note">t<sub>pulse</sub> = مدة النبضة<br>P<sub>peak</sub> = قدرة الذروة</div>
+      </div>
+      <div class="fc">
+        <div class="fc-name">Frequency Doubling SHG — مضاعفة التردد</div>
+        <div class="fc-eq">λ<sub>out</sub> = λ<sub>in</sub> / 2</div>
+        <div class="fc-note">مثال: Nd:YAG 1064 nm → <strong>532 nm</strong> (أخضر / green)</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end .wrap -->
+
+<script>
+(function () {
+  var btns = document.querySelectorAll('.f-btn');
+  var groups = document.querySelectorAll('.lec-group');
+
+  function filter(lec) {
+    btns.forEach(function (b) { b.classList.remove('active'); });
+    document.querySelector('[data-lec="' + lec + '"]').classList.add('active');
+    groups.forEach(function (g) {
+      if (lec === 'all' || g.getAttribute('data-group') === lec) {
+        g.style.display = 'block';
+      } else {
+        g.style.display = 'none';
+      }
+    });
+  }
+
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { filter(this.getAttribute('data-lec')); });
+  });
+
+  filter('all');
+})();
+</script>
+</body>
+</html>

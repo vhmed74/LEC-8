@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرح محاضرة 2 - خصائص الأجهزة والمعايرة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <header class="glass-header">
+            <a href="index.html" class="back-btn">🔙 الرئيسية / Home</a>
+            <h1>محاضرة 2: خصائص الأجهزة والمعايرة</h1>
+            <h2>Lecture 2: Instrument Characteristics & Calibration</h2>
+            <p>شرح تفصيلي للمحاضرة باللغتين العربية والإنجليزية / Detailed bilingual explanation</p>
+        </header>
+
+        <main>
+            <aside class="sidebar glass-panel">
+                <nav>
+                    <ul id="nav-list">
+                        <li class="active" data-target="static-chars">1. الخصائص الاستاتيكية / Static Chars</li>
+                        <li data-target="linearity-least">2. الخطية والمربعات الصغرى / Linearity & Least Squares</li>
+                        <li data-target="sensitivity">3. الحساسية والعتبة / Sensitivity & Threshold</li>
+                        <li data-target="dynamic-chars">4. الخصائص الديناميكية / Dynamic Chars</li>
+                        <li data-target="orders">5. مراتب الأجهزة / Instrument Orders</li>
+                        <li data-target="quiz">6. اختبر نفسك / Quiz</li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <section class="content-area glass-panel">
+                <!-- Section 1 -->
+                <div id="static-chars" class="content-section active-section">
+                    <h2>1. الخصائص الاستاتيكية / Static Characteristics</h2>
+                    <p class="ar">هي ميزات الأجهزة عند قياس <strong>مدخلات مستقرة (Steady-state inputs)</strong>.</p>
+                    
+                    <div class="card">
+                        <h3>الدقة والضبط / Accuracy & Precision</h3>
+                        <div class="lang-block">
+                            <p class="ar"><strong>الدقة (Accuracy):</strong> مقياس لمدى قرب المخرج من القيمة الحقيقية الصحيحة.</p>
+                            <p class="ar"><strong>عدم الدقة (Inaccuracy):</strong> غالبًا يُعبر عنها كنسبة مئوية من المقياس الكامل (% F.S).</p>
+                            <p class="ar"><strong>الضبط (Precision):</strong> مقياس لإمكانية تكرار القياسات (Reproducibility) وإعطاء نفس النتيجة. <strong style="color: var(--accent)">تمييز هام:</strong> الضبط العالي لا يضمن دقة عالية! (High precision does not guarantee high accuracy).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>قابلية التكرار والتباطؤ والمنطقة الميتة</h3>
+                        <div class="lang-block">
+                            <p class="ar"><strong>قابلية التكرار (Repeatability):</strong> مدى تقارب القراءات لنفس المدخلات المتكررة تحت نفس الظروف (نفس المراقب، نفس الجهاز، نفس الموقع، فترة قصيرة).</p>
+                            <p class="ar"><strong>التباطؤ (Hysteresis Effect):</strong> إعطاء مخرجات مختلفة لنفس المدخل اعتماداً على اتجاه التغيير (زيادة أم نقصان). أسبابه: الزنبركات (ميكانيكياً) أو القلوب المغناطيسية.</p>
+                            <p class="ar"><strong>المنطقة الميتة (Dead Space):</strong> مدى من المدخلات لا يحدث عنده أي تغيير في المخرجات. مثال: الارتداد العكسي في أسنان التروس (Backlash).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>إزاحة التيار المستمر / DC Offset</h3>
+                        <div class="lang-block">
+                            <p class="ar">هي قيمة ثابتة مضافة إلى إشارة المدخلات تؤدي إلى إزاحة خط الأساس. تحديد الإزاحة يُعد أمرًا بالغ الأهمية لمعايرة الحساسات (Calibration) بدقة.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <div id="linearity-least" class="content-section">
+                    <h2>2. الخطية وطريقة المربعات الصغرى / Linearity & Least Squares</h2>
+                    <div class="card">
+                        <h3>الخطية (Linearity)</h3>
+                        <div class="lang-block">
+                            <p class="ar"><strong>التعريف:</strong> المخرجات تتناسب طردياً مع المدخلات متبعة خطاً مستقيماً. (المعادلة المثالية: y = mx + c).</p>
+                            <p class="en">Output is proportional to input, following a straight line.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>طريقة المربعات الصغرى (Least Squares Method)</h3>
+                        <div class="lang-block">
+                            <p class="ar"><strong>الغرض:</strong> إيجاد أفضل خط مستقيم (Best-fit line) لمجموعة من نقاط البيانات المتناثرة.</p>
+                            <p class="ar"><strong>الطريقة:</strong> تقوم بتقليل مجموع مربعات الانحرافات الرأسية (الأخطاء).</p>
+                            <p class="ar">يتم حساب <strong>الميل (m)</strong> و <strong>الجزء المقطوع (b)</strong> بقوانين إحصائية محددة تضمن أدق معايرة ممكنة.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3 -->
+                <div id="sensitivity" class="content-section">
+                    <h2>3. الحساسية، العتبة، والدقة التحليلية / Sensitivity, Threshold & Resolution</h2>
+                    <div class="card">
+                        <h3>الحساسية (Sensitivity) وانحرافها (Drift)</h3>
+                        <div class="lang-block">
+                            <p class="ar"><strong>الحساسية:</strong> نسبة التغير في المخرجات إلى التغير في المدخلات (ميل منحنى المعايرة). مثال: في ميزان الحرارة البلاتيني، تُحسب بتفاضل المقاومة بالنسبة للحرارة dR/dT.</p>
+                            <p class="ar"><strong>انحراف الحساسية (Sensitivity Drift):</strong> التغير في حساسية الجهاز نتيجة للتغيرات البيئية (مثل الحرارة).</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>العتبة والدقة / Threshold & Resolution</h3>
+                        <div class="lang-block">
+                            <p class="ar"><strong>العتبة (Threshold):</strong> الحد الأدنى لقيمة المدخلات المطلوبة لإنتاج تغير "ملحوظ" في المخرجات من الصفر.</p>
+                            <p class="ar"><strong>الدقة التحليلية (Resolution):</strong> أصغر تغير ملحوظ في قيمة المدخلات يمكن للجهاز الإحساس به في أي وقت.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4 -->
+                <div id="dynamic-chars" class="content-section">
+                    <h2>4. الخصائص الديناميكية / Dynamic Characteristics</h2>
+                    <div class="card">
+                        <h3>مقدمة عن الديناميكا</h3>
+                        <div class="lang-block">
+                            <p class="ar">هي سلوك الجهاز عندما تتغير إشارة المدخلات <strong>مع الزمن (Time-varying inputs)</strong>. وتُوصف بمعادلات تفاضلية.</p>
+                            <ul class="ar">
+                                <li><strong>الاستجابة الزمنية (Time Response):</strong> الوقت الذي يستغرقه الحساس للوصول لنتيجته النهائية بعد تغير الإشارة فجأة.</li>
+                                <li><strong>الاستجابة الترددية (Frequency Response):</strong> استجابة الجهاز لترددات متغيرة، ويفضل أن تكون مسطحة (Flat) ضمن نطاق محدد.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5 -->
+                <div id="orders" class="content-section">
+                    <h2>5. مراتب الأجهزة / Instrument Orders</h2>
+                    <div class="card">
+                        <h3>أجهزة الرتبة صفر (Zero Order)</h3>
+                        <div class="lang-block">
+                            <p class="ar">تتغير المخرجات <strong>لحظياً (instantaneously)</strong> مع المدخلات دون أي تأخير زمني. (مثال: Potentiometer).</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>أجهزة الرتبة الأولى (First Order)</h3>
+                        <div class="lang-block">
+                            <p class="ar">تحتوي على عنصر واحد لتخزين الطاقة. تتميز بـ <strong>الثابت الزمني (Time Constant - τ)</strong> وهو الوقت المطلوب للوصول إلى <strong>63.2%</strong> من القيمة النهائية (الاستجابة أسية). مثال: ميزان الحرارة الزئبقي.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>أجهزة الرتبة الثانية (Second Order)</h3>
+                        <div class="lang-block">
+                            <p class="ar">توصف بمعادلة تفاضلية من الدرجة الثانية. تتميز بوجود <strong>نسبة التخميد (Damping Ratio - ζ)</strong> والتي تحدد نوع استجابة الجهاز (Underdamped, Critically damped, Overdamped).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6: Quiz -->
+                <div id="quiz" class="content-section">
+                    <h2>6. اختبر نفسك / Test Yourself</h2>
+                    <div id="score-board" style="display: none;" class="card text-center">
+                        <h3 style="color: var(--primary); text-align: center;">نتيجتك النهائية / Your Final Score</h3>
+                        <p id="score-text" style="font-size: 2.5rem; font-weight: bold; text-align: center; color: var(--accent); margin-top: 10px;"></p>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 1 / Question 1</h3>
+                        <p class="ar">أي خاصية تقيس مدى قرب المخرج من القيمة الحقيقية الصحيحة؟</p>
+                        <p class="en">Which characteristic measures how close the output is to the correct value?</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">الضبط / Precision</button>
+                            <button class="option-btn" data-index="1">الاستجابة / Response</button>
+                            <button class="option-btn" data-index="2">الدقة / Accuracy</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 2 / Question 2</h3>
+                        <p class="ar">ماذا يقيس "الضبط" (Precision)؟</p>
+                        <p class="en">What does "Precision" measure?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">إمكانية تكرار القياسات وإعطاء نفس النتيجة / Reproducibility of measurements</button>
+                            <button class="option-btn" data-index="1">التأخير الزمني / Time delay</button>
+                            <button class="option-btn" data-index="2">السرعة القصوى / Maximum speed</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 3 / Question 3</h3>
+                        <p class="ar">الظاهرة التي تختلف فيها المخرجات لنفس المدخلات حسب اتجاه التغيير (زيادة أم نقصان) تسمى:</p>
+                        <p class="en">The phenomenon where output differs for the same input depending on whether the input is increasing or decreasing is called:</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">المنطقة الميتة / Dead Space</button>
+                            <button class="option-btn" data-index="1">التباطؤ / Hysteresis Effect</button>
+                            <button class="option-btn" data-index="2">الخطية / Linearity</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 4 / Question 4</h3>
+                        <p class="ar">القيمة الثابتة التي تضاف للمدخلات وتزيح خط الأساس تسمى:</p>
+                        <p class="en">A constant value added to the input signal shifting the baseline is called:</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">الحساسية / Sensitivity</button>
+                            <button class="option-btn" data-index="1">الدقة التحليلية / Resolution</button>
+                            <button class="option-btn" data-index="2">إزاحة التيار المستمر / DC Offset</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 5 / Question 5</h3>
+                        <p class="ar">ما هي الطريقة المستخدمة لتقليل مجموع مربعات الأخطاء الرأسية وإيجاد أفضل خط مستقيم (Best-fit line)؟</p>
+                        <p class="en">The method used to find the best-fit straight line minimizing the sum of squared vertical deviations is:</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">طريقة المربعات الصغرى / Least Squares Method</button>
+                            <button class="option-btn" data-index="1">طريقة فورييه / Fourier Transform</button>
+                            <button class="option-btn" data-index="2">قانون سنيل / Snell's Law</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 6 / Question 6</h3>
+                        <p class="ar">تُعرف "نسبة التغير في المخرجات إلى التغير في المدخلات" (ميل منحنى المعايرة) بـ:</p>
+                        <p class="en">The ratio of the change in output to the change in input is defined as:</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">الخطية / Linearity</button>
+                            <button class="option-btn" data-index="1">الحساسية / Sensitivity</button>
+                            <button class="option-btn" data-index="2">الانحراف / Drift</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 7 / Question 7</h3>
+                        <p class="ar">الحد الأدنى لقيمة المدخلات المطلوبة لإنتاج تغير ملحوظ في المخرجات من الصفر هو:</p>
+                        <p class="en">What represents the minimum input value required to produce a detectable change in output from zero?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">العتبة / Threshold</button>
+                            <button class="option-btn" data-index="1">الدقة التحليلية / Resolution</button>
+                            <button class="option-btn" data-index="2">التباطؤ / Hysteresis</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 8 / Question 8</h3>
+                        <p class="ar">في أجهزة الرتبة الأولى (First-Order)، الثابت الزمني (τ) هو الوقت اللازم للوصول إلى أي نسبة من القيمة النهائية؟</p>
+                        <p class="en">In a First-Order instrument, the Time Constant (τ) is the time required to reach what percentage of its final value?</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">50%</button>
+                            <button class="option-btn" data-index="1">95%</button>
+                            <button class="option-btn" data-index="2">63.2%</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 9 / Question 9</h3>
+                        <p class="ar">أي خاصية تحدد نوع الاستجابة (تحت التخميد، تخميد حرج، أو فوق التخميد) في أجهزة الرتبة الثانية؟</p>
+                        <p class="en">Which characteristic determines the type of response (underdamped, critically damped, overdamped) in a Second Order instrument?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">الثابت الزمني / Time Constant</button>
+                            <button class="option-btn" data-index="1">نسبة التخميد / Damping Ratio (ζ)</button>
+                            <button class="option-btn" data-index="2">الميل / Slope</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 10 / Question 10</h3>
+                        <p class="ar">الجهاز الذي تتغير مخرجاته لحظياً مع المدخلات دون أي تأخير زمني يُصنف ضمن:</p>
+                        <p class="en">An instrument whose output changes instantaneously with input, with no time delay, is of which order?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">الرتبة صفر / Zero Order</button>
+                            <button class="option-btn" data-index="1">الرتبة الأولى / First Order</button>
+                            <button class="option-btn" data-index="2">الرتبة الثانية / Second Order</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<div class="formula-card"><h4>Lecture 8: متوسط الطاقة / Average Power</h4>
+<p class="f">P<sub>avg</sub> = Energy per pulse × Repetition rate (f)</p>
+</div>
+</div>
+
+<!-- ===== MCQ ===== -->
+<div id="mcq-section" class="exam-section">
+<h2>📋 أسئلة اختياري / MCQ (80 سؤال - ترتيب عشوائي)</h2>
+<div id="mcq-score-board" style="display:none" class="card text-center">
+<h3 style="color:var(--primary);text-align:center">نتيجتك / Your Score</h3>
+<p id="mcq-score-text" style="font-size:2.5rem;font-weight:bold;text-align:center;color:var(--accent);margin-top:10px"></p>
+</div>
+<div id="mcq-container">
+
+<!-- L1 Q1 --><div class="card quiz-card" data-lec="1"><h4>L1</h4>
+<p>ما هما الفئتان الرئيسيتان للبصريات الحيوية؟ / What are the two major categories of biomedical optics?</p>
+<div class="options" data-correct="1"><button class="option-btn" data-index="0">الجراحة والأدوية / Surgery & Medication</button><button class="option-btn" data-index="1">التصوير والتشخيص، والأنسجة والعلاج / Imaging & Diagnosis, Tissue & Therapy</button><button class="option-btn" data-index="2">الميكانيكا والكهرباء / Mechanics & Electronics</button></div><div class="feedback"></div></div>
+
+<!-- L1 Q2 --><div class="card quiz-card" data-lec="1"><h4>L1</h4>
+<p>أي تقنية توفر صوراً مقطعية بدقة ميكرومترية وتستخدم في طب العيون؟ / Which tech
+<button class="show-answer-btn" onclick="toggleAnswer(this)">🔍 إظهار الإجابة</button>
+<div class="model-answer"><h5>الإجابة / Answer:</h5>
+<p class="ar">قيمة ثابتة مضافة إلى إشارة المدخلات تؤدي إلى إزاحة خط الأساس. تحديدها ضروري للمعايرة الدقيقة (Calibration).</p>
+<p class="en">A constant value added to the input signal that shifts the baseline. Identifying it is critical for accurate sensor calibration.</p>
+</div></div>
+
+<div class="essay-q"><h4>عرّف الحساسية (Sensitivity). / Define Sensitivity.</h4>
+<button class="show-answer-btn" onclick="toggleAnswer(this)">🔍 إظهار الإجابة</button>
+<div class="model-answer"><h5>الإجابة / Answer:</h5>
+<p class="ar">نسبة التغير في المخرجات إلى التغير في المدخلات، أي ميل منحنى المعايرة (S = ΔOutput/ΔInput). انحراف الحساسية (Sensitivity Drift) هو تغيرها بسبب عوامل بيئية كالحرارة.</p>
+<p class="en">Ratio of change in output to change in input — the slope of the calibration curve (S = ΔOutput/ΔInput). Sensitivity Drift is its change due to environmental factors like temperature.</p>
+</div></div>
+
+<div class="essay-q"><h4>عرّف العتبة (Threshold). / Define Threshold.</h4>
+<button class="show-answer-btn" onclick="toggleAnswer(this)">🔍 إظهار الإجابة</button>
+<div class="model-answer"><h5>الإجابة / Answer:</h5>
+<p class="ar">الحد الأدنى لقيمة المدخلات المطلوبة لإنتاج تغير ملحوظ في المخرجات من الصفر.</p>
+<p class="en">The minimum input value required to produce a detectable change in output

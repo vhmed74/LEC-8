@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرح محاضرة 5 - أساسيات تفاعل الضوء مع المادة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <header class="glass-header">
+            <a href="index.html" class="back-btn">🔙 الرئيسية / Home</a>
+            <h1>محاضرة 5: تفاعل الضوء مع المادة</h1>
+            <h2>Lecture 5: Fundamentals of Light Matter Interactions</h2>
+            <p>شرح تفصيلي للمحاضرة باللغتين العربية والإنجليزية / Detailed bilingual explanation</p>
+        </header>
+
+        <main>
+            <aside class="sidebar glass-panel">
+                <nav>
+                    <ul id="nav-list">
+                        <li class="active" data-target="excited-state">1. الحالة المثارة / Excited State</li>
+                        <li data-target="spin-states">2. حالات اللف / Spin States</li>
+                        <li data-target="radiative">3. العمليات الإشعاعية / Radiative</li>
+                        <li data-target="non-radiative">4. العمليات غير الإشعاعية / Non-Radiative</li>
+                        <li data-target="spectroscopy">5. المطيافية / Spectroscopy Types</li>
+                        <li data-target="advanced-spec">6. تطبيقات المطيافية / Advanced Spectroscopy</li>
+                        <li data-target="quiz">7. اختبر نفسك / Quiz</li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <section class="content-area glass-panel">
+                <!-- Section 1 -->
+                <div id="excited-state" class="content-section active-section">
+                    <h2>1. مصير الحالة المثارة / Fate of Excited State</h2>
+                    <div class="card">
+                        <h3>ماذا يحدث عند امتصاص الضوء؟ / What happens upon absorption?</h3>
+                        <div class="lang-block">
+                            <p class="ar">عندما يمتص الجزيء فوتوناً، ينتقل من <strong>الحالة الأساسية (Ground State - S0)</strong> إلى <strong>حالة إلكترونية مثارة (Excited State - Sn)</strong>. هذه الحالة غير مستقرة، ويجب على الجزيء تبديد (dissipate) هذه الطاقة الزائدة.</p>
+                            <p class="en">When a molecule absorbs a photon, it transitions from the ground state (S0) to an excited electronic state (Sn). This state is unstable, and the molecule must dissipate the excess energy.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar">يتم تمثيل هذه المسارات المتنافسة لتبديد الطاقة غالباً باستخدام <strong>مخطط جابلونسكي (Jablonski Diagram)</strong>.</p>
+                            <p class="en">The "fate" of this excitation is described by several competing pathways, often visualized using a Jablonski Diagram.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>أنواع العمليات / Types of Processes</h3>
+                        <div class="lang-block">
+                            <ul class="ar">
+                                <li><strong>عمليات إشعاعية (Radiative):</strong> يتم فيها إصدار فوتون (انبعاث Emission) لعودة الجزيء لأساسه.</li>
+                                <li><strong>عمليات غير إشعاعية (Non-radiative):</strong> تتبدد الطاقة على شكل حرارة أو تفاعل كيميائي (كيمياء ضوئية).</li>
+                            </ul>
+                            <ul class="en">
+                                <li><strong>Radiative processes:</strong> A photon is emitted to bring the molecule back to the ground state.</li>
+                                <li><strong>Nonradiative processes:</strong> Energy is dissipated as heat or in producing a chemical reaction (photochemistry).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <div id="spin-states" class="content-section">
+                    <h2>2. حالات اللف المغزلي / Spin States (Singlet, Doublet, Triplet)</h2>
+                    <div class="card">
+                        <h3>الفرق بين الحالات / Differences between states</h3>
+                        <div class="lang-block">
+                            <p class="ar">تختلف هذه الحالات بناءً على <strong>عدد الإلكترونات المفردة (Unpaired electrons)</strong> والتعددية المغزلية الكلية.</p>
+                            <p class="en">Singlet, doublet, and triplet states differ primarily by the number of unpaired electrons and total spin multiplicity.</p>
+                        </div>
+                        <div class="lang-block">
+                            <ul class="ar">
+                                <li><strong>الحالة الأحادية (Singlet):</strong> كل الإلكترونات مزدوجة (Paired). اللف المغزلي S=0، والتعددية = 1. اللف المغزلي يكون متعاكساً (antiparallel).</li>
+                                <li><strong>الحالة الثلاثية (Triplet):</strong> يوجد إلكترونان مفردان بلف متوازي (parallel spins). S=1 والتعددية = 3. وهي شائعة في الحالات المثارة الأطول عمراً.</li>
+                                <li><strong>الحالة الثنائية (Doublet):</strong> إلكترون مفرد واحد (S=1/2). مرتبطة بالجذور الحرة (radicals).</li>
+                            </ul>
+                            <ul class="en">
+                                <li><strong>Singlet:</strong> All electrons paired (S=0, multiplicity=1). Spins are antiparallel. Typical for ground states.</li>
+                                <li><strong>Triplet:</strong> Two unpaired electrons with parallel spins (S=1, multiplicity=3). Common in longer-lived excited states.</li>
+                                <li><strong>Doublet:</strong> One unpaired electron (S=1/2, multiplicity=2).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3 -->
+                <div id="radiative" class="content-section">
+                    <h2>3. العمليات الإشعاعية (انبعاث الضوء) / Radiative Processes</h2>
+                    <div class="card">
+                        <h3>الوميض اللحظي (الفلورة) / Fluorescence</h3>
+                        <div class="lang-block">
+                            <p class="ar"><strong>التوقيت:</strong> سريع جداً (10<sup>-9</sup> إلى 10<sup>-7</sup> ثانية).</p>
+                            <p class="ar"><strong>كيف يحدث:</strong> يعود الإلكترون من حالة مثارة أحادية (Singlet) إلى حالة أساسية. هذا الانتقال <strong>"مسموح به دورانياً" (Spin-allowed)</strong> ولذلك يكون سريعاً جداً ومحتملاً.</p>
+                            <p class="ar"><strong>الطاقة:</strong> الفوتون المنبعث طاقته <strong>أقل</strong> (وطوله الموجي أطول) من الفوتون الممتص بسبب فقدان بعض الطاقة كحرارة (ما يُعرف بإزاحة ستوكس - Stokes Shift).</p>
+                            <hr>
+                            <p class="en"><strong>Timing:</strong> Fast (typically 10<sup>-9</sup> to 10<sup>-7</sup> seconds).</p>
+                            <p class="en"><strong>Spin:</strong> Return from excited singlet to ground singlet. It is <strong>spin-allowed</strong> and fast.</p>
+                            <p class="en"><strong>Energy:</strong> Emitted photon has lower energy (longer wavelength) than absorbed photon due to Stokes Shift.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>الفسفرة / Phosphorescence</h3>
+                        <div class="lang-block">
+                            <p class="ar"><strong>التوقيت:</strong> بطيء (أجزاء من الثانية إلى دقائق أو ساعات).</p>
+                            <p class="ar"><strong>كيف يحدث:</strong> يمر الجزيء أولاً بعبور نظامي (ISC) للوصول إلى حالة ثلاثية (Triplet). الانتقال من الحالة الثلاثية إلى الأحادية <strong>"ممنوع دورانياً" (Spin-forbidden)</strong>، مما يجعله بطيئاً جداً وغير محتمل.</p>
+                            <p class="ar"><strong>النتيجة:</strong> تستمر المادة في التوهج حتى بعد إطفاء مصدر الضوء الأصلي.</p>
+                            <hr>
+                            <p class="en"><strong>Timing:</strong> Slow (seconds to minutes/hours).</p>
+                            <p class="en"><strong>Spin:</strong> Requires Intersystem Crossing (ISC) to triplet state. Transition from triplet back to singlet ground state is <strong>spin-forbidden</strong>.</p>
+                            <p class="en"><strong>Result:</strong> Material continues to glow after light is turned off.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4 -->
+                <div id="non-radiative" class="content-section">
+                    <h2>4. العمليات غير الإشعاعية (حرارة أو كيمياء) / Non-Radiative Processes</h2>
+                    <div class="card">
+                        <h3>أهم 3 مسارات غير إشعاعية / Main 3 Pathways</h3>
+                        <div class="lang-block">
+                            <ul class="ar">
+                                <li><strong>الاسترخاء الاهتزازي (Vibrational Relaxation):</strong> أسرع وأكثر الطرق شيوعاً. يتصادم الجزيء المثار مع الجزيئات المحيطة وينقل طاقته الاهتزازية كحرارة.</li>
+                                <li><strong>التحويل الداخلي (Internal Conversion - IC):</strong> انتقال بين حالتين إلكترونيتين من <strong>نفس التعددية</strong> (مثلاً من S2 إلى S1). وتتحول الطاقة إلى اهتزاز (حرارة).</li>
+                                <li><strong>العبور بين الأنظمة (Intersystem Crossing - ISC):</strong> انتقال بين حالات ذات <strong>تعددية دوران مختلفة</strong> (مثلاً من Singlet إلى Triplet). هذا التفاعل "ممنوع" لكنه يحدث في الجزيئات ذات الذرات الثقيلة، وهو البوابة لحدوث <strong>الفسفرة</strong>.</li>
+                            </ul>
+                            <br>
+                            <ul class="en">
+                                <li><strong>Vibrational Relaxation:</strong> Most common and fastest. Molecule collides with solvent and transfers vibrational energy as heat.</li>
+                                <li><strong>Internal Conversion (IC):</strong> Transition between states of the <strong>same spin multiplicity</strong> (e.g., S2 to S1). Energy converted to heat.</li>
+                                <li><strong>Intersystem Crossing (ISC):</strong> Transition between states of <strong>different spin multiplicity</strong> (e.g., S1 to T1). Spin-forbidden but occurs in heavy atoms. Gateway to phosphorescence.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5 -->
+                <div id="spectroscopy" class="content-section">
+                    <h2>5. أنواع المطيافية (Spectroscopy) / Types of Spectroscopy</h2>
+                    <div class="card">
+                        <h3>ما هي المطيافية؟ / What is it?</h3>
+                        <div class="lang-block">
+                            <p class="ar">هي دراسة كيفية تفاعل المادة مع الإشعاع الكهرومغناطيسي لتحليل تكوين المواد وبنيتها.</p>
+                            <p class="en">Study of how matter interacts with electromagnetic radiation to analyze composition and structure.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>المطياف التقليدي مقابل تحويل فورييه / Conventional vs FT Spectrometers</h3>
+                        <div class="lang-block">
+                            <p class="ar"><strong>المطياف التقليدي (Conventional):</strong> يستخدم عنصراً مشتتاً (Dispersive) مثل المنشور أو محززة الحيود (Diffraction grating) لفصل الضوء مكانياً.</p>
+                            <p class="en"><strong>Conventional:</strong> Uses a dispersive element like a prism or diffraction grating.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><strong>مطياف تحويل فورييه (Fourier Transform - FT):</strong> التقنية الأحدث (مثل FT-IR). <strong>بدلاً من تشتيت الضوء</strong>، يستخدم جهاز بصري يسمى <strong>مقياس تداخل ميكلسون (Michelson interferometer)</strong> وحاسوباً لإجراء تحويل رياضي (فورييه). <strong>ميزته:</strong> مراقبة الطيف بأكمله بشكل مستمر وبحساسية جيدة.</p>
+                            <p class="en"><strong>Fourier Transform:</strong> Modern. Instead of a dispersive element, uses a <strong>Michelson interferometer</strong> and Fourier transform math. <strong>Advantage:</strong> Monitor entire spectrum continuously with good sensitivity.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6 -->
+                <div id="advanced-spec" class="content-section">
+                    <h2>6. مجالات المطيافية التطبيقية / Applied Spectroscopy</h2>
+                    <div class="card">
+                        <h3>مطيافية الامتصاص الإلكتروني / Electronic Absorption Spectroscopy</h3>
+                        <div class="lang-block">
+                            <p class="ar">تستخدم <strong>قانون بير-لامبرت (Beer-Lambert's Law)</strong> لوصف اضمحلال شدة الضوء (Exponential decay). من خلالها يمكن التعرف على الـ <strong>Chromophores</strong> بداخل النسيج البيولوجي.</p>
+                            <p class="en">Defined by <strong>Beer-Lambert's Law</strong> (exponential decay). Used to identify <strong>chromophores</strong> in bioassemblies.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>مطيافية التلألؤ (الفلورة) / Luminescence Spectroscopy</h3>
+                        <div class="lang-block">
+                            <p class="ar">الخلايا البيولوجية في درجة حرارة الغرفة تُظهر الفلورة بشكل أساسي (الفسفرة نادرة). يعتبر تصوير الفلورة <strong>(Fluorescence imaging)</strong> التقنية المهيمنة للتصوير الحيوي البصري.</p>
+                            <p class="en">Bio molecules at room temp exhibit fluorescence (phosphorescence is rare). <strong>Fluorescence imaging</strong> is the dominant optical bioimaging technique.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>المطيافية الاهتزازية (IR & Raman) / Vibrational Spectroscopy</h3>
+                        <div class="lang-block">
+                            <p class="ar"><strong>مقارنة هامة للعينات البيولوجية المائية:</strong> مطيافية <strong>Raman</strong> تعتبر أكثر فائدة في الأوساط المائية لأن الماء يسبب تشتت رامان ضعيفاً جداً، بينما الماء يمتص بشدة في الـ IR مما يُشوش على النتائج!</p>
+                            <p class="en"><strong>Crucial for aqueous bio-samples:</strong> <strong>Raman</strong> spectroscopy is more useful because water produces only weak Raman scattering but has very strong IR transitions (which would mask signals).</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar">في رامان، إذا كانت طاقة الفوتون المشتت <strong>أقل</strong> من الفوتون الساقط، تُسمى <strong>Stokes Raman scattering</strong>.</p>
+                            <p class="en">In Raman, if scattered photon has lower frequency (energy) than incident, it is <strong>Stokes Raman scattering</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 7: Quiz -->
+                <div id="quiz" class="content-section">
+                    <h2>7. اختبر نفسك / Test Yourself</h2>
+                    <div id="score-board" style="display: none;" class="card text-center">
+                        <h3 style="color: var(--primary); text-align: center;">نتيجتك النهائية / Your Final Score</h3>
+                        <p id="score-text" style="font-size: 2.5rem; font-weight: bold; text-align: center; color: var(--accent); margin-top: 10px;"></p>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 1 / Question 1</h3>
+                        <p class="ar">ماذا يحدث فور امتصاص الجزيء لفوتون ضوئي؟</p>
+                        <p class="en">What happens immediately when a molecule absorbs a photon?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">ينتقل من الحالة الأساسية إلى حالة إلكترونية مثارة / Transitions from ground state to an excited electronic state</button>
+                            <button class="option-btn" data-index="1">يتجمد الجزيء / The molecule freezes</button>
+                            <button class="option-btn" data-index="2">تنخفض طاقته مباشرة / Its energy decreases instantly</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 2 / Question 2</h3>
+                        <p class="ar">ما هو الوصف الصحيح لـ "الحالة الأحادية" (Singlet State)؟</p>
+                        <p class="en">What characterizes a "Singlet" state?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">يحتوي على إلكترونين مفردين متوازيين / Has two unpaired parallel electrons</button>
+                            <button class="option-btn" data-index="1">جميع الإلكترونات فيه مزدوجة (متعاكسة الدوران) / All electrons are paired (antiparallel)</button>
+                            <button class="option-btn" data-index="2">يحتوي على إلكترون واحد فقط / Has only one electron</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 3 / Question 3</h3>
+                        <p class="ar">أي عملية إشعاعية تُعتبر "مسموحة دورانياً" (Spin-allowed) وبالتالي تحدث بسرعة جداً؟</p>
+                        <p class="en">Which radiative process is "spin-allowed" and fast?</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">الفسفرة / Phosphorescence</button>
+                            <button class="option-btn" data-index="1">تشتت رامان / Raman Scattering</button>
+                            <button class="option-btn" data-index="2">الفلورة (الوميض) / Fluorescence</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 4 / Question 4</h3>
+                        <p class="ar">ما هي العملية التي ينتقل فيها الجزيء المثار بين حالات ذات "تعددية دوران مختلفة" (مثلاً Singlet إلى Triplet)؟</p>
+                        <p class="en">Which non-radiative process involves a transition between states of different spin multiplicity (e.g. S to T)?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">التحويل الداخلي / Internal Conversion (IC)</button>
+                            <button class="option-btn" data-index="1">العبور بين الأنظمة / Intersystem Crossing (ISC)</button>
+                            <button class="option-btn" data-index="2">الاسترخاء الاهتزازي / Vibrational Relaxation</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 5 / Question 5</h3>
+                        <p class="ar">ما هي أسرع وأكثر الطرق شيوعاً لفقدان الجزيء المثار لطاقته كحرارة عبر الاصطدام بالبيئة المحيطة؟</p>
+                        <p class="en">What is the most common and fastest non-radiative way to lose energy through collisions?</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">الفلورة / Fluorescence</button>
+                            <button class="option-btn" data-index="1">العبور النظامي / Intersystem Crossing</button>
+                            <button class="option-btn" data-index="2">الاسترخاء الاهتزازي / Vibrational Relaxation</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 6 / Question 6</h3>
+                        <p class="ar">ما هي الميزة الكبرى لمطياف "تحويل فورييه" (FT Spectrometer) التي تجعله حديثاً وفعالاً؟</p>
+                        <p class="en">What is the main advantage of Fourier Transform (FT) spectrometers?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">يراقب الطيف بأكمله باستمرار باستخدام مقياس التداخل / Monitors entire spectrum continuously using an interferometer</button>
+                            <button class="option-btn" data-index="1">يستخدم منشور زجاجي بسيط لتشتيت الضوء / Uses a simple glass prism to disperse light</button>
+                            <button class="option-btn" data-index="2">يعمل فقط في الفضاء الخارجي / Operates only in outer space</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 7 / Question 7</h3>
+                        <p class="ar">أي قانون يصف تناقص (اضمحلال) شدة الضوء عند مروره في وسط ممتص؟</p>
+                        <p class="en">Which law describes the linear electronic absorption of light?</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">قانون نيوتن / Newton's Law</button>
+                            <button class="option-btn" data-index="1">قانون أوم / Ohm's Law</button>
+                            <button class="option-btn" data-index="2">قانون بير-لامبرت / Beer-Lambert's law</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 8 / Question 8</h3>
+                        <p class="ar">ما هي التقنية البصرية المهيمنة والأكثر انتشاراً للتصوير الحيوي (Bioimaging)؟</p>
+                        <p class="en">Which technique is considered the dominant optical bioimaging technique?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">التصوير بالفسفرة / Phosphorescence imaging</button>
+                            <button class="option-btn" data-index="1">التصوير بالفلورة / Fluorescence imaging</button>
+                            <button class="option-btn" data-index="2">التصوير بالأشعة السينية / X-Ray imaging</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 9 / Question 9</h3>
+                        <p class="ar">لماذا تعتبر مطيافية رامان (Raman) مفيدة جداً للعينات البيولوجية في "الأوساط المائية" عكس الـ IR؟</p>
+                        <p class="en">Why is Raman spectroscopy often more useful than IR for aqueous biological samples?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">لأن الماء يُعطي إشارة رامان ضعيفة جداً لا تُشوش العينة، بينما يمتص الـ IR بقوة / Water produces weak Raman scattering but absorbs IR strongly</button>
+                            <button class="option-btn" data-index="1">لأن رامان يحتاج إلى غليان الماء أولاً / Raman requires boiling the water first</button>
+                            <button class="option-btn" data-index="2">لأن الماء يمتص موجات رامان بالكامل / Water absorbs all Raman waves</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 10 / Question 10</h3>
+                        <p class="ar">في تشتت رامان، ماذا يعني مصطلح (Stokes Raman scattering)؟</p>
+                        <p class="en">What does Stokes Raman scattering imply?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">طاقة الفوتون المشتت أعلى من الأصلي / Scattered photon has higher energy than incident</button>
+                            <button class="option-btn" data-index="1">طاقة (وتردد) الفوتون المشتت أقل من الفوتون الساقط الأصلي / Scattered photon has lower frequency/energy than incident photon</button>
+                            <button class="option-btn" data-index="2">تساوي طاقتي الفوتونين / Equal energies for both photons</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

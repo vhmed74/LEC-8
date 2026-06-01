@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرح محاضرة 6 - تفاعل الضوء مع الأنسجة (متغيرات الليزر)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .highlight-red {
+            color: #ef4444; /* Red color matching the lecture's emphasis */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <header class="glass-header">
+            <a href="index.html" class="back-btn">🔙 الرئيسية / Home</a>
+            <h1>محاضرة 6: تفاعل الضوء مع الأنسجة (متغيرات الليزر)</h1>
+            <h2>Lecture 6: Light Tissue Interactions (Laser Variables)</h2>
+            <p>شرح تفصيلي للمحاضرة باللغتين العربية والإنجليزية مع التركيز على النقاط الهامة 🔴</p>
+        </header>
+
+        <main>
+            <aside class="sidebar glass-panel">
+                <nav>
+                    <ul id="nav-list">
+                        <li class="active" data-target="intro">1. مقدمة وتأثيرات الضوء / Intro & Effects</li>
+                        <li data-target="laser-types">2. أنواع الليزر / Laser Types</li>
+                        <li data-target="variables-1">3. متغيرات الليزر (1) / Laser Variables 1</li>
+                        <li data-target="variables-2">4. متغيرات الليزر (2) / Laser Variables 2</li>
+                        <li data-target="delivery">5. التوصيل والتوجيه / Delivery & Aiming</li>
+                        <li data-target="quiz">6. اختبر نفسك / Quiz</li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <section class="content-area glass-panel">
+                <!-- Section 1 -->
+                <div id="intro" class="content-section active-section">
+                    <h2>1. مقدمة وتأثيرات الضوء / Introduction & Effects</h2>
+                    <div class="card">
+                        <h3>أساسيات تفاعل الضوء مع الأنسجة / Fundamentals</h3>
+                        <div class="lang-block">
+                            <p class="ar">تصف تفاعلات الضوء مع الأنسجة في البصريات الحيوية كيف تتصرف الفوتونات (من الطول الموجي المرئي إلى الأشعة تحت الحمراء القريبة) داخل المادة البيولوجية. يحدث هذا أساساً من خلال <strong>الانعكاس (reflection)</strong>، <strong>الامتصاص (absorption)</strong>، <strong>التشتت (scattering)</strong>، و<strong>النفاذية (transmission)</strong>.</p>
+                            <p class="en">Light-tissue interactions describe how photons from visible to near-infrared wavelengths behave in biological matter, primarily through reflection, absorption, scattering, and transmission.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>التأثيرات الأساسية / Key Effects</h3>
+                        <div class="lang-block">
+                            <p class="ar"><span class="highlight-red">الامتصاص (Absorption):</span> الأنسجة المختلفة تمتص ضوء الليزر بشكل مختلف بناءً على خصائصها البصرية. مثلاً: الهيموجلوبين في الدم يمتص الضوء بشدة في الطيف المرئي، بينما الماء يمتص الأشعة تحت الحمراء.</p>
+                            <p class="en"><span class="highlight-red">Absorption:</span> Different tissues absorb laser light differently based on optical properties. Hemoglobin absorbs strongly in the visible spectrum, while water absorbs infrared light.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><span class="highlight-red">التأثيرات الحرارية الضوئية (Photothermal Effects):</span> عند امتصاص النسيج للضوء، تتولد حرارة. هذه الحرارة قد تؤدي إلى تلف حراري أو تخثر (Coagulation) اعتماداً على الطول الموجي، الطاقة، ووقت التعرض.</p>
+                            <p class="en"><span class="highlight-red">Photothermal Effects:</span> When laser light is absorbed, it generates heat. This can lead to thermal damage or coagulation depending on wavelength, power, and exposure time.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><span class="highlight-red">التأثيرات الكيميائية الضوئية والانفصال الضوئي (Photodissociation and Photochemical Effects):</span> تسبب تفاعلات كيميائية في الأنسجة تؤدي إلى استئصال الأنسجة (ablation) أو تنشيط الأدوية الحساسة للضوء (العلاج الديناميكي الضوئي).</p>
+                            <p class="en"><span class="highlight-red">Photodissociation and Photochemical Effects:</span> Cause photochemical reactions leading to tissue ablation, photodissociation, or activation of photosensitive drugs (photodynamic therapy).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <div id="laser-types" class="content-section">
+                    <h2>2. أنواع الليزر واستخداماتها / Laser Types</h2>
+                    <div class="card">
+                        <h3>أهم الأنواع الطبية / Important Medical Lasers</h3>
+                        <div class="lang-block">
+                            <p class="ar">تُستخدم أنواع مختلفة من الليزر في التطبيقات الطبية، وكل نوع له وظيفة محددة بناءً على خصائصه (النقاط الحمراء هامة جداً):</p>
+                            <ul class="ar">
+                                <li>ليزر <span class="highlight-red">ثاني أكسيد الكربون (Carbon dioxide - CO2)</span>: يُستخدم من أجل <span class="highlight-red">قطع الأنسجة (tissue cutting)</span> و<span class="highlight-red">الاستئصال (ablation)</span>.</li>
+                                <li><span class="highlight-red">ليزر الدايود (Diode lasers)</span>: يُستخدم من أجل <span class="highlight-red">العلاج الديناميكي الضوئي (photodynamic therapy)</span>.</li>
+                                <li>ليزر <span class="highlight-red">النديميوم ياج (Neodymium-doped yttrium aluminum garnet - Nd:YAG)</span>: يُستخدم من أجل <span class="highlight-red">اختراق الأنسجة بعمق (deep tissue penetration)</span>.</li>
+                            </ul>
+                            <br>
+                            <p class="en"><span class="highlight-red">Laser Types:</span> Different lasers are used in biomedical applications:</p>
+                            <ul class="en">
+                                <li><span class="highlight-red">Carbon dioxide (CO2)</span> lasers for <span class="highlight-red">tissue cutting</span> and <span class="highlight-red">ablation</span>.</li>
+                                <li><span class="highlight-red">Diode lasers</span> for <span class="highlight-red">photodynamic therapy</span>.</li>
+                                <li><span class="highlight-red">Neodymium-doped yttrium aluminum garnet</span> (Nd:YAG) lasers for <span class="highlight-red">deep tissue penetration</span>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3 -->
+                <div id="variables-1" class="content-section">
+                    <h2>3. متغيرات الليزر الأساسية (1) / Laser Variables (Part 1)</h2>
+                    <div class="card">
+                        <h3>أهمية المتغيرات / Importance of Variables</h3>
+                        <div class="lang-block">
+                            <p class="ar">تلعب متغيرات الليزر أدواراً حاسمة في تحديد نتيجة التفاعل مع الأنسجة.</p>
+                            <p class="en">In laser-tissue interactions, several variables play crucial roles in determining the outcome.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><strong>1) <span class="highlight-red">الطول الموجي (Wavelength):</span></strong> يحدد مدى عمق اختراق الليزر للنسيج وأي الكروموفورات سيتفاعل معها. (الأشعة فوق البنفسجية تُمتص سطحياً، بينما تحت الحمراء تخترق أعمق).</p>
+                            <p class="en"><strong>1) <span class="highlight-red">Wavelength:</span></strong> Determines how deeply it can penetrate tissue and which chromophores it interacts with.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><strong>2) <span class="highlight-red">مدة النبضة (Pulse Duration):</span></strong> النبضات القصيرة تستخدم للقطع الدقيق والاستئصال، بينما النبضات الطويلة تستخدم للتأثيرات الحرارية.</p>
+                            <p class="en"><strong>2) <span class="highlight-red">Pulse Duration:</span></strong> Shorter pulses are used for precise ablation or cutting, while longer pulses may be used for thermal effects.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><strong>3) <span class="highlight-red">الطاقة أو الكثافة (Power / Intensity):</span></strong> تُقاس بالواط (W)، وتحدد كمية الطاقة المُوصلة في وحدة الزمن. مستويات الطاقة العالية تؤدي إلى تسخين واستئصال سريع للنسيج.</p>
+                            <p class="en"><strong>3) <span class="highlight-red">Power (Intensity):</span></strong> Measured in watts (W), determines the amount of energy delivered per unit time. Higher power leads to more rapid heating and ablation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4 -->
+                <div id="variables-2" class="content-section">
+                    <h2>4. متغيرات الليزر الأساسية (2) / Laser Variables (Part 2)</h2>
+                    <div class="card">
+                        <div class="lang-block">
+                            <p class="ar"><strong>4) <span class="highlight-red">قطر الشعاع / حجم البقعة (Beam Diameter/Spot Size):</span></strong> يؤثر على كثافة الطاقة (Fluence). حجم البقعة الأصغر <strong>يركز</strong> الطاقة، مما يؤدي إلى كثافة أعلى وتأثيرات موضعية أقوى.</p>
+                            <p class="en"><strong>4) <span class="highlight-red">Beam Diameter/Spot Size:</span></strong> Affects energy density. A smaller spot size concentrates energy, leading to higher fluence and more localized effects.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><strong>5) <span class="highlight-red">معدل تكرار النبضة (Pulse Repetition Rate):</span></strong> (<span class="highlight-red">عدد النبضات في الثانية</span>). يؤثر على إجمالي الطاقة والتأثير الحراري. المعدلات الأعلى تزيد من سرعة تسخين الأنسجة.</p>
+                            <p class="en"><strong>5) <span class="highlight-red">Pulse Repetition Rate:</span></strong> (<span class="highlight-red">number of pulses per second</span>). Influences total energy delivered. Higher repetition rates can increase the rate of tissue heating.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5 -->
+                <div id="delivery" class="content-section">
+                    <h2>5. أنظمة التوصيل والتوجيه / Delivery & Aiming Systems</h2>
+                    <div class="card">
+                        <div class="lang-block">
+                            <p class="ar"><strong>6) <span class="highlight-red">وضع التوصيل (Mode of Delivery):</span></strong> يمكن أن يكون الليزر مستمراً (CW) أو نبضياً. المستمر يعطي شعاعاً متواصلاً، والنبضي يعطي طاقة في دفعات منفصلة بينها فترات توقف.</p>
+                            <p class="en"><strong>6) <span class="highlight-red">Mode of Delivery:</span></strong> Lasers can be delivered in continuous wave (CW) mode or pulsed mode.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><strong>7) <span class="highlight-red">نظام توصيل الشعاع (Beam Delivery System):</span></strong> طريقة توصيل الشعاع للنسيج (مثل الألياف البصرية optical fibers، الأذرع المفصلية articulated arms، والمقابض المباشرة) تؤثر على دقة وفعالية العلاج.</p>
+                            <p class="en"><strong>7) <span class="highlight-red">Beam Delivery System:</span></strong> The method of delivering the beam to the tissue impacts the precision and effectiveness of the treatment.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><strong>8) <span class="highlight-red">أنظمة المسح والتوجيه (Scanning and Aiming Systems):</span></strong> أجهزة للتحكم في اتجاه ونمط توصيل الليزر، مما يسمح باستهداف دقيق لمناطق معينة داخل النسيج (وتتأثر بوضعية زاوية السقوط على السطح).</p>
+                            <p class="en"><strong>8) <span class="highlight-red">Scanning and Aiming Systems:</span></strong> Laser systems may include devices to control the direction and pattern of laser delivery, allowing precise targeting of specific areas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6: Quiz -->
+                <div id="quiz" class="content-section">
+                    <h2>6. اختبر نفسك / Test Yourself</h2>
+                    <div id="score-board" style="display: none;" class="card text-center">
+                        <h3 style="color: var(--primary); text-align: center;">نتيجتك النهائية / Your Final Score</h3>
+                        <p id="score-text" style="font-size: 2.5rem; font-weight: bold; text-align: center; color: var(--accent); margin-top: 10px;"></p>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 1 / Question 1</h3>
+                        <p class="ar">أي مما يلي يُمثل التأثيرات الأساسية لتفاعل الضوء مع الأنسجة؟</p>
+                        <p class="en">What do light-tissue interactions primarily involve?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">الانعكاس، الامتصاص، التشتت، والنفاذية / Reflection, absorption, scattering, transmission</button>
+                            <button class="option-btn" data-index="1">التبلور والتجمد فقط / Crystallization and freezing only</button>
+                            <button class="option-btn" data-index="2">الجاذبية والمغناطيسية / Gravity and magnetism</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 2 / Question 2</h3>
+                        <p class="ar">أي مكون في الأنسجة يمتص الضوء بشدة في الطيف المرئي (Visible spectrum)؟</p>
+                        <p class="en">Which tissue component strongly absorbs light in the visible spectrum?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">الماء / Water</button>
+                            <button class="option-btn" data-index="1">الهيموجلوبين / Hemoglobin</button>
+                            <button class="option-btn" data-index="2">الكالسيوم / Calcium</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 3 / Question 3</h3>
+                        <p class="ar">أي تأثير يؤدي إلى استئصال الأنسجة أو تنشيط الأدوية الحساسة للضوء (العلاج الديناميكي الضوئي)؟</p>
+                        <p class="en">Which effect leads to tissue ablation or activation of photosensitive drugs?</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">التأثير الحراري / Photothermal Effect</button>
+                            <button class="option-btn" data-index="1">التأثير الميكانيكي / Photomechanical Effect</button>
+                            <button class="option-btn" data-index="2">التأثير الكيميائي الضوئي / Photochemical Effect</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 4 / Question 4</h3>
+                        <p class="ar">ما هو نوع الليزر المُستخدم بشكل أساسي لقطع الأنسجة واستئصالها (Tissue cutting & ablation)؟</p>
+                        <p class="en">Which type of laser is primarily used for tissue cutting and ablation?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">ليزر الدايود / Diode Laser</button>
+                            <button class="option-btn" data-index="1">ليزر ثاني أكسيد الكربون / Carbon dioxide (CO2)</button>
+                            <button class="option-btn" data-index="2">ليزر النديميوم ياج / Nd:YAG</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 5 / Question 5</h3>
+                        <p class="ar">أي متغير من متغيرات الليزر يحدد مدى عمق اختراق الضوء للنسيج ونوع الكروموفور الذي يتفاعل معه؟</p>
+                        <p class="en">Which laser variable determines how deeply light can penetrate and which chromophores it interacts with?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">الطول الموجي / Wavelength</button>
+                            <button class="option-btn" data-index="1">حجم البقعة / Spot Size</button>
+                            <button class="option-btn" data-index="2">معدل التكرار / Repetition Rate</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 6 / Question 6</h3>
+                        <p class="ar">أي متغير يُقاس بوحدة الواط (W) ويحدد كمية الطاقة المُوصلة في وحدة الزمن؟</p>
+                        <p class="en">Which laser variable is measured in watts (W) and determines the amount of energy delivered per unit time?</p>
+                        <div class="options" data-correct="3">
+                            <button class="option-btn" data-index="0">الطول الموجي / Wavelength</button>
+                            <button class="option-btn" data-index="1">مدة النبضة / Pulse Duration</button>
+                            <button class="option-btn" data-index="2">نظام التوصيل / Delivery System</button>
+                            <button class="option-btn" data-index="3">الطاقة أو الكثافة / Power (Intensity)</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 7 / Question 7</h3>
+                        <p class="ar">ما هو تأثير تصغير "قطر الشعاع / حجم البقعة" (Spot Size) على النسيج؟</p>
+                        <p class="en">What is the effect of a smaller beam diameter (spot size)?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">يقلل من كثافة الطاقة / Decreases energy density</button>
+                            <button class="option-btn" data-index="1">يُركّز الطاقة مما يؤدي لكثافة (Fluence) وتأثيرات أعلى / Concentrates energy, leading to higher fluence</button>
+                            <button class="option-btn" data-index="2">يغير لون الليزر / Changes the laser color</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 8 / Question 8</h3>
+                        <p class="ar">كيف يؤثر ارتفاع "معدل تكرار النبضة" (Pulse Repetition Rate) على الأنسجة؟</p>
+                        <p class="en">How does a higher pulse repetition rate affect the tissue?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">يزيد من سرعة تسخين الأنسجة / Increases the rate of tissue heating</button>
+                            <button class="option-btn" data-index="1">يقلل من التأثير الحراري / Reduces thermal effects</button>
+                            <button class="option-btn" data-index="2">يبرد الأنسجة المحيطة / Cools surrounding tissue</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 9 / Question 9</h3>
+                        <p class="ar">ما هو الوصف الصحيح لوضع التوصيل "النبضي" (Pulsed Mode)؟</p>
+                        <p class="en">What describes the "Pulsed mode" of delivery?</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">شعاع مستمر لا ينقطع / A continuous unbroken beam</button>
+                            <button class="option-btn" data-index="1">طاقة ضعيفة جداً لا تؤثر / Very weak energy with no effect</button>
+                            <button class="option-btn" data-index="2">توصيل الطاقة في دفعات منفصلة بينها فترات توقف / Delivering energy in discrete bursts with intervals</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 10 / Question 10</h3>
+                        <p class="ar">ما هي وظيفة أنظمة "المسح والتوجيه" (Scanning and Aiming Systems) في أجهزة الليزر؟</p>
+                        <p class="en">What is the purpose of scanning and aiming systems in a laser device?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">التحكم في اتجاه ونمط توصيل الليزر لاستهداف دقيق / Control the direction and pattern of laser delivery for precise targeting</button>
+                            <button class="option-btn" data-index="1">تغيير الطول الموجي لليزر / Change the wavelength of the laser</button>
+                            <button class="option-btn" data-index="2">زيادة الكثافة الكهربائية للجهاز / Increase electrical intensity</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

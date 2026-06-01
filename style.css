@@ -327,3 +327,72 @@ tr:hover {
         border-bottom: 4px solid var(--primary);
     }
 }
+
+/* Back Button and Landing Page Styles */
+.back-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--glass-border);
+}
+.back-btn:hover {
+    background: rgba(79, 172, 254, 0.2);
+}
+
+.landing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.landing-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+.landing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 242, 254, 0.2);
+    border-color: var(--primary);
+}
+
+.landing-card h3 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.landing-card p {
+    color: var(--text-muted);
+}
+
+/* Exam Specific Styles */
+.essay-q { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.2rem; }
+.essay-q h4 { color: #c084fc; margin-bottom: 0.8rem; font-size: 1.1rem; }
+.model-answer { display: none; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); border-radius: 8px; padding: 1.2rem; margin-top: 1rem; }
+.model-answer h5 { color: #34d399; margin-bottom: 0.5rem; }
+.show-answer-btn { background: linear-gradient(135deg, rgba(79,172,254,0.2), rgba(0,242,254,0.2)); border: 1px solid var(--primary); color: var(--primary); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-family: inherit; font-size: 0.9rem; transition: all 0.3s ease; display: inline-block; }
+.show-answer-btn:hover { background: rgba(0,242,254,0.3); }
+.problem-box { background: rgba(244,63,94,0.05); border: 1px solid rgba(244,63,94,0.15); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.2rem; }
+.problem-box h4 { color: var(--accent); margin-bottom: 0.8rem; }
+.solution { display: none; background: rgba(244,63,94,0.08); border: 1px solid rgba(244,63,94,0.2); border-radius: 8px; padding: 1.2rem; margin-top: 1rem; }
+.exam-section { animation: fadeIn 0.5s ease-in-out; }
+.formulas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.formula-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; transition: transform 0.3s ease; }
+.formula-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+.formula-card h4 { color: var(--secondary); margin-bottom: 1rem; font-size: 1.1rem; }
+.formula-card p.f { font-family: 'Outfit', sans-serif; font-size: 1.2rem; color: #fff; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; text-align: center; }

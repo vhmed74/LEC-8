@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرح محاضرة 4 - تفاعل الضوء مع المادة الكتلية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <header class="glass-header">
+            <a href="index.html" class="back-btn">🔙 الرئيسية / Home</a>
+            <h1>محاضرة 4: تفاعل الضوء مع المادة الكتلية</h1>
+            <h2>Lecture 4: Interaction of Light with a Bulk Matter</h2>
+            <p>شرح تفصيلي للمحاضرة باللغتين العربية والإنجليزية / Detailed bilingual explanation</p>
+        </header>
+
+        <main>
+            <aside class="sidebar glass-panel">
+                <nav>
+                    <ul id="nav-list">
+                        <li class="active" data-target="size-wavelength">1. حجم المادة والطول الموجي / Size vs Wavelength</li>
+                        <li data-target="bulk-matter">2. المادة الكتلية / Bulk Matter</li>
+                        <li data-target="reflection">3. الانعكاس / Reflection</li>
+                        <li data-target="refraction">4. الانكسار / Refraction</li>
+                        <li data-target="absorption">5. الامتصاص / Absorption</li>
+                        <li data-target="transmission">6. النفاذية / Transmission</li>
+                        <li data-target="quiz">7. اختبر نفسك / Quiz</li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <section class="content-area glass-panel">
+                <!-- Section 1 -->
+                <div id="size-wavelength" class="content-section active-section">
+                    <h2>1. حجم المادة بالنسبة للطول الموجي / Size Relative to Wavelength</h2>
+                    <div class="card">
+                        <h3>المستوى الجزيئي / Molecular Level</h3>
+                        <div class="lang-block">
+                            <p class="ar">عندما تكون أبعاد المادة (a) <strong>أصغر بكثير</strong> من الطول الموجي للضوء (λ) (مثل الجزيئات الفردية أو الجسيمات النانوية)، فإن التفاعلات تحدث على النطاق الجزيئي أو الذري.</p>
+                            <p class="en">When material dimensions are much <strong>smaller</strong> than the wavelength of light (a << λ), interactions occur at the molecular or atomic scale.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>المستوى الكتلي / Bulk Level</h3>
+                        <div class="lang-block">
+                            <p class="ar">عندما تكون أبعاد المادة <strong>مقاربة لـ أو أكبر من</strong> الطول الموجي للضوء (a ≈ λ أو a >> λ)، فإن التفاعلات تُحكم بالخصائص الكتلية للمادة مثل معامل الانكسار، معامل الامتصاص، والتشتت.</p>
+                            <p class="en">When material dimensions are <strong>comparable to or larger</strong> than the wavelength, interactions are governed by bulk properties like refractive index, absorption coefficient, and scattering.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <div id="bulk-matter" class="content-section">
+                    <h2>2. تفاعل الضوء مع المادة الكتلية / Interaction with Bulk Matter</h2>
+                    <div class="card">
+                        <h3>الظواهر الأساسية / Key Phenomena</h3>
+                        <div class="lang-block">
+                            <p class="ar">عندما يصطدم الضوء بالمادة الكتلية (Bulk matter)، تحدث عدة ظواهر رئيسية قد تتزامن في نفس الوقت لتحديد الخصائص البصرية للمادة. وتشمل هذه الظواهر:</p>
+                            <ul class="ar">
+                                <li>الامتصاص (Absorption)</li>
+                                <li>التشتت (Scattering)</li>
+                                <li>الانعكاس (Reflection)</li>
+                                <li>النفاذية (Transmission)</li>
+                            </ul>
+                            <hr>
+                            <p class="en">When light encounters bulk matter, several key phenomena can occur, often simultaneously: Absorption, Scattering, Reflection, and Transmission.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3 -->
+                <div id="reflection" class="content-section">
+                    <h2>3. الانعكاس / Reflection</h2>
+                    <div class="card">
+                        <h3>كيف يحدث؟ / How it occurs?</h3>
+                        <div class="lang-block">
+                            <p class="ar">يحدث الانعكاس عندما يرتد الضوء من سطح المادة الكتلية <strong>بنفس الزاوية</strong> التي يسقط بها (زاوية السقوط = زاوية الانعكاس: θ<sub>i</sub> = θ<sub>r</sub>).</p>
+                            <p class="en">Reflection occurs when light bounces off the surface at the <strong>same angle</strong> it arrives (angle of incidence equals angle of reflection).</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>حساب الانعكاسية / Calculating Reflectance (R)</h3>
+                        <div class="lang-block">
+                            <p class="ar">عند انتقال الضوء من الهواء (n ≈ 1) إلى نسيج له معامل انكسار (n<sub>R</sub>) في حالة <strong>السقوط العمودي (Normal Incidence)</strong>، تُحسب الانعكاسية (R) كالتالي:</p>
+                            <p class="math-formula" style="font-size: 1.5rem; text-align: center; color: var(--accent); margin: 15px 0;">R = ((n<sub>R</sub> - 1) / (n<sub>R</sub> + 1))²</p>
+                            <p class="en">For normal incidence from air to a tissue with refractive index n<sub>R</sub>, reflectance R is the ratio of reflected to incident intensity.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar">في حالة <strong>السقوط المائل (Oblique Incidence)</strong>، نستخدم زوايا السقوط والانكسار في المعادلة:</p>
+                            <p class="math-formula" style="font-size: 1.5rem; text-align: center; color: var(--accent); margin: 15px 0;">R = ((n<sub>1</sub> cosθ<sub>1</sub> - n<sub>2</sub> cosθ<sub>2</sub>) / (n<sub>1</sub> cosθ<sub>1</sub> + n<sub>2</sub> cosθ<sub>2</sub>))²</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4 -->
+                <div id="refraction" class="content-section">
+                    <h2>4. الانكسار / Refraction</h2>
+                    <div class="card">
+                        <h3>مفهوم الانكسار / Concept</h3>
+                        <div class="lang-block">
+                            <p class="ar">هو <strong>انحناء الضوء (Bending of light)</strong> عند انتقاله من وسط إلى آخر بسبب تغير سرعته. يُوصف هذا السلوك بـ <strong>قانون سنيل (Snell's Law)</strong>.</p>
+                            <p class="en">Refraction is the bending of light when it passes from one medium to another due to a change in its speed, described by <strong>Snell's Law</strong>.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="math-formula" style="font-size: 1.5rem; text-align: center; color: var(--accent); margin: 15px 0;">n<sub>1</sub> sinθ<sub>1</sub> = n<sub>2</sub> sinθ<sub>2</sub></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>معامل الانكسار المُركّب / Complex Refractive Index</h3>
+                        <div class="lang-block">
+                            <p class="ar">بالقرب من نقطة الرنين، يصبح معامل الانكسار (n) كمية مُركبة (Complex quantity):</p>
+                            <p class="math-formula" style="font-size: 1.5rem; text-align: center; color: var(--accent); margin: 10px 0;">n = n<sub>r</sub> + i n<sub>i</sub></p>
+                            <ul class="ar">
+                                <li><strong>الجزء الحقيقي (n<sub>r</sub>):</strong> يحدد مقدار <strong>الانكسار والتشتت</strong> (Refraction & Scattering).</li>
+                                <li><strong>الجزء التخيلي (n<sub>i</sub>):</strong> يصف مقدار <strong>امتصاص الضوء</strong> في الوسط (Absorption).</li>
+                            </ul>
+                            <hr>
+                            <p class="en">The real part (n<sub>r</sub>) determines refraction and scattering, while the imaginary part (n<sub>i</sub>) describes the absorption of light in a medium.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5 -->
+                <div id="absorption" class="content-section">
+                    <h2>5. الامتصاص / Absorption</h2>
+                    <div class="card">
+                        <h3>آلية الامتصاص / Absorption Mechanism</h3>
+                        <div class="lang-block">
+                            <p class="ar">يحدث الامتصاص عندما تتفاعل الفوتونات مع المادة، ناقلةً طاقتها إلى الذرات أو الجزيئات ومُحولة إياها إلى <strong>طاقة داخلية (حرارة أو استثارة إلكترونية)</strong>.</p>
+                            <p class="en">Occurs when photons interact with matter, transferring energy and converting it into internal energy like heat or electronic excitations.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>امتصاص المواد شبه الموصلة / Semiconducting Materials</h3>
+                        <div class="lang-block">
+                            <ul class="ar">
+                                <li>إذا كانت فجوة الطاقة (Band Gap) <strong>أقل من 1.8 eV</strong>: يتم امتصاص كل الضوء المرئي، وتكون المادة <strong>معتمة (Opaque)</strong>.</li>
+                                <li>إذا كانت فجوة الطاقة بين <strong>1.8 و 3.1 eV</strong>: يتم امتصاص جزء فقط من طيف الضوء المرئي، فتظهر المادة <strong>ملونة (Colored)</strong>.</li>
+                                <li>وجود شوائب (Impurities) يُنشئ مستويات طاقة جديدة داخل فجوة الطاقة.</li>
+                            </ul>
+                            <hr>
+                            <ul class="en">
+                                <li>Band gap < 1.8 eV: All visible light is absorbed (opaque).</li>
+                                <li>Band gap 1.8 to 3.1 eV: Portion of visible light is absorbed (colored).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>تبديد الطاقة ومعامل الامتصاص / Energy Dissipation</h3>
+                        <div class="lang-block">
+                            <p class="ar">الطاقة الكهرومغناطيسية الممتصة يجب أن تتبدد، وأحد المسارات هو اتحاد الإلكترون مع الفجوة (Electron + Hole → Energy).</p>
+                            <p class="ar">شدة الإشعاع المُنفذ (غير الممتص) <strong>تتناقص بشكل مستمر</strong> مع المسافة (x) التي يقطعها الضوء، وفقاً للمعادلة:</p>
+                            <p class="math-formula" style="font-size: 1.5rem; text-align: center; color: var(--accent); margin: 15px 0;">I<sub>T</sub> = I<sub>0</sub> e<sup>-αx</sup></p>
+                            <p class="ar">حيث (α) هو <strong>معامل الامتصاص (Absorption Coefficient)</strong>، وهو خاصية للمادة تتغير بتغير الطول الموجي للضوء الساقط.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6 -->
+                <div id="transmission" class="content-section">
+                    <h2>6. النفاذية / Transmission</h2>
+                    <div class="card">
+                        <h3>نفاذية الضوء الكلية / Total Transmission</h3>
+                        <div class="lang-block">
+                            <p class="ar">عند مرور الضوء خلال وسط شفاف، يحدث له انعكاس عند الوجهين (الأمامي والخلفي) بالإضافة لامتصاص داخلي. يمكن حساب النفاذية الكلية (T) بالمعادلة:</p>
+                            <p class="math-formula" style="font-size: 1.5rem; text-align: center; color: var(--accent); margin: 10px 0;">T = (1 - R)² e<sup>-βl</sup></p>
+                            <p class="en">Transmission of light through a transparent medium for which there is reflection at the front and back faces, as well as absorption within the medium.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar">تختلف نسب النفاذية والامتصاص والانعكاس باختلاف الطول الموجي. مثلاً الزجاج الأخضر عند 0.4 μm يُنفذ 90%، بينما عند 0.55 μm يُنفذ 50% فقط.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 7: Quiz -->
+                <div id="quiz" class="content-section">
+                    <h2>7. اختبر نفسك / Test Yourself</h2>
+                    <div id="score-board" style="display: none;" class="card text-center">
+                        <h3 style="color: var(--primary); text-align: center;">نتيجتك النهائية / Your Final Score</h3>
+                        <p id="score-text" style="font-size: 2.5rem; font-weight: bold; text-align: center; color: var(--accent); margin-top: 10px;"></p>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 1 / Question 1</h3>
+                        <p class="ar">عندما تكون أبعاد المادة أصغر بكثير من الطول الموجي (a << λ)، فإن التفاعلات تحدث على النطاق:</p>
+                        <p class="en">When material dimensions are much smaller than wavelength (a << λ), interactions occur at:</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">النطاق الكتلي / Bulk scale</button>
+                            <button class="option-btn" data-index="1">النطاق الجزيئي أو الذري / Molecular or atomic scale</button>
+                            <button class="option-btn" data-index="2">النطاق الكوني / Cosmic scale</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 2 / Question 2</h3>
+                        <p class="ar">أي مما يلي يحكم تفاعل الضوء مع "المادة الكتلية" (Bulk Matter)؟</p>
+                        <p class="en">Which of the following governs light interaction with Bulk Matter?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">معامل الانكسار ومعامل الامتصاص والتشتت / Refractive index, absorption coefficient, and scattering</button>
+                            <button class="option-btn" data-index="1">ميكانيكا الكم الفردية فقط / Individual quantum mechanics only</button>
+                            <button class="option-btn" data-index="2">قوة الجاذبية / Gravity</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 3 / Question 3</h3>
+                        <p class="ar">يحدث الانعكاس عندما يرتد الضوء من السطح:</p>
+                        <p class="en">Reflection occurs when light bounces off the surface at:</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">بزاوية أكبر من السقوط / An angle larger than incidence</button>
+                            <button class="option-btn" data-index="1">بزاوية أصغر من السقوط / An angle smaller than incidence</button>
+                            <button class="option-btn" data-index="2">بنفس زاوية السقوط / The same angle it arrives (θi = θr)</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 4 / Question 4</h3>
+                        <p class="ar">في معادلة معامل الانكسار المُركّب (n = nr + ini)، ماذا يصف الجزء التخيلي (ni)؟</p>
+                        <p class="en">In the complex refractive index equation (n = nr + ini), what does the imaginary part (ni) describe?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">الانكسار / Refraction</button>
+                            <button class="option-btn" data-index="1">امتصاص الضوء في الوسط / Absorption of light in a medium</button>
+                            <button class="option-btn" data-index="2">التشتت / Scattering</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 5 / Question 5</h3>
+                        <p class="ar">قانون سنيل (Snell's law) يستخدم لوصف العلاقة بين:</p>
+                        <p class="en">Snell's law describes the relationship between:</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">زوايا السقوط والانكسار / Angles of incidence and refraction</button>
+                            <button class="option-btn" data-index="1">الطاقة والكتلة / Energy and mass</button>
+                            <button class="option-btn" data-index="2">الحرارة والضغط / Heat and pressure</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 6 / Question 6</h3>
+                        <p class="ar">المواد شبه الموصلة التي لها فجوة طاقة أقل من 1.8 eV تمتص كل الضوء المرئي، ولذلك تبدو:</p>
+                        <p class="en">Semiconducting materials with band gap < 1.8 eV absorb all visible light and appear:</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">شفافة تماماً / Completely transparent</button>
+                            <button class="option-btn" data-index="1">ملونة جزئياً / Colored</button>
+                            <button class="option-btn" data-index="2">معتمة / Opaque</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 7 / Question 7</h3>
+                        <p class="ar">المواد التي تمتلك فجوة طاقة بين 1.8 و 3.1 eV تمتص جزءاً من الطيف المرئي، ولذلك تظهر:</p>
+                        <p class="en">Materials with band gap between 1.8 and 3.1 eV absorb a portion of visible spectrum and appear:</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">معتمة دائماً / Opaque always</button>
+                            <button class="option-btn" data-index="1">مُلونة / Colored</button>
+                            <button class="option-btn" data-index="2">مضيئة بالفسفرة / Phosphorescent</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 8 / Question 8</h3>
+                        <p class="ar">في السقوط العمودي من الهواء للنسيج، كيف يتم حساب الانعكاسية (Reflectance R)؟</p>
+                        <p class="en">In normal incidence from air to tissue, how is reflectance (R) calculated?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">R = ((nR - 1) / (nR + 1))²</button>
+                            <button class="option-btn" data-index="1">R = nR × 2</button>
+                            <button class="option-btn" data-index="2">R = (nR + 1) / (nR - 1)</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 9 / Question 9</h3>
+                        <p class="ar">في معادلة انتقال الضوء الممتص (IT = I0 e^-αx)، ماذا يمثل الرمز α؟</p>
+                        <p class="en">In the equation IT = I0 e^-αx, what does α represent?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">شدة الضوء الابتدائية / Initial intensity</button>
+                            <button class="option-btn" data-index="1">معامل الامتصاص / Absorption coefficient</button>
+                            <button class="option-btn" data-index="2">المسافة / Distance</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 10 / Question 10</h3>
+                        <p class="ar">كلما زادت المسافة التي يقطعها الضوء (x) داخل المادة الممتصة، فإن شدة الإشعاع النافذ (IT):</p>
+                        <p class="en">As the distance the light traverses (x) increases, the intensity of transmitted radiation (IT):</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">تتناقص باستمرار (اضمحلال أسي) / Continuously decreases (exponential decay)</button>
+                            <button class="option-btn" data-index="1">تتزايد / Increases</button>
+                            <button class="option-btn" data-index="2">تبقى ثابتة / Remains constant</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

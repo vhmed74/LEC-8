@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرح محاضرة 7 - تفاعل الضوء مع الأنسجة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <header class="glass-header">
+            <a href="index.html" class="back-btn">🔙 الرئيسية / Home</a>
+            <h1>محاضرة 7: تفاعل الضوء مع الأنسجة</h1>
+            <h2>Lecture 7: Light Tissue Interactions</h2>
+            <p>شرح تفصيلي للمحاضرة باللغتين العربية والإنجليزية / Detailed bilingual explanation</p>
+        </header>
+
+        <main>
+            <aside class="sidebar glass-panel">
+                <nav>
+                    <ul id="nav-list">
+                        <li class="active" data-target="intro">1. متغيرات الأنسجة / Tissue Variables</li>
+                        <li data-target="absorption">2. خصائص الامتصاص / Optical Absorption</li>
+                        <li data-target="scattering">3. التشتت والانكسار / Scattering & Refraction</li>
+                        <li data-target="factors">4. عوامل أخرى مؤثرة / Other Factors</li>
+                        <li data-target="chromophores">5. الكروموفورات / Chromophores</li>
+                        <li data-target="quiz">6. اختبر نفسك / Quiz</li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <section class="content-area glass-panel">
+                <!-- Section 1 -->
+                <div id="intro" class="content-section active-section">
+                    <h2>1. متغيرات الأنسجة / Tissue Variables</h2>
+                    <div class="card">
+                        <h3>أهمية متغيرات الأنسجة / Importance of Tissue Variables</h3>
+                        <div class="lang-block">
+                            <p class="ar">في تفاعلات الليزر مع الأنسجة، تلعب متغيرات الأنسجة دوراً هاماً في تحديد نتيجة التفاعل. هذه المتغيرات تؤثر على كيفية امتصاص الضوء، تشتته، وتحوله داخل الأنسجة البيولوجية.</p>
+                            <p class="en">In laser-tissue interactions, several tissue variables play significant roles in determining the outcome of the interaction. These variables affect how light energy is absorbed, scattered, and transformed within biological tissues.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <div id="absorption" class="content-section">
+                    <h2>2. خصائص الامتصاص الضوئي / Optical Absorption</h2>
+                    <div class="card">
+                        <h3>قدرة الأنسجة على الامتصاص / Tissue's Ability to Absorb</h3>
+                        <div class="lang-block">
+                            <p class="ar">يشير هذا المتغير إلى قدرة النسيج على امتصاص الطاقة الضوئية عند أطوال موجية معينة. تختلف الأنسجة في "معاملات الامتصاص" الخاصة بها، والتي تحدد الأطوال الموجية التي يتم امتصاصها بأكبر قدر من الكفاءة.</p>
+                            <p class="en">Optical Absorption refers to the tissue's ability to absorb light energy at specific wavelengths. Different tissues have varying absorption coefficients, which determine which wavelengths of light are absorbed most efficiently.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar">على سبيل المثال، الهيموجلوبين والميلانين يمتصان الضوء بشدة في النطاق المرئي (Visible) والأشعة تحت الحمراء القريبة (Near-infrared). بينما يمتص الماء الضوء بشدة في نطاق الأشعة تحت الحمراء (Infrared).</p>
+                            <p class="en">For example, hemoglobin and melanin are strong absorbers of light in the visible and near-infrared spectra, while water absorbs strongly in the infrared range.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar">يتم تمثيل قدرة النسيج على امتصاص الفوتونات بواسطة المعامل <strong>&mu;<sub>a</sub></strong> بوحدة الطول لكل مليمتر (per mm) أو لكل سنتيمتر (per cm).</p>
+                            <p class="en">The ability of tissue to absorb photons is represented by the parameter <strong>&mu;<sub>a</sub></strong> with units per length (per mm or per cm).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3 -->
+                <div id="scattering" class="content-section">
+                    <h2>3. التشتت والانكسار / Scattering & Refraction</h2>
+                    <div class="card">
+                        <h3>معامل التشتت / Scattering Coefficient</h3>
+                        <div class="lang-block">
+                            <p class="ar">التشتت هو العملية التي يتم من خلالها إعادة توجيه الضوء في اتجاهات مختلفة أثناء انتقاله عبر الأنسجة. معامل التشتت (<strong>&mu;<sub>s</sub></strong>) يمثل "احتمال مواجهة الفوتون لحدث تشتت لكل وحدة طول".</p>
+                            <p class="en">Scattering is the process by which light is redirected in various directions as it travels through tissue. The scattering coefficient (<strong>&mu;<sub>s</sub></strong>) represents the probability per unit path length that a photon will encounter a scattering event.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar">الأنسجة ذات معاملات التشتت الأعلى (مثل الجلد وأنسجة المخ) تشتت الضوء بشكل أكثر فعالية، مما يؤثر على <strong>عمق الاختراق</strong> للضوء وتوزيعه المكاني.</p>
+                            <p class="en">Tissues with higher scattering coefficients, such as skin and brain tissue, scatter light more effectively, affecting the depth of light penetration and spatial distribution of energy.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>أنواع التشتت / Types of Scattering</h3>
+                        <div class="lang-block">
+                            <ul class="ar">
+                                <li><strong>تشتت رايلي (Rayleigh scattering):</strong> يحدث عندما يكون حجم الجسيم <em>أصغر</em> من الطول الموجي للفوتون الساقط.</li>
+                                <li><strong>تشتت مي (Mie scattering):</strong> يحدث عندما يكون حجم الجسيم <em>مساوياً أو أكبر</em> من الطول الموجي.</li>
+                            </ul>
+                            <ul class="en">
+                                <li><strong>Rayleigh scattering:</strong> describes scattering for particle size <em>smaller</em> than the wavelength of the incident photon flux.</li>
+                                <li><strong>Mie scattering:</strong> analyzes scattering events for particle size <em>equal to or greater</em> than the wavelength.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>معامل الانكسار / Refractive Index</h3>
+                        <div class="lang-block">
+                            <p class="ar">يصف معامل الانكسار للأنسجة كيفية انتشار الضوء خلالها مقارنة بانتشاره في الفراغ. التغيرات في معامل الانكسار بين أنواع الأنسجة المختلفة يمكن أن تؤثر على تشتت الضوء، انعكاسه، ونفاذيته عند الفواصل بين الأنسجة.</p>
+                            <p class="en">The refractive index of tissue describes how light propagates through the tissue compared to its propagation in a vacuum. Variations in refractive index between different tissue types can influence light scattering, reflection, and transmission at tissue interfaces.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4 -->
+                <div id="factors" class="content-section">
+                    <h2>4. عوامل أخرى مؤثرة / Other Factors</h2>
+                    <div class="card">
+                        <h3>تكوين الأنسجة / Tissue Composition</h3>
+                        <div class="lang-block">
+                            <p class="ar">تكوين الأنسجة البيولوجية (مثل وجود الكروموفورات كالميلانين والهيموجلوبين والدهون ومحتوى الماء) يؤثر بشكل كبير على خصائصها البصرية. فالأنسجة الغنية بالميلانين تمتص ضوءاً أكثر في الطيف المرئي، بينما يسيطر امتصاص الماء في نطاق الأشعة تحت الحمراء القريبة.</p>
+                            <p class="en">The composition of biological tissues, including the presence of chromophores and water content, significantly influences their optical properties. Tissues with high melanin absorb more in the visible spectrum, while water absorption dominates in the near-infrared range.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>الحرارة وتَمَسُّخ الزلال / Temperature & Denaturization</h3>
+                        <div class="lang-block">
+                            <p class="ar">يمكن أن تتغير درجة حرارة الأنسجة أثناء التفاعل مع الليزر (خاصة في العلاجات الحرارية). هذا التغير يؤثر على الخصائص البصرية (مثل الاستجابة للتخثر أو التبخير أو تَمَسُّخ البروتينات).</p>
+                            <p class="en">The temperature of tissue can change during interactions, affecting tissue optical properties and responses (coagulation, vaporization, or denaturation of proteins).</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><strong>مثال:</strong> تَمَسُّخ الزلال (Denaturization of albumin). عند تسخين محتويات البيضة إلى أكثر من 60 درجة مئوية، يتحول الزلال من سائل إلى صلب، ويتغير مظهره من شفاف (Clear) إلى أبيض (White).</p>
+                            <p class="en"><strong>Example:</strong> When the contents of an egg are heated above 60°C, the albumin turns from liquid into solid, and changes in appearance from clear to white.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>التوعية الدموية والسُمك / Vascularization & Thickness</h3>
+                        <div class="lang-block">
+                            <p class="ar"><strong>التوعية الدموية:</strong> تؤثر كثافة وتوزيع الأوعية الدموية على امتصاص الضوء (بواسطة الهيموجلوبين) وعلى تشتيت الحرارة. تدفق الدم يعمل كعامل تشتيت للحرارة.</p>
+                            <p class="en"><strong>Vascularization:</strong> The density and distribution of blood vessels impacts light absorption and heat dissipation due to blood flow and thermal convection.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><strong>السُمك والتجانس:</strong> يؤثران على عمق اختراق الضوء والتوزيع المكاني للطاقة. الاختلافات يمكن أن تؤدي إلى تأثيرات علاجية غير منتظمة.</p>
+                            <p class="en"><strong>Thickness and Homogeneity:</strong> Affect light penetration depth and spatial distribution of energy. Variations can lead to heterogeneous energy deposition and non-uniform treatment effects.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5 -->
+                <div id="chromophores" class="content-section">
+                    <h2>5. الكروموفورات والامتصاص / Chromophores & Absorption</h2>
+                    <div class="card">
+                        <h3>ما هو الكروموفور؟ / What is a Chromophore?</h3>
+                        <div class="lang-block">
+                            <p class="ar">الكروموفور هو <strong>جزء من الجزيء</strong> المسؤول عن لونه. يمتص أطوالاً موجية معينة من الضوء المرئي وينقل أو يعكس الباقي، مما يمنح الجزيء لونه.</p>
+                            <p class="en">A chromophore is a <strong>part of a molecule</strong> responsible for its color. It absorbs certain wavelengths of visible light and transmits or reflects others, giving the molecule a color.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>أهم الكروموفورات في الأنسجة / Main Chromophores</h3>
+                        <div class="lang-block">
+                            <p class="ar">المكونات الرئيسية الممتصة للضوء (الكروموفورات) في الأنسجة هي:</p>
+                            <ol class="ar">
+                                <li>الهيموجلوبين (Hemoglobin) في الدم.</li>
+                                <li>الميلانين (Melanin) في الجلد والشعر.</li>
+                                <li>الماء (Water) في كل الأنسجة البيولوجية.</li>
+                                <li>البروتينات (Proteins) والتي تعمل كمشتت للضوء أيضاً.</li>
+                            </ol>
+                            <p class="en">The main absorbing components (chromophores) of tissue are:</p>
+                            <ol class="en">
+                                <li>Hemoglobin - in blood.</li>
+                                <li>Melanin - skin, hair, etc.</li>
+                                <li>Water - all biological tissue.</li>
+                                <li>Protein - Scatter.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>خصائص كل مُمتص / Properties of Each Absorber</h3>
+                        <div class="lang-block">
+                            <p class="ar"><strong>الهيموجلوبين:</strong> هو السائد في الأنسجة الوعائية. يمتص الضوء المرئي وفوق البنفسجي، وله ذروات امتصاص حول 280, 420, 540, 580 نانومتر، وينقطع امتصاصه (cut-off) عند حوالي 600 نانومتر.</p>
+                            <p class="en"><strong>Hemoglobin:</strong> Predominant in vascularized tissue. Visible and UV light are absorbed mainly by it. It has a cut-off at approximately 600nm.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><strong>الميلانين:</strong> الصباغ الأساسي للجلد. يزداد معامل امتصاصه بشكل مطرد عبر الطيف المرئي باتجاه الأشعة فوق البنفسجية (UV).</p>
+                            <p class="en"><strong>Melanin:</strong> The basic pigment of skin. Its absorption coefficient monotonically increases across the visible spectrum toward the UV.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><strong>الماء:</strong> المكون الرئيسي لمعظم الأنسجة. يمتص الماء الأشعة تحت الحمراء بشكل أساسي بدءاً من 300-2000 نانومتر ويزداد بشدة. (ملحوظة: ليزر CO2 ذو الطول الموجي 10,600nm يتم امتصاصه بكثافة بواسطة الماء ولذلك لا يخترق الأنسجة بعمق).</p>
+                            <p class="en"><strong>Water:</strong> The main constituent of most tissues. Infrared light is absorbed primarily by water. CO2 lasers (10,600 nm) are heavily absorbed by water and do not penetrate deeply.</p>
+                        </div>
+                        <div class="lang-block">
+                            <p class="ar"><strong>البروتينات (Proteins):</strong> تمتص البروتينات بشكل أساسي في نطاق الأشعة المرئية وفوق البنفسجية (UV)، مع ذروة امتصاص حول 280 نانومتر. العضيات الخلوية مثل <strong>الميتوكوندريا</strong> تعتبر المُشتت الرئيسي (Main scatterers) في الأنسجة.</p>
+                            <p class="en"><strong>Proteins:</strong> Absorb mainly in UV and visible range with a peak at ~280nm. Cellular organelles such as <strong>mitochondria</strong> are the main scatterers in various tissues.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6: Quiz -->
+                <div id="quiz" class="content-section">
+                    <h2>6. اختبر نفسك / Test Yourself</h2>
+                    <div id="score-board" style="display: none;" class="card text-center">
+                        <h3 style="color: var(--primary); text-align: center;">نتيجتك النهائية / Your Final Score</h3>
+                        <p id="score-text" style="font-size: 2.5rem; font-weight: bold; text-align: center; color: var(--accent); margin-top: 10px;"></p>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 1 / Question 1</h3>
+                        <p class="ar">ما هو الكروموفور (Chromophore)؟</p>
+                        <p class="en">What is a chromophore?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">خلية دموية مسؤولة عن التجلط / Blood cell for coagulation</button>
+                            <button class="option-btn" data-index="1">جزء من الجزيء مسؤول عن إعطائه لونه عبر امتصاص أطوال موجية معينة / A part of a molecule responsible for its color</button>
+                            <button class="option-btn" data-index="2">نوع من أنواع ليزر الغاز / A type of gas laser</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 2 / Question 2</h3>
+                        <p class="ar">أي نوع من التشتت يحدث عندما يكون حجم الجسيم "أصغر" من الطول الموجي للفوتون الساقط؟</p>
+                        <p class="en">Which scattering occurs when particle size is "smaller" than the incident wavelength?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">تشتت رايلي / Rayleigh scattering</button>
+                            <button class="option-btn" data-index="1">تشتت مي / Mie scattering</button>
+                            <button class="option-btn" data-index="2">انكسار كلي / Total internal refraction</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 3 / Question 3</h3>
+                        <p class="ar">عند أي درجة حرارة تقريباً يحدث "تَمَسُّخ" لزلال البيض (Denaturization of albumin) ليتحول من سائل شفاف إلى صلب أبيض؟</p>
+                        <p class="en">At what approximate temperature does albumin denaturize (turn from clear liquid to white solid)?</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">100°C</button>
+                            <button class="option-btn" data-index="1">40°C</button>
+                            <button class="option-btn" data-index="2">60°C</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 4 / Question 4</h3>
+                        <p class="ar">أي مكون من مكونات الأنسجة يهيمن على امتصاص الضوء في نطاق "الأشعة تحت الحمراء" (Infrared)؟</p>
+                        <p class="en">Which tissue component dominates absorption in the infrared range?</p>
+                        <div class="options" data-correct="3">
+                            <button class="option-btn" data-index="0">الميلانين / Melanin</button>
+                            <button class="option-btn" data-index="1">الهيموجلوبين / Hemoglobin</button>
+                            <button class="option-btn" data-index="2">البروتين / Protein</button>
+                            <button class="option-btn" data-index="3">الماء / Water</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 5 / Question 5</h3>
+                        <p class="ar">عند أي طول موجي (تقريباً) ينقطع (cut-off) امتصاص الهيموجلوبين للضوء؟</p>
+                        <p class="en">What is the approximate cut-off wavelength for Hemoglobin absorption?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">280 nm</button>
+                            <button class="option-btn" data-index="1">600 nm</button>
+                            <button class="option-btn" data-index="2">10,600 nm</button>
+                            <button class="option-btn" data-index="3">400 nm</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 6 / Question 6</h3>
+                        <p class="ar">أي العضيات الخلوية تُعتبر "المُشتت الرئيسي" (Main scatterers) للضوء في الأنسجة المختلفة؟</p>
+                        <p class="en">Which cellular organelles are considered the "main scatterers" in various tissues?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">الميتوكوندريا / Mitochondria</button>
+                            <button class="option-btn" data-index="1">النواة / Nucleus</button>
+                            <button class="option-btn" data-index="2">الغشاء الخلوي / Cell membrane</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 7 / Question 7</h3>
+                        <p class="ar">أي خاصية تصف كيفية انتشار الضوء خلال النسيج مقارنة بانتشاره في الفراغ؟</p>
+                        <p class="en">Which property describes how light propagates through tissue compared to a vacuum?</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">معامل التشتت / Scattering coefficient</button>
+                            <button class="option-btn" data-index="1">كثافة الطاقة / Power density</button>
+                            <button class="option-btn" data-index="2">معامل الانكسار / Refractive index</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 8 / Question 8</h3>
+                        <p class="ar">ليزر ثاني أكسيد الكربون (CO2 laser) ذو الطول الموجي 10,600nm يمتصه أي مكون بكثافة عالية مما يمنعه من الاختراق العميق؟</p>
+                        <p class="en">The CO2 laser (10,600 nm) is heavily absorbed by which tissue component, preventing deep penetration?</p>
+                        <div class="options" data-correct="1">
+                            <button class="option-btn" data-index="0">الميلانين / Melanin</button>
+                            <button class="option-btn" data-index="1">الماء / Water</button>
+                            <button class="option-btn" data-index="2">البروتين / Protein</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 9 / Question 9</h3>
+                        <p class="ar">يزداد معامل امتصاص "الميلانين" بشكل مطرد في الطيف المرئي كلما اتجهنا نحو أي نطاق؟</p>
+                        <p class="en">Melanin absorption monotonically increases across the visible spectrum toward which range?</p>
+                        <div class="options" data-correct="2">
+                            <button class="option-btn" data-index="0">الأشعة تحت الحمراء / Infrared</button>
+                            <button class="option-btn" data-index="1">موجات الراديو / Radio waves</button>
+                            <button class="option-btn" data-index="2">الأشعة فوق البنفسجية / Ultraviolet (UV)</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="card quiz-card">
+                        <h3>سؤال 10 / Question 10</h3>
+                        <p class="ar">كيف تؤثر التوعية الدموية (Vascularization) وتدفق الدم على الأنسجة المعرضة لإشعاع الليزر؟</p>
+                        <p class="en">How does vascularization and blood flow impact tissues during laser irradiation?</p>
+                        <div class="options" data-correct="0">
+                            <button class="option-btn" data-index="0">تعمل كعامل تشتيت للحرارة (Heat dissipation) / Acts as heat dissipation</button>
+                            <button class="option-btn" data-index="1">ترفع الحرارة لمستويات خطيرة فوراً / Immediately raises heat to dangerous levels</button>
+                            <button class="option-btn" data-index="2">تمنع التشتت الضوئي تماماً / Prevents light scattering entirely</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
